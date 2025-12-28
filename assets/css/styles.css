@@ -2,6 +2,15 @@
 /* Global typography & layout     */
 /* ============================= */
 
+:root {
+  --bs-font-sans-serif: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+body, .content, .navbar, .quarto-title-block, .nav, .btn {
+  font-family: var(--bs-font-sans-serif) !important;
+}
+
+
 body {
   line-height: 1.6;
   font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
