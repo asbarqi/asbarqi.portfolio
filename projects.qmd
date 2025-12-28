@@ -1,17 +1,75 @@
 ---
-title: "Projects"
+title: "Research & Projects"
+page-layout: full
 ---
 
-## Featured
+<div class="projects-header">
+  <h1>Research & Projects</h1>
+  <p class="projects-subtitle">
+    Selected research projects in causal inference, econometrics, and time-series modeling.
+  </p>
+</div>
 
-### Rent vs Shelter Population in NYC (VAR)
-Time-series analysis of how NYC median asking rent and shelter population co-move over time, using a VAR method with forecasting.
-[View project →](projects/rent_shelter_var.Rmd)
+<div class="projects-grid">
 
-### The Impact of Refugees on House Prices in European Countries (TWFE)
-Two-way fixed effects analysis linking refugee inflows to housing price dynamics across European countries, with spatial/econometric extensions.
-[View project →](projects/Refugees_EU.Rmd)
+<div class="project-card">
+  <div class="project-top">
+    <h3>Rent vs Shelter Population in NYC</h3>
+    <div class="project-tags">
+      <span class="tag">Time Series</span>
+      <span class="tag">VAR</span>
+      <span class="tag">R</span>
+    </div>
+  </div>
+  <p class="project-desc">
+    Vector autoregression analysis of the co-movement between NYC median asking rent and shelter population (monthly).
+  </p>
+  <div class="project-meta">
+    <span class="status done">Finished</span>
+  </div>
+  <div class="project-actions">
+    <a class="btn btn-outline-primary" href="projects/rent_shelter_var.html">Open</a>
+  </div>
+</div>
 
-### Fertility Rate Forecast (ARCH/GARCH)
-Volatility-aware forecasting of fertility-rate dynamics using ARCH/GARCH-style time-series modeling.
-[View project →](projects/fert_rate.Rmd)
+<div class="project-card">
+  <div class="project-top">
+    <h3>The Impact of Refugees on House Prices in European Countries</h3>
+    <div class="project-tags">
+      <span class="tag">Panel Data</span>
+      <span class="tag">TWFE</span>
+      <span class="tag">R</span>
+    </div>
+  </div>
+  <p class="project-desc">
+    Two-way fixed effects estimation of refugee inflows and housing prices across European countries, with spatial considerations.
+  </p>
+  <div class="project-meta">
+    <span class="status done">Finished</span>
+  </div>
+  <div class="project-actions">
+    <a class="btn btn-outline-primary" href="projects/Refugees_EU.html">Open</a>
+  </div>
+</div>
+
+<div class="project-card">
+  <div class="project-top">
+    <h3>Fertility Rate Forecast</h3>
+    <div class="project-tags">
+      <span class="tag">Time Series</span>
+      <span class="tag">ARCH/GARCH</span>
+      <span class="tag">R</span>
+    </div>
+  </div>
+  <p class="project-desc">
+    Forecasting fertility rates using ARCH/GARCH volatility modeling and time-series diagnostics.
+  </p>
+  <div class="project-meta">
+    <span class="status done">Finished</span>
+  </div>
+  <div class="project-actions">
+    <a class="btn btn-outline-primary" href="projects/fert_rate.html">Open</a>
+  </div>
+</div>
+
+</div>

@@ -9,16 +9,9 @@
   {
     "objectID": "projects.html",
     "href": "projects.html",
-    "title": "Projects",
+    "title": "Research & Projects",
     "section": "",
-    "text": "Time-series analysis of how NYC median asking rent and shelter population co-move over time, using a VAR method with forecasting. View project →\n\n\n\nTwo-way fixed effects analysis linking refugee inflows to housing price dynamics across European countries, with spatial/econometric extensions. View project →\n\n\n\nVolatility-aware forecasting of fertility-rate dynamics using ARCH/GARCH-style time-series modeling. View project →"
-  },
-  {
-    "objectID": "projects.html#featured",
-    "href": "projects.html#featured",
-    "title": "Projects",
-    "section": "",
-    "text": "Time-series analysis of how NYC median asking rent and shelter population co-move over time, using a VAR method with forecasting. View project →\n\n\n\nTwo-way fixed effects analysis linking refugee inflows to housing price dynamics across European countries, with spatial/econometric extensions. View project →\n\n\n\nVolatility-aware forecasting of fertility-rate dynamics using ARCH/GARCH-style time-series modeling. View project →"
+    "text": "Research & Projects\n\n\nSelected research projects in causal inference, econometrics, and time-series modeling.\n\n\n\n\n\n&lt;h3&gt;Rent vs Shelter Population in NYC&lt;/h3&gt;\n&lt;div class=\"project-tags\"&gt;\n  &lt;span class=\"tag\"&gt;Time Series&lt;/span&gt;\n  &lt;span class=\"tag\"&gt;VAR&lt;/span&gt;\n  &lt;span class=\"tag\"&gt;R&lt;/span&gt;\n&lt;/div&gt;\n\n\nVector autoregression analysis of the co-movement between NYC median asking rent and shelter population (monthly).\n\n\n&lt;span class=\"status done\"&gt;Finished&lt;/span&gt;\n\n\n&lt;a class=\"btn btn-outline-primary\" href=\"projects/rent_shelter_var.html\"&gt;Open&lt;/a&gt;\n\n\n\n\n&lt;h3&gt;The Impact of Refugees on House Prices in European Countries&lt;/h3&gt;\n&lt;div class=\"project-tags\"&gt;\n  &lt;span class=\"tag\"&gt;Panel Data&lt;/span&gt;\n  &lt;span class=\"tag\"&gt;TWFE&lt;/span&gt;\n  &lt;span class=\"tag\"&gt;R&lt;/span&gt;\n&lt;/div&gt;\n\n\nTwo-way fixed effects estimation of refugee inflows and housing prices across European countries, with spatial considerations.\n\n\n&lt;span class=\"status done\"&gt;Finished&lt;/span&gt;\n\n\n&lt;a class=\"btn btn-outline-primary\" href=\"projects/Refugees_EU.html\"&gt;Open&lt;/a&gt;\n\n\n\n\n&lt;h3&gt;Fertility Rate Forecast&lt;/h3&gt;\n&lt;div class=\"project-tags\"&gt;\n  &lt;span class=\"tag\"&gt;Time Series&lt;/span&gt;\n  &lt;span class=\"tag\"&gt;ARCH/GARCH&lt;/span&gt;\n  &lt;span class=\"tag\"&gt;R&lt;/span&gt;\n&lt;/div&gt;\n\n\nForecasting fertility rates using ARCH/GARCH volatility modeling and time-series diagnostics.\n\n\n&lt;span class=\"status done\"&gt;Finished&lt;/span&gt;\n\n\n&lt;a class=\"btn btn-outline-primary\" href=\"projects/fert_rate.html\"&gt;Open&lt;/a&gt;"
   },
   {
     "objectID": "projects/rent_shelter_var.html",
@@ -235,6 +228,6 @@
     "href": "index.html#areas-of-interest",
     "title": "Ahmed Albarqi",
     "section": "Areas of Interest",
-    "text": "Areas of Interest\n\n\nSocial policy\n\n\nEducation policy\n\n\nUser research\n\n\nBehavioral science"
+    "text": "Areas of Interest\n\n\nSocial Policy & Welfare Systems\n\n\nMachine Learning & Technology Development\n\n\nUrban Economics\n\n\nBehavioral & Decision Science"
   }
 ]
