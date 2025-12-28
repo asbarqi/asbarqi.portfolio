@@ -4,7 +4,7 @@ page-layout: full
 ---
 
 # Ahmed Albarqi  
-**Policy Research | Computational Social Science | Applied Research**
+<span id="typed-role" class="typed-role"></span>
 
 Policy & Computational Social Science Researcher with strong expertise in causal inference, econometrics, and applied machine learning. Experienced in designing and executing quasi-experimental analyses using large-scale administrative and survey data to evaluate urban and social policies.
 
@@ -17,11 +17,12 @@ Skilled in building statistical models, conducting program and policy evaluation
 <div class="pill">Applied ML</div>
 <div class="pill">Program Evaluation</div>
 
-<br>
+<br><br>
 
 [Email](mailto:asbarqi@gmail.com){.btn .btn-primary} &nbsp;
 [GitHub](https://github.com/asbarqi){.btn .btn-outline-primary} &nbsp;
-[LinkedIn](https://www.linkedin.com/in/asbarqi/){.btn .btn-outline-primary}
+[LinkedIn](https://www.linkedin.com/in/asbarqi/){.btn .btn-outline-primary};
+[CV](assets/files/Ahmed_Albarqi_CV.pdf){.btn .btn-outline-primary}
 
 ---
 
@@ -31,9 +32,3 @@ Skilled in building statistical models, conducting program and policy evaluation
 - Social policy research and evaluation  
 - Computational social science and applied machine learning  
 
----
-
-## Selected Work
-- [Rent vs Shelter Population in NYC](projects/rent_shelter_var.Rmd)  
-- [Refugees and House Prices in Europe](projects/Refugees_EU.Rmd)  
-- [Fertility Rate Forecasting](projects/fert_rate.Rmd)  

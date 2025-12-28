@@ -17,6 +17,8 @@ website:
         href: https://github.com/asbarqi
       - icon: linkedin
         href: https://www.linkedin.com/in/asbarqi/
+      - icon: file-earmark-person
+        href: assets/files/Ahmed_Albarqi_CV.pdf
 
 format:
   html:
@@ -24,3 +26,5 @@ format:
     toc: false
     page-layout: full
     css: assets/css/styles.css
+    include-after-body:
+      - assets/js/typed-role.js

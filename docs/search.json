@@ -112,6 +112,20 @@
     "text": "Figures & Tables\n\n\n\n\n\nShelter Population\n\n\n\nShelter Population and Median Rent Over Time\n\n\n\n\n\n\nGrowth Rate of Shelter Population\n\n\n\nGrowth Rates of Shelter Population and Median Rent\n\n\n\n\n\n\nChange in Shelter (Percentage Change)\n\n\n\nResiduals Plots of VAR(4) Model\n\n\n\n\n\n\nACF: Shelter\n\n\n\nACF and PACF of Residuals for Shelter and Rent\n\n\n\n\n\n\nImpulse Response Functions from VAR(4)\n\n\n\n\n\n\n\nImpulse Response Functions from VAR(4)\n\n\n\n\n\n\n\n\n\nForecast of dln(Shelter)\n\n\n\n12-Month Forecasts from the VAR(4) Model\n\n\n\n\n\n\nForecasting\n\n\n\n\n\n\n\nForecasting"
   },
   {
+    "objectID": "visualizations.html",
+    "href": "visualizations.html",
+    "title": "Visualizations",
+    "section": "",
+    "text": "This section highlights selected visualizations from my research and analysis work.\nAdditional figures and interactive graphics will be added over time.\n\n\n\n\nRent vs shelter population trends\n\nForecasted shelter demand\n\n(Coming soon)\n\n\n\n\n\nFertility rate trends and volatility\n\nLong-run demographic projections\n\n(Coming soon)\n\n\n\n\n\nRefugee inflows and housing price distributions\n\nCross-country spatial patterns\n\n(Coming soon)"
+  },
+  {
+    "objectID": "visualizations.html#data-visualizations",
+    "href": "visualizations.html#data-visualizations",
+    "title": "Visualizations",
+    "section": "",
+    "text": "This section highlights selected visualizations from my research and analysis work.\nAdditional figures and interactive graphics will be added over time.\n\n\n\n\nRent vs shelter population trends\n\nForecasted shelter demand\n\n(Coming soon)\n\n\n\n\n\nFertility rate trends and volatility\n\nLong-run demographic projections\n\n(Coming soon)\n\n\n\n\n\nRefugee inflows and housing price distributions\n\nCross-country spatial patterns\n\n(Coming soon)"
+  },
+  {
     "objectID": "projects/Refugees_EU.html",
     "href": "projects/Refugees_EU.html",
     "title": "Final Report “The Impact of Refugees on House Prices in European Countries”",
@@ -221,7 +235,7 @@
     "href": "index.html",
     "title": "Ahmed Albarqi",
     "section": "",
-    "text": "Policy Research | Computational Social Science | Applied Research\nPolicy & Computational Social Science Researcher with strong expertise in causal inference, econometrics, and applied machine learning. Experienced in designing and executing quasi-experimental analyses using large-scale administrative and survey data to evaluate urban and social policies.\nSkilled in building statistical models, conducting program and policy evaluations, and applying time series, machine learning, and panel data methods. Demonstrated ability to translate complex quantitative findings into clear, actionable insights for policymakers, regulators, international institutions, and business leaders.\n\nCausal Inference\n\n\nEconometrics\n\n\nTime Series\n\n\nPanel Data\n\n\nApplied ML\n\n\nProgram Evaluation\n\n\nEmail   GitHub   LinkedIn\n\n\n\n\nCausal inference and quasi-experimental methods\n\nEconometric and time-series modeling\n\nSocial policy research and evaluation\n\nComputational social science and applied machine learning\n\n\n\n\n\n\nRent vs Shelter Population in NYC\n\nRefugees and House Prices in Europe\n\nFertility Rate Forecasting"
+    "text": "Policy & Computational Social Science Researcher with strong expertise in causal inference, econometrics, and applied machine learning. Experienced in designing and executing quasi-experimental analyses using large-scale administrative and survey data to evaluate urban and social policies.\nSkilled in building statistical models, conducting program and policy evaluations, and applying time series, machine learning, and panel data methods. Demonstrated ability to translate complex quantitative findings into clear, actionable insights for policymakers, regulators, international institutions, and business leaders.\n\nCausal Inference\n\n\nEconometrics\n\n\nTime Series\n\n\nPanel Data\n\n\nApplied ML\n\n\nProgram Evaluation\n\n\nEmail   GitHub   LinkedIn; CV\n\n\n\n\nCausal inference and quasi-experimental methods\n\nEconometric and time-series modeling\n\nSocial policy research and evaluation\n\nComputational social science and applied machine learning"
   },
   {
     "objectID": "index.html#areas-of-interest",
@@ -229,12 +243,5 @@
     "title": "Ahmed Albarqi",
     "section": "",
     "text": "Causal inference and quasi-experimental methods\n\nEconometric and time-series modeling\n\nSocial policy research and evaluation\n\nComputational social science and applied machine learning"
-  },
-  {
-    "objectID": "index.html#selected-work",
-    "href": "index.html#selected-work",
-    "title": "Ahmed Albarqi",
-    "section": "",
-    "text": "Rent vs Shelter Population in NYC\n\nRefugees and House Prices in Europe\n\nFertility Rate Forecasting"
   }
 ]

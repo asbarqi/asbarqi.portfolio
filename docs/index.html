@@ -114,6 +114,11 @@ ul.task-list li input[type="checkbox"] {
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="./assets/files/Ahmed_Albarqi_CV.pdf"> <i class="bi bi-file-earmark-person" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -134,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="ahmed-albarqi" class="level1">
 <h1>Ahmed Albarqi</h1>
-<p><strong>Policy Research | Computational Social Science | Applied Research</strong></p>
+<p><span id="typed-role" class="typed-role"></span></p>
 <p>Policy &amp; Computational Social Science Researcher with strong expertise in causal inference, econometrics, and applied machine learning. Experienced in designing and executing quasi-experimental analyses using large-scale administrative and survey data to evaluate urban and social policies.</p>
 <p>Skilled in building statistical models, conducting program and policy evaluations, and applying time series, machine learning, and panel data methods. Demonstrated ability to translate complex quantitative findings into clear, actionable insights for policymakers, regulators, international institutions, and business leaders.</p>
 <div class="pill">
@@ -155,8 +160,8 @@ Applied ML
 <div class="pill">
 Program Evaluation
 </div>
-<p><br></p>
-<p><a href="mailto:asbarqi@gmail.com" class="btn btn-primary">Email</a> &nbsp; <a href="https://github.com/asbarqi" class="btn btn-outline-primary">GitHub</a> &nbsp; <a href="https://www.linkedin.com/in/asbarqi/" class="btn btn-outline-primary">LinkedIn</a></p>
+<p><br><br></p>
+<p><a href="mailto:asbarqi@gmail.com" class="btn btn-primary">Email</a> &nbsp; <a href="https://github.com/asbarqi" class="btn btn-outline-primary">GitHub</a> &nbsp; <a href="https://www.linkedin.com/in/asbarqi/" class="btn btn-outline-primary">LinkedIn</a>; <a href="assets/files/Ahmed_Albarqi_CV.pdf" class="btn btn-outline-primary">CV</a></p>
 <hr>
 <section id="areas-of-interest" class="level2">
 <h2 class="anchored" data-anchor-id="areas-of-interest">Areas of Interest</h2>
@@ -169,23 +174,48 @@ Program Evaluation
 </li>
 <li>Computational social science and applied machine learning</li>
 </ul>
-<hr>
-</section>
-<section id="selected-work" class="level2">
-<h2 class="anchored" data-anchor-id="selected-work">Selected Work</h2>
-<ul>
-<li><a href="./projects/rent_shelter_var.html">Rent vs Shelter Population in NYC</a><br>
-</li>
-<li><a href="./projects/Refugees_EU.html">Refugees and House Prices in Europe</a><br>
-</li>
-<li><a href="./projects/fert_rate.html">Fertility Rate Forecasting</a></li>
-</ul>
 
 
 </section>
 </section>
 
 </main> <!-- /main -->
+document.addEventListener("DOMContentLoaded", () =&gt; {
+  const el = document.getElementById("typed-role");
+  if (!el) return;
+
+  const phrases = [
+    "Policy Research",
+    "Computational Social Science",
+    "Applied Research"
+  ];
+
+  let p = 0, i = 0;
+  let deleting = false;
+
+  function tick() {
+    const current = phrases[p];
+    const text = deleting ? current.slice(0, i--) : current.slice(0, i++);
+
+    el.textContent = text;
+
+    let delay = deleting ? 40 : 70;
+    if (!deleting &amp;&amp; i === current.length + 1) {
+      delay = 900;
+      deleting = true;
+      i = current.length;
+    } else if (deleting &amp;&amp; i &lt; 0) {
+      deleting = false;
+      p = (p + 1) % phrases.length;
+      i = 0;
+      delay = 250;
+    }
+
+    setTimeout(tick, delay);
+  }
+
+  tick();
+});
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

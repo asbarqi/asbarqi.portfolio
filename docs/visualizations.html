@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>visualizations – Ahmed Albarqi</title>
+<title>Visualizations – Ahmed Albarqi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,6 +114,11 @@ ul.task-list li input[type="checkbox"] {
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="./assets/files/Ahmed_Albarqi_CV.pdf"> <i class="bi bi-file-earmark-person" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -127,15 +132,102 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Visualizations</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
+
+<section id="data-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualizations">Data Visualizations</h2>
+<p>This section highlights selected visualizations from my research and analysis work.<br>
+Additional figures and interactive graphics will be added over time.</p>
+<hr>
+<section id="housing-homelessness-nyc" class="level3">
+<h3 class="anchored" data-anchor-id="housing-homelessness-nyc">Housing &amp; Homelessness (NYC)</h3>
+<ul>
+<li>Rent vs shelter population trends<br>
+</li>
+<li>Forecasted shelter demand</li>
+</ul>
+<p><em>(Coming soon)</em></p>
+<hr>
+</section>
+<section id="demography-population" class="level3">
+<h3 class="anchored" data-anchor-id="demography-population">Demography &amp; Population</h3>
+<ul>
+<li>Fertility rate trends and volatility<br>
+</li>
+<li>Long-run demographic projections</li>
+</ul>
+<p><em>(Coming soon)</em></p>
+<hr>
+</section>
+<section id="migration-housing" class="level3">
+<h3 class="anchored" data-anchor-id="migration-housing">Migration &amp; Housing</h3>
+<ul>
+<li>Refugee inflows and housing price distributions<br>
+</li>
+<li>Cross-country spatial patterns</li>
+</ul>
+<p><em>(Coming soon)</em></p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
+document.addEventListener("DOMContentLoaded", () =&gt; {
+  const el = document.getElementById("typed-role");
+  if (!el) return;
+
+  const phrases = [
+    "Policy Research",
+    "Computational Social Science",
+    "Applied Research"
+  ];
+
+  let p = 0, i = 0;
+  let deleting = false;
+
+  function tick() {
+    const current = phrases[p];
+    const text = deleting ? current.slice(0, i--) : current.slice(0, i++);
+
+    el.textContent = text;
+
+    let delay = deleting ? 40 : 70;
+    if (!deleting &amp;&amp; i === current.length + 1) {
+      delay = 900;
+      deleting = true;
+      i = current.length;
+    } else if (deleting &amp;&amp; i &lt; 0) {
+      deleting = false;
+      p = (p + 1) % phrases.length;
+      i = 0;
+      delay = 250;
+    }
+
+    setTimeout(tick, delay);
+  }
+
+  tick();
+});
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
