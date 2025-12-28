@@ -1,17 +1,31 @@
 ---
-title: "Home"
+title: ""
+page-layout: full
 ---
 
-## Ahmed Albarqi  
-** Policy Research | Computational Social Science Research  | Applied Research **
+# Ahmed Albarqi  
+**Policy Research | Computational Social Science | Applied Research**
 
-Policy & Computational Social Science Researcher with strong expertise in causal inference, econometrics, and applied machine learning. Experienced in designing and executing quasi-experimental analyses using large-scale administrative and survey data to evaluate urban & social policies.
+Policy & Computational Social Science Researcher with strong expertise in causal inference, econometrics, and applied machine learning. Experienced in designing and executing quasi-experimental analyses using large-scale administrative and survey data to evaluate urban and social policies.
 
 Skilled in building statistical models, conducting program and policy evaluations, and applying time series, machine learning, and panel data methods. Demonstrated ability to translate complex quantitative findings into clear, actionable insights for policymakers, regulators, international institutions, and business leaders.
 
+<div class="pill">Causal Inference</div>
+<div class="pill">Econometrics</div>
+<div class="pill">Time Series</div>
+<div class="pill">Panel Data</div>
+<div class="pill">Applied ML</div>
+<div class="pill">Program Evaluation</div>
+
+<br>
+
+[Email](mailto:asbarqi@gmail.com){.btn .btn-primary} &nbsp;
+[GitHub](https://github.com/asbarqi){.btn .btn-outline-primary} &nbsp;
+[LinkedIn](https://www.linkedin.com/in/asbarqi/){.btn .btn-outline-primary}
+
 ---
 
-## Area of Interests
+## Areas of Interest
 - Causal inference and quasi-experimental methods  
 - Econometric and time-series modeling  
 - Social policy research and evaluation  
@@ -19,15 +33,7 @@ Skilled in building statistical models, conducting program and policy evaluation
 
 ---
 
-## Contact
-
-- **Email:** asbarqi@gmail.com 
-- **GitHub:** https://github.com/asbarqi  
-- **LinkedIn:** https://www.linkedin.com/in/asbarqi/
-
----
-
 ## Selected Work
-- [Rent vs Shelter Population in NYC](projects/rent_shelter_var.Rmd)
-- [Refugees and House Prices in Europe](projects/Refugees_EU.Rmd)
-- [Fertility Rate Forecasting](projects/fert_rate.Rmd)
+- [Rent vs Shelter Population in NYC](projects/rent_shelter_var.Rmd)  
+- [Refugees and House Prices in Europe](projects/Refugees_EU.Rmd)  
+- [Fertility Rate Forecasting](projects/fert_rate.Rmd)  

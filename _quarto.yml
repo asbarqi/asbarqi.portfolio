@@ -16,9 +16,11 @@ website:
       - icon: github
         href: https://github.com/asbarqi
       - icon: linkedin
-        href: https://www.linkedin.com/in/YOUR-LINKEDIN/
+        href: https://www.linkedin.com/in/asbarqi/
 
 format:
   html:
     theme: litera
-    toc: true
+    toc: false
+    page-layout: full
+    css: assets/css/styles.css
