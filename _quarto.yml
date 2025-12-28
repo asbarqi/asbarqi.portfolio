@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: ""
+  title: "Ahmed Albarqi’s Portfolio"
   navbar:
     left:
       - href: index.qmd
@@ -12,9 +12,6 @@ website:
         text: Research & Projects
       - href: visualizations.qmd
         text: Visualizations
-    tools:
-      - text: "Ahmed Albarqi’s Portfolio"
-        href: index.qmd
     right:
       - icon: github
         href: https://github.com/asbarqi

@@ -231,17 +231,10 @@
     "text": "Forecasting\n\n\n\n\n\n\n\n\n\n\n\n\nForecasted Growth and Fertility Rate For AR(4) Model (I=1)\n\n\nYear\nForecasted_Growth\nForecasted_Fertility\n\n\n\n\n2024\n0.0363\n2.363\n\n\n2025\n-0.0119\n2.335\n\n\n2026\n-0.0517\n2.214\n\n\n2027\n-0.0646\n2.071\n\n\n2028\n-0.0196\n2.030\n\n\n2029\n0.0191\n2.069\n\n\n2030\n0.0319\n2.135\n\n\n2031\n0.0091\n2.154\n\n\n2032\n-0.0307\n2.088\n\n\n2033\n-0.0466\n1.991"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ahmed Albarqi",
-    "section": "",
-    "text": "Policy & Computational Social Science Researcher with strong expertise in causal inference, econometrics, and applied machine learning. Experienced in designing and executing quasi-experimental analyses using large-scale administrative and survey data to evaluate urban and social policies.\nSkilled in building statistical models, conducting program and policy evaluations, and applying time series, machine learning, and panel data methods. Demonstrated ability to translate complex quantitative findings into clear, actionable insights for policymakers and business leaders.\n\nCausal Inference\n\n\nEconometrics\n\n\nTime Series\n\n\nPanel Data\n\n\nApplied ML\n\n\nProgram Evaluation"
-  },
-  {
     "objectID": "index.html#areas-of-interest",
     "href": "index.html#areas-of-interest",
     "title": "Ahmed Albarqi",
     "section": "Areas of Interest",
-    "text": "Areas of Interest\n\nCausal inference and quasi-experimental methods\n\nEconometric and time-series modeling\n\nSocial policy research and evaluation\n\nComputational social science and applied machine learning"
+    "text": "Areas of Interest\n\n\nCausal inference and quasi-experimental methods\n\n\nEconometric and time-series modeling\n\n\nSocial policy research and evaluation\n\n\nComputational social science and applied machine learning"
   }
 ]

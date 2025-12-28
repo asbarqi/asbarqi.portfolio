@@ -1,0 +1,32 @@
+---
+title: "Visualizations"
+---
+
+## Data Visualizations
+
+This section highlights selected visualizations from my research and analysis work.  
+Additional figures and interactive graphics will be added over time.
+
+---
+
+### Housing & Homelessness (NYC)
+- Rent vs shelter population trends  
+- Forecasted shelter demand  
+
+*(Coming soon)*
+
+---
+
+### Demography & Population
+- Fertility rate trends and volatility  
+- Long-run demographic projections  
+
+*(Coming soon)*
+
+---
+
+### Migration & Housing
+- Refugee inflows and housing price distributions  
+- Cross-country spatial patterns  
+
+*(Coming soon)*

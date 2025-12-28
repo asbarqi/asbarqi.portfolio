@@ -3,14 +3,13 @@ title: ""
 page-layout: full
 ---
 
-<div class="hero">
-
-<div class="hero-bg" aria-hidden="true">
+<div class="page-bg" aria-hidden="true">
   <span class="blob b1"></span>
   <span class="blob b2"></span>
   <span class="blob b3"></span>
 </div>
 
+<div class="hero">
 <div class="hero-inner">
 
 # Ahmed Albarqi  
@@ -27,13 +26,17 @@ Skilled in building statistical models, conducting program and policy evaluation
 <div class="pill">Applied ML</div>
 <div class="pill">Program Evaluation</div>
 
-</div>
-</div>
-
----
+<br>
 
 ## Areas of Interest
-- Causal inference and quasi-experimental methods  
-- Econometric and time-series modeling  
-- Social policy research and evaluation  
-- Computational social science and applied machine learning  
+
+<div class="interest-grid">
+  <div class="interest-item">Causal inference and quasi-experimental methods</div>
+  <div class="interest-item">Econometric and time-series modeling</div>
+  <div class="interest-item">Social policy research and evaluation</div>
+  <div class="interest-item">Computational social science and applied machine learning</div>
+</div>
+
+</div>
+</div>
+
