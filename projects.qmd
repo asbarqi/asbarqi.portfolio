@@ -1,0 +1,17 @@
+---
+title: "Projects"
+---
+
+## Featured
+
+### Rent vs Shelter Population in NYC (VAR)
+Time-series analysis of how NYC median asking rent and shelter population co-move over time, using a VAR method with forecasting.
+[View project →](projects/rent_shelter_var.Rmd)
+
+### The Impact of Refugees on House Prices in European Countries (TWFE)
+Two-way fixed effects analysis linking refugee inflows to housing price dynamics across European countries, with spatial/econometric extensions.
+[View project →](projects/Refugees_EU.Rmd)
+
+### Fertility Rate Forecast (ARCH/GARCH)
+Volatility-aware forecasting of fertility-rate dynamics using ARCH/GARCH-style time-series modeling.
+[View project →](projects/fert_rate.Rmd)

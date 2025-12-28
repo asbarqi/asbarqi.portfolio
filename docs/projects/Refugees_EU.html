@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Group Members Ahmed Albarqi (aa5550) Muhammad Usman Anwar Goraya (mag2385) Sarthak Gulati (sg4450)">
+<meta name="dcterms.date" content="2025-12-27">
+
+<title>Final Report “The Impact of Refugees on House Prices in European Countries” – Ahmed's Portfolio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Ahmed’s Portfolio</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#policy-background" id="toc-policy-background" class="nav-link" data-scroll-target="#policy-background">Policy Background</a>
+  <ul class="collapse">
+  <li><a href="#refugees-landscape" id="toc-refugees-landscape" class="nav-link" data-scroll-target="#refugees-landscape"><strong>Refugees Landscape</strong></a></li>
+  <li><a href="#differential-country-policies" id="toc-differential-country-policies" class="nav-link" data-scroll-target="#differential-country-policies"><strong>Differential Country Policies</strong></a></li>
+  </ul></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description">Data description</a></li>
+  <li><a href="#descriptive-findings" id="toc-descriptive-findings" class="nav-link" data-scroll-target="#descriptive-findings">Descriptive Findings</a>
+  <ul class="collapse">
+  <li><a href="#refugees-landscape-across-the-eu-countries" id="toc-refugees-landscape-across-the-eu-countries" class="nav-link" data-scroll-target="#refugees-landscape-across-the-eu-countries">Refugees Landscape across the EU Countries</a></li>
+  </ul></li>
+  <li><a href="#empirical-strategy" id="toc-empirical-strategy" class="nav-link" data-scroll-target="#empirical-strategy">Empirical Strategy</a>
+  <ul class="collapse">
+  <li><a href="#regression-approach" id="toc-regression-approach" class="nav-link" data-scroll-target="#regression-approach">Regression Approach</a></li>
+  </ul></li>
+  <li><a href="#findings" id="toc-findings" class="nav-link" data-scroll-target="#findings">Findings</a>
+  <ul class="collapse">
+  <li><a href="#regression-results" id="toc-regression-results" class="nav-link" data-scroll-target="#regression-results">Regression Results</a></li>
+  <li><a href="#multicollinearity" id="toc-multicollinearity" class="nav-link" data-scroll-target="#multicollinearity">Multicollinearity</a></li>
+  <li><a href="#regression-with-the-addition-of-another-controlling-variable" id="toc-regression-with-the-addition-of-another-controlling-variable" class="nav-link" data-scroll-target="#regression-with-the-addition-of-another-controlling-variable">Regression with the addition of another controlling variable</a></li>
+  <li><a href="#shift-share-approach" id="toc-shift-share-approach" class="nav-link" data-scroll-target="#shift-share-approach">Shift Share Approach</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Final Report “The Impact of Refugees on House Prices in European Countries”</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 27, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In recent decades, global conflicts, political instability, and humanitarian crises have led to a significant rise in refugee movements across the world. Prolonged wars in Syria, Afghanistan, and Ukraine; ethnic and religious persecution in countries like Myanmar and Eritrea; and widespread violence &amp; the unlawful occupation in regions such as Palestine have forced millions of individuals to seek safety beyond their national borders. The European Union (EU) presents an interesting case with regards to being an area of protection for individuals who are seeking protection and refuge. EU states recognize asylum as a fundamental human right under the 1951 Geneva Convention (European Commission, Migration &amp; Home Affairs 2021). In order to share responsibility to welcome asylum seekers in a dignified manner, EU member states have established the Common European Asylum System (CEAS) in 1999. However the year 2015 saw a record number of refugees and asylum seekers emigrating to the EU seeking asylum and refuge, which made the EU to consider revamping its migration policies as a whole.</p>
+<p>The arrival of refugees in European countries has generated a debate on its economic and social impacts. One key concern is the effect of refugee inflows on housing markets, particularly house prices. While some argue that increased demand from refugees raises house prices, others go on to suggest that concentration in low-income areas may depress local markets. This research aims to examine the relationship between refugee intake and house price dynamics in different European countries. In this context, countries which have restrictive refugee policies can act as a control group while countries which have more open integration policies for refugees will be a treatment group. The policy shock that will be exploring will be increased acceptance of refugees post the year 2015-16 by the European countries.</p>
+<p>In view of the above, and in order to explore the relationship between the variable under scrutiny, our research questions will be as follows:<br>
+- <strong>How does the variation in refugee intake amongst European countries impact house prices?</strong></p>
+</section>
+<section id="policy-background" class="level1">
+<h1>Policy Background</h1>
+<p>The onset of civil war in Syria in 2011 and other global crises forced millions of people to flee to neighboring states and Europe. Migrants fled from the conflict struck states such as Syria, Afghanistan, Iraq, and some even closer countries like Albania and Kosovo. As discussed prior, in the year 2015, European countries witnessed an almost unprecedented record influx of refugees - with some estimates quoting 1.3 million individuals arriving in Europe (Pew Research 2016) . In this backdrop the European governments forced through a deal to impose refugee quotas, sharing 120,000 people between them in a watershed decision that several states bitterly opposed.</p>
+<p>The relocation would be done according to a mandatory distribution key using objective and quantifiable criteria (40% of the size of the population, 40% of the GDP, 10% of the average number of past asylum applications, 10% of the unemployment rate). It applies to nationalities of applicants with an EU-wide average recognition rate of 75% or higher.</p>
+<section id="refugees-landscape" class="level2">
+<h2 class="anchored" data-anchor-id="refugees-landscape"><strong>Refugees Landscape</strong></h2>
+<p>Referring to the graph below, we can observe the asylum applicants across EU countries overtime. At the year 2015 we can see a huge shock in the asylum applications</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Refugees_EU_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="differential-country-policies" class="level2">
+<h2 class="anchored" data-anchor-id="differential-country-policies"><strong>Differential Country Policies</strong></h2>
+<p>It was observed that Germany, Hungary and Sweden were the leading destinations for the refugees while the United Kingdom (UK) and France saw fewer applications of asylum seekers and refugees (Pew Research 2016). This makes for a good case of comparison in research analysis which will be discussed in detail further in an ensuing section. While access to the labor market may be restricted by administrative (e.g.&nbsp;work permits, authorizations or visas) and practical barriers (e.g.&nbsp;language, social skills, etc.), refugees have the legal right to work in all OECD countries. For asylum seekers, the rights and obligations differ significantly from one country to another. Most countries, however, grant access to the labour market to some groups of applicants on certain conditions, including a prior waiting period, ranging between 2 months in Italy to 12 months in the United Kingdom.</p>
+</section>
+</section>
+<section id="data-description" class="level1">
+<h1>Data description</h1>
+<p>The UN Refugee Agency, namely United Nations High Commissioner for Refugees (UNHCR), collates population data relating to persons who are forcibly displaced or stateless. The data is sourced primarily from governments and also from UNHCR operations. Based on UNHCR definitions (included in Appendix), our data set will be focused on the number of refugees and asylum seekers referenced by their host countries. To have a fair comparison across the EU countries, we will use the number of refugees per 1000 residents.</p>
+<p>We use data for housing prices from the Eurostat database. The House Price Index (HPI) measures inflation in the residential property market. The HPI captures price changes of all types of dwellings purchased by households (flats, detached houses, terraced houses, etc.). Only transacted dwellings are considered, self-build dwellings are excluded. The land component of the dwelling is included. The HPI is available for all European Union Member States (except Greece), the United Kingdom (only until the third quarter of 2020), Iceland, Norway, Switzerland and Türkiye.</p>
+</section>
+<section id="descriptive-findings" class="level1">
+<h1>Descriptive Findings</h1>
+<p>As shown before in the graph, the number of refugees saw substantial increases during the period 2014-16 and 2021-23, and that can be due to:</p>
+<p><strong>2014-16</strong></p>
+<ul>
+<li><p>This surge likely corresponds to the heightened migration flows related to global crises and wars in the middle east and other countires.</p></li>
+<li><p>This year also EU countries decided to open their borders and accept more refugees because of the unprecedented number of refugees.</p></li>
+</ul>
+<p><strong>2021-23</strong></p>
+<ul>
+<li>Probably increased global tensions and Covid-19 pandemic played a role in this but this needs further investigation.</li>
+</ul>
+<p>After identifying our period of interest, now we will examine the independent variable, which is Refugees inflows per 1000 residents.</p>
+<p>starting with simple summary statistics of the variable from the year 2010 - 2021, the summary statistics are as follows:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Summary Statistics for Refugees per 1000 Residents by Year</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Year</th>
+<th style="text-align: right;">Count</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">Min</th>
+<th style="text-align: right;">Q1</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">Q3</th>
+<th style="text-align: right;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">3.47</td>
+<td style="text-align: right;">4.51</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">5.90</td>
+<td style="text-align: right;">17.91</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">3.51</td>
+<td style="text-align: right;">4.78</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">1.08</td>
+<td style="text-align: right;">5.24</td>
+<td style="text-align: right;">20.17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">3.52</td>
+<td style="text-align: right;">5.01</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">5.02</td>
+<td style="text-align: right;">21.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">3.52</td>
+<td style="text-align: right;">5.57</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">1.35</td>
+<td style="text-align: right;">4.08</td>
+<td style="text-align: right;">25.35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">4.89</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">2.26</td>
+<td style="text-align: right;">4.81</td>
+<td style="text-align: right;">20.52</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">5.46</td>
+<td style="text-align: right;">7.47</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">3.28</td>
+<td style="text-align: right;">6.79</td>
+<td style="text-align: right;">33.32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">5.76</td>
+<td style="text-align: right;">7.65</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">7.11</td>
+<td style="text-align: right;">31.56</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">5.82</td>
+<td style="text-align: right;">7.48</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">2.83</td>
+<td style="text-align: right;">6.53</td>
+<td style="text-align: right;">29.09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">6.05</td>
+<td style="text-align: right;">7.60</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">2.93</td>
+<td style="text-align: right;">6.79</td>
+<td style="text-align: right;">28.12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">6.61</td>
+<td style="text-align: right;">8.21</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">3.77</td>
+<td style="text-align: right;">7.13</td>
+<td style="text-align: right;">27.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">6.81</td>
+<td style="text-align: right;">8.34</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">3.85</td>
+<td style="text-align: right;">8.51</td>
+<td style="text-align: right;">26.48</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">7.20</td>
+<td style="text-align: right;">8.80</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">4.60</td>
+<td style="text-align: right;">8.78</td>
+<td style="text-align: right;">31.59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">19.05</td>
+<td style="text-align: right;">11.53</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">9.93</td>
+<td style="text-align: right;">17.14</td>
+<td style="text-align: right;">26.81</td>
+<td style="text-align: right;">49.41</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2023</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">20.60</td>
+<td style="text-align: right;">11.38</td>
+<td style="text-align: right;">4.65</td>
+<td style="text-align: right;">11.71</td>
+<td style="text-align: right;">21.18</td>
+<td style="text-align: right;">27.02</td>
+<td style="text-align: right;">52.57</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The summary statistics reveal a clear upward trend in the refugee influx across European countries from 2010 to 2023. The mean number of refugees per 1000 residents has steadily increased from 3.47 in 2010 to 20.60 in 2023, with significant fluctuations in standard deviation (SD), reflecting varying levels of influx across countries. The years 2022 and 2023 show a sharp rise in the median values, reaching 17.14 and 21.18, respectively, accompanied by higher Q1, median, and Q3 values, indicating a broader shift towards higher refugee arrivals. Notably, the maximum values for these years (49.41 in 2022 and 52.57 in 2023) suggest a few countries experienced exceptional levels of refugee influx.</p>
+<section id="refugees-landscape-across-the-eu-countries" class="level2">
+<h2 class="anchored" data-anchor-id="refugees-landscape-across-the-eu-countries">Refugees Landscape across the EU Countries</h2>
+<p>Now we will examine the trends of the refugees influx for EU countries for our period of interest 2014-2016-2023</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Refugees_EU_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>We can observe that countries like Sweden, Malta, Norway, and Austria admitted the highest number of the refugees per 1000 residents over the years 2014-16.</p>
+<p>However, looking the recent data in 2023, Cyprus, Germany, Czechia and Estonia emerge as the leading receptors of refugees. Also, there is some evidence of convergence among number of refugees accepted by countries in the range of 25-35 refugees per 1000 residents.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Refugees_EU_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking the faceted plot, we see while some countries have seen gradual increasing trends in refugees per 1000 residents, others have seen sharp rise in the last 3-4 years.</p>
+<p>Next, we classified countries into three groups based on their average number of refugees per 1,000 residents over the years 2010–2023. The thresholds were derived from the summary statistics (specifically, the median and 3rd quartile “because the data is right skewed”) of the variable “refugees per 1,000 residents”:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Average Refugees per 1000 Residents (2010–2023) and Influx Classification</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Country</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">avg_refugees_per_1000</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">refugee_influx_group</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sweden</td>
+<td style="text-align: right;">22.90</td>
+<td style="text-align: left; color: white !important; background-color: red !important;">High</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Malta</td>
+<td style="text-align: right;">21.46</td>
+<td style="text-align: left; color: white !important; background-color: red !important;">High</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cyprus</td>
+<td style="text-align: right;">18.61</td>
+<td style="text-align: left; color: white !important; background-color: red !important;">High</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Austria</td>
+<td style="text-align: right;">17.38</td>
+<td style="text-align: left; color: white !important; background-color: red !important;">High</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Germany</td>
+<td style="text-align: right;">14.91</td>
+<td style="text-align: left; color: white !important; background-color: red !important;">High</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Norway</td>
+<td style="text-align: right;">11.82</td>
+<td style="text-align: left; color: white !important; background-color: red !important;">High</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Luxembourg</td>
+<td style="text-align: right;">9.67</td>
+<td style="text-align: left; color: white !important; background-color: red !important;">High</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Netherlands</td>
+<td style="text-align: right;">7.26</td>
+<td style="text-align: left; color: white !important; background-color: orange !important;">Medium</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Belgium</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: left; color: white !important; background-color: orange !important;">Medium</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">France</td>
+<td style="text-align: right;">6.39</td>
+<td style="text-align: left; color: white !important; background-color: orange !important;">Medium</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Denmark</td>
+<td style="text-align: right;">6.08</td>
+<td style="text-align: left; color: white !important; background-color: orange !important;">Medium</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Czechia</td>
+<td style="text-align: right;">5.71</td>
+<td style="text-align: left; color: white !important; background-color: orange !important;">Medium</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Finland</td>
+<td style="text-align: right;">5.58</td>
+<td style="text-align: left; color: white !important; background-color: orange !important;">Medium</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ireland</td>
+<td style="text-align: right;">5.51</td>
+<td style="text-align: left; color: white !important; background-color: orange !important;">Medium</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bulgaria</td>
+<td style="text-align: right;">5.47</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Iceland</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Estonia</td>
+<td style="text-align: right;">4.55</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lithuania</td>
+<td style="text-align: right;">4.16</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Poland</td>
+<td style="text-align: right;">4.15</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Italy</td>
+<td style="text-align: right;">3.55</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Latvia</td>
+<td style="text-align: right;">3.48</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Slovakia</td>
+<td style="text-align: right;">3.09</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spain</td>
+<td style="text-align: right;">2.86</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hungary</td>
+<td style="text-align: right;">1.59</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Croatia</td>
+<td style="text-align: right;">1.12</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Portugal</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Slovenia</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Romania</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: left; color: white !important; background-color: gray !important;">Low</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>High Refugee Influx: Average above 7.8631702 (above the 3rd quartile, Q3)</p>
+<p>Medium Refugee Influx: Average between 5.4905071 and 7.8631702 (between the 1st and 3rd quartiles, Q1 and Q3)</p>
+<p>Low Refugee Influx: Average below 5.4905071 (below the 1st quartile, Q1)</p>
+<p>This classification method ensures a balanced and data-informed grouping of countries, highlighting those with unusually high or low refugee influxes relative to the sample distribution.</p>
+<p>Let’s now turn our focus to the Housing Prices and the Housing Price Index (HPI). THe HPI is used as proxy for the housing prices for the purpose of this report. The following data visualization presents how different countries had their housing supply change over time.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Refugees_EU_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>After looking at the housing supply in different EU countries, in this section, we will have a look at what the Housing Price Index (HPI) with the help of a Ridge Plot. This visualizes how the EU HPI is distributed across the years 2014 to 2023 for countries with high refugee inflows. Each ridge represents the distribution of HPI values in a given year, with the height of the curve indicating the density (concentration) of countries around particular HPI values. The color gradient—ranging from dark purple to orange—corresponds to the HPI scale, enhancing visual separation of low and high housing price levels. Most interestingly, this plot helps reveal shifts in housing price trends over time: for example, the ridges shifting rightward (toward higher HPI values), indicates a general increase in housing prices over the decade without the impact or effect of refugee intake by EU countries.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Refugees_EU_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="816"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we will examine the average House Price Index (HPI) over the years 2010 to 2021 to identify trends across the three refugee influx groups: High, Medium, and Low. This will help visualize how housing markets evolved over time within each group.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Refugees_EU_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Countries with medium and low refugee influx saw faster growth in housing prices after 2016, while those with high refugee influx experienced more moderate growth. This may imply that a higher influx of refugees could be associated with housing market stabilization effects or greater public housing intervention, but further analysis would be needed to isolate causal mechanisms. Additionally, we can observe that the trend before the 2015 shock wasn’t consistent across these groups.</p>
+<p>While remaining on the data visualization front of HPI, we can also decipher the country wise trends in those nations which accepted the highest number of refugees from the year 2014 to 2023 in the form of a Faceted line plot, which is as follows:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Refugees_EU_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In this section we will examine the refugees influx spatially across European countries from 2010 to 2023. This spatial analysis will help identify potential spatial patterns, clusters, and trends in refugee movement, facilitating deeper insights into refugee patterns across Europe.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Refugees_EU_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interestingly, while one might expect that countries in closer geographical proximity would experience similar refugee influxes, the map suggests otherwise. It challenges the assumption that neighboring countries would necessarily share similar refugee patterns, as countries farther apart may exhibit comparable levels of refugee arrivals.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Refugees_EU_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next, we try to do some exploratory analysis to understand the relationship between growth of HPI and change in refugees per 1000 residents. Scatterplot indicates weak correlation between the two variables.</p>
+</section>
+</section>
+<section id="empirical-strategy" class="level1">
+<h1>Empirical Strategy</h1>
+<p>The empirical analysis which our group intends to employ, seeks to explore the causal relationship between the influx of refugees and asylum seekers in EU countries and subsequent changes in housing prices (proxied by the EU Housing Price Index - HPI). In order to explore the said relationship, we have constructed an entity-year panel dataset (country-year observations), enabling the exploitation of policy variation both over time and across EU member states.</p>
+<p>Further, to address the potential endogeneity of refugee inflows and the resulting omitted variable bias, we plan to implement a shift-share instrumental variable approach. Consequently we have constructed an instrument that interacts past refugee settlement shares across EU countries (the “share”) with total EU-wide refugee inflows by country of origin in a given year (the “shift”). This allows us to isolate plausibly exogenous variation in refugee allocation driven by historical settlement patterns rather than contemporary economic or policy conditions on the refugee intake front. This approach will strengthen the identification of the causal impact (if any) of refugee inflows on housing prices.</p>
+<section id="regression-approach" class="level2">
+<h2 class="anchored" data-anchor-id="regression-approach">Regression Approach</h2>
+<p>The primary specification is a two-way fixed effects model, accounting for country and year fixed effects, structured as follows:</p>
+<p>[ _{ct} = _c + <em>t + <em>1 </em>{ct} + </em>{ct} ]</p>
+<p>Where:</p>
+<ul>
+<li>( _{ct} ): Housing Price Growth in country ( c ) at year ( t )</li>
+<li>( _c ): Country fixed effects (controls for time-invariant country-specific factors)</li>
+<li>( _t ): Year fixed effects (controls for time-specific shocks across countries)</li>
+<li>( _{ct} ): Growth in refugees and asylum seekers</li>
+<li>( _{ct} ): Error term</li>
+</ul>
+</section>
+</section>
+<section id="findings" class="level1">
+<h1>Findings</h1>
+<section id="regression-results" class="level2">
+<h2 class="anchored" data-anchor-id="regression-results">Regression Results</h2>
+<p>Here we present the results of the two regression models to explore the relationship between refugee growth and housing price index (HPI) growth.</p>
+<p>We estimate two models: one with only fixed effects (for country and year) and another including both refugee growth and lagged refugee growth.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_i0kvmgybt1tqrvmoq2hv(i, j, css_id) {
+          var table = document.getElementById("tinytable_i0kvmgybt1tqrvmoq2hv");
+          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function spanCell_i0kvmgybt1tqrvmoq2hv(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_i0kvmgybt1tqrvmoq2hv");
+        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+        if (!targetCell) {
+          console.warn(`Cell at (${i}, ${j}) not found.`);
+        }
+
+        // Get all cells that need to be removed
+        const cellsToRemove = [];
+        for (let r = 0; r < rowspan; r++) {
+          for (let c = 0; c < colspan; c++) {
+            if (r === 0 && c === 0) continue; // Skip the target cell
+            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
+            if (cell) {
+              cellsToRemove.push(cell);
+            }
+          }
+        }
+
+        // Remove all cells
+        cellsToRemove.forEach(cell => cell.remove());
+
+        // Set rowspan and colspan of the target cell if it exists
+        if (targetCell) {
+          targetCell.rowSpan = rowspan;
+          targetCell.colSpan = colspan;
+        }
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '14', j: 1 }, { i: '14', j: 2 },  ], css_id: 'tinytable_css_cl4skkipofblt3rikk0g',}, 
+          { positions: [ { i: '6', j: 1 }, { i: '6', j: 2 },  ], css_id: 'tinytable_css_q8f0q3tki8ru6cooix6z',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '4', j: 2 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '12', j: 2 }, { i: '2', j: 1 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '8', j: 2 }, { i: '5', j: 2 }, { i: '10', j: 2 }, { i: '7', j: 2 }, { i: '9', j: 2 }, { i: '11', j: 2 }, { i: '13', j: 2 },  ], css_id: 'tinytable_css_iu0visxhqpe65k20lq4j',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 },  ], css_id: 'tinytable_css_mtrw3nngxsm9274aa17q',}, 
+          { positions: [ { i: '14', j: 0 },  ], css_id: 'tinytable_css_n10wc1p1llppvafadk42',}, 
+          { positions: [ { i: '6', j: 0 },  ], css_id: 'tinytable_css_mx71ck6tlsjyem3b2kcn',}, 
+          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '10', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 }, { i: '9', j: 0 }, { i: '11', j: 0 }, { i: '12', j: 0 }, { i: '13', j: 0 },  ], css_id: 'tinytable_css_8talp4zwc6txxk9iubbp',}, 
+          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_yn9pvgyl6gtggkp54wz1',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_i0kvmgybt1tqrvmoq2hv(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_cl4skkipofblt3rikk0g, .table th.tinytable_css_cl4skkipofblt3rikk0g { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_q8f0q3tki8ru6cooix6z, .table th.tinytable_css_q8f0q3tki8ru6cooix6z { text-align: center; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_iu0visxhqpe65k20lq4j, .table th.tinytable_css_iu0visxhqpe65k20lq4j { text-align: center; }
+      .table td.tinytable_css_mtrw3nngxsm9274aa17q, .table th.tinytable_css_mtrw3nngxsm9274aa17q { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_n10wc1p1llppvafadk42, .table th.tinytable_css_n10wc1p1llppvafadk42 { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_mx71ck6tlsjyem3b2kcn, .table th.tinytable_css_mx71ck6tlsjyem3b2kcn { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_8talp4zwc6txxk9iubbp, .table th.tinytable_css_8talp4zwc6txxk9iubbp { text-align: left; }
+      .table td.tinytable_css_yn9pvgyl6gtggkp54wz1, .table th.tinytable_css_yn9pvgyl6gtggkp54wz1 { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_i0kvmgybt1tqrvmoq2hv" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col" data-row="0" data-col="0"> </th>
+                <th scope="col" data-row="0" data-col="1">Fixed Effects Only</th>
+                <th scope="col" data-row="0" data-col="2">Full Model</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="3">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="0">(Intercept)</td>
+                  <td data-row="1" data-col="1">-1339.977***</td>
+                  <td data-row="1" data-col="2">-1350.308***</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="0"></td>
+                  <td data-row="2" data-col="1">(132.534)</td>
+                  <td data-row="2" data-col="2">(147.205)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="0">Refugee_Growth</td>
+                  <td data-row="3" data-col="1"></td>
+                  <td data-row="3" data-col="2">0.001***</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="0"></td>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.000)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="0">Refugee_Growth_Lag1</td>
+                  <td data-row="5" data-col="1"></td>
+                  <td data-row="5" data-col="2">-0.001**</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="0"></td>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2">(0.000)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="0">Num.Obs.</td>
+                  <td data-row="7" data-col="1">364</td>
+                  <td data-row="7" data-col="2">336</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="0">R2</td>
+                  <td data-row="8" data-col="1">0.386</td>
+                  <td data-row="8" data-col="2">0.438</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="0">R2 Adj.</td>
+                  <td data-row="9" data-col="1">0.335</td>
+                  <td data-row="9" data-col="2">0.383</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="0">AIC</td>
+                  <td data-row="10" data-col="1">2187.9</td>
+                  <td data-row="10" data-col="2">1979.8</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="0">BIC</td>
+                  <td data-row="11" data-col="1">2304.8</td>
+                  <td data-row="11" data-col="2">2101.9</td>
+                </tr>
+                <tr>
+                  <td data-row="12" data-col="0">Log.Lik.</td>
+                  <td data-row="12" data-col="1">-1063.958</td>
+                  <td data-row="12" data-col="2">-957.890</td>
+                </tr>
+                <tr>
+                  <td data-row="13" data-col="0">F</td>
+                  <td data-row="13" data-col="1">7.536</td>
+                  <td data-row="13" data-col="2">7.937</td>
+                </tr>
+                <tr>
+                  <td data-row="14" data-col="0">RMSE</td>
+                  <td data-row="14" data-col="1">4.50</td>
+                  <td data-row="14" data-col="2">4.19</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<p>The “Full Model” shows that higher current refugee growth is linked to a significant increase in the outcome variable, while refugee growth in the previous year is linked to a significant decrease. The “Full Model,” which includes more factors than just fixed effects, explains the data better than the “Fixed Effects Only” model.</p>
+</section>
+<section id="multicollinearity" class="level2">
+<h2 class="anchored" data-anchor-id="multicollinearity">Multicollinearity</h2>
+<p>Examining the Multicollinearity of our variables with VIF</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+
+</div>
+</div>
+<p>The GVIF results indicate no serious multicollinearity concerns in the model. Both Refugee_Growth and its lag have GVIF^(1/(2*Df)) values around 1.06–1.07, well below the commonly used thresholds of 2 or 5. The fixed effects for Country and Year also show very low adjusted GVIFs (≈1.00 and 1.05 respectively), suggesting that the inclusion of these categorical variables does not inflate variance significantly. Overall, multicollinearity is not a concern in this specification.</p>
+</section>
+<section id="regression-with-the-addition-of-another-controlling-variable" class="level2">
+<h2 class="anchored" data-anchor-id="regression-with-the-addition-of-another-controlling-variable">Regression with the addition of another controlling variable</h2>
+<p>We added another variable, which is the housing supply across the countries, we got the below results:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_1dr7z08y4zcvp23i82ek(i, j, css_id) {
+          var table = document.getElementById("tinytable_1dr7z08y4zcvp23i82ek");
+          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function spanCell_1dr7z08y4zcvp23i82ek(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_1dr7z08y4zcvp23i82ek");
+        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+        if (!targetCell) {
+          console.warn(`Cell at (${i}, ${j}) not found.`);
+        }
+
+        // Get all cells that need to be removed
+        const cellsToRemove = [];
+        for (let r = 0; r < rowspan; r++) {
+          for (let c = 0; c < colspan; c++) {
+            if (r === 0 && c === 0) continue; // Skip the target cell
+            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
+            if (cell) {
+              cellsToRemove.push(cell);
+            }
+          }
+        }
+
+        // Remove all cells
+        cellsToRemove.forEach(cell => cell.remove());
+
+        // Set rowspan and colspan of the target cell if it exists
+        if (targetCell) {
+          targetCell.rowSpan = rowspan;
+          targetCell.colSpan = colspan;
+        }
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '18', j: 1 }, { i: '18', j: 2 }, { i: '18', j: 3 },  ], css_id: 'tinytable_css_4rtk3aaom8fp1s4rebel',}, 
+          { positions: [ { i: '10', j: 3 }, { i: '10', j: 1 }, { i: '10', j: 2 },  ], css_id: 'tinytable_css_c4hxxqz6b4igf0eui6vj',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '3', j: 1 }, { i: '5', j: 1 }, { i: '2', j: 1 }, { i: '7', j: 1 }, { i: '4', j: 1 }, { i: '9', j: 1 }, { i: '4', j: 2 }, { i: '11', j: 1 }, { i: '8', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '12', j: 2 }, { i: '6', j: 1 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '17', j: 2 }, { i: '5', j: 2 }, { i: '12', j: 1 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '4', j: 3 }, { i: '11', j: 2 }, { i: '6', j: 3 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '6', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '17', j: 3 }, { i: '5', j: 3 }, { i: '14', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '15', j: 3 }, { i: '16', j: 3 }, { i: '13', j: 3 },  ], css_id: 'tinytable_css_wp8k4qy7ukdb5rtpkfv2',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 },  ], css_id: 'tinytable_css_0vca3okn4w9g8p1o1e59',}, 
+          { positions: [ { i: '18', j: 0 },  ], css_id: 'tinytable_css_g4f45bi9o7ktxwk9qxz0',}, 
+          { positions: [ { i: '10', j: 0 },  ], css_id: 'tinytable_css_bmifxpc0de2o9fllnju1',}, 
+          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 }, { i: '9', j: 0 }, { i: '14', j: 0 }, { i: '11', j: 0 }, { i: '12', j: 0 }, { i: '13', j: 0 }, { i: '15', j: 0 }, { i: '16', j: 0 }, { i: '17', j: 0 },  ], css_id: 'tinytable_css_gttnafw4hs0oea83wjgw',}, 
+          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_e5ilvw82aruaoehd953v',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_1dr7z08y4zcvp23i82ek(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_4rtk3aaom8fp1s4rebel, .table th.tinytable_css_4rtk3aaom8fp1s4rebel { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_c4hxxqz6b4igf0eui6vj, .table th.tinytable_css_c4hxxqz6b4igf0eui6vj { text-align: center; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_wp8k4qy7ukdb5rtpkfv2, .table th.tinytable_css_wp8k4qy7ukdb5rtpkfv2 { text-align: center; }
+      .table td.tinytable_css_0vca3okn4w9g8p1o1e59, .table th.tinytable_css_0vca3okn4w9g8p1o1e59 { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_g4f45bi9o7ktxwk9qxz0, .table th.tinytable_css_g4f45bi9o7ktxwk9qxz0 { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_bmifxpc0de2o9fllnju1, .table th.tinytable_css_bmifxpc0de2o9fllnju1 { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_gttnafw4hs0oea83wjgw, .table th.tinytable_css_gttnafw4hs0oea83wjgw { text-align: left; }
+      .table td.tinytable_css_e5ilvw82aruaoehd953v, .table th.tinytable_css_e5ilvw82aruaoehd953v { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_1dr7z08y4zcvp23i82ek" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col" data-row="0" data-col="0"> </th>
+                <th scope="col" data-row="0" data-col="1">Fixed Effects Only</th>
+                <th scope="col" data-row="0" data-col="2">Full Model (df_fin)</th>
+                <th scope="col" data-row="0" data-col="3">Full Model + Housing</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="4">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="0">(Intercept)</td>
+                  <td data-row="1" data-col="1">-1339.977***</td>
+                  <td data-row="1" data-col="2">-1350.308***</td>
+                  <td data-row="1" data-col="3">-1097.375***</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="0"></td>
+                  <td data-row="2" data-col="1">(132.534)</td>
+                  <td data-row="2" data-col="2">(147.205)</td>
+                  <td data-row="2" data-col="3">(326.683)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="0">Refugees_per_1000_Growth</td>
+                  <td data-row="3" data-col="1"></td>
+                  <td data-row="3" data-col="2">0.066***</td>
+                  <td data-row="3" data-col="3">0.046***</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="0"></td>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.019)</td>
+                  <td data-row="4" data-col="3">(0.012)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="0">Refugees_per_1000_Growth_Lag1</td>
+                  <td data-row="5" data-col="1"></td>
+                  <td data-row="5" data-col="2">-0.065**</td>
+                  <td data-row="5" data-col="3">-0.023+</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="0"></td>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2">(0.020)</td>
+                  <td data-row="6" data-col="3">(0.012)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="0">Housing_per_1000_Growth</td>
+                  <td data-row="7" data-col="1"></td>
+                  <td data-row="7" data-col="2"></td>
+                  <td data-row="7" data-col="3">10.172***</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="0"></td>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2"></td>
+                  <td data-row="8" data-col="3">(1.730)</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="0">Housing_per_1000_Growth_lag1</td>
+                  <td data-row="9" data-col="1"></td>
+                  <td data-row="9" data-col="2"></td>
+                  <td data-row="9" data-col="3">5.401***</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="0"></td>
+                  <td data-row="10" data-col="1"></td>
+                  <td data-row="10" data-col="2"></td>
+                  <td data-row="10" data-col="3">(1.568)</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="0">Num.Obs.</td>
+                  <td data-row="11" data-col="1">364</td>
+                  <td data-row="11" data-col="2">336</td>
+                  <td data-row="11" data-col="3">189</td>
+                </tr>
+                <tr>
+                  <td data-row="12" data-col="0">R2</td>
+                  <td data-row="12" data-col="1">0.386</td>
+                  <td data-row="12" data-col="2">0.438</td>
+                  <td data-row="12" data-col="3">0.581</td>
+                </tr>
+                <tr>
+                  <td data-row="13" data-col="0">R2 Adj.</td>
+                  <td data-row="13" data-col="1">0.335</td>
+                  <td data-row="13" data-col="2">0.383</td>
+                  <td data-row="13" data-col="3">0.498</td>
+                </tr>
+                <tr>
+                  <td data-row="14" data-col="0">AIC</td>
+                  <td data-row="14" data-col="1">2187.9</td>
+                  <td data-row="14" data-col="2">1979.8</td>
+                  <td data-row="14" data-col="3">1047.3</td>
+                </tr>
+                <tr>
+                  <td data-row="15" data-col="0">BIC</td>
+                  <td data-row="15" data-col="1">2304.8</td>
+                  <td data-row="15" data-col="2">2101.9</td>
+                  <td data-row="15" data-col="3">1154.3</td>
+                </tr>
+                <tr>
+                  <td data-row="16" data-col="0">Log.Lik.</td>
+                  <td data-row="16" data-col="1">-1063.958</td>
+                  <td data-row="16" data-col="2">-957.890</td>
+                  <td data-row="16" data-col="3">-490.657</td>
+                </tr>
+                <tr>
+                  <td data-row="17" data-col="0">F</td>
+                  <td data-row="17" data-col="1">7.536</td>
+                  <td data-row="17" data-col="2">7.937</td>
+                  <td data-row="17" data-col="3">7.028</td>
+                </tr>
+                <tr>
+                  <td data-row="18" data-col="0">RMSE</td>
+                  <td data-row="18" data-col="1">4.50</td>
+                  <td data-row="18" data-col="2">4.19</td>
+                  <td data-row="18" data-col="3">3.25</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<p>The results suggest that refugee inflows have a significant impact on housing price growth in the EU, with both current and past refugee growth influencing housing dynamics. Specifically, current refugee inflows lead to higher housing price growth, as seen in both the Full Model and the Full Model + Housing, where a positive relationship is established. This likely reflects the demand for housing that arises when refugee populations increase, either through direct housing needs or indirectly due to the economic integration of refugees in the host country. On the other hand, lagged refugee inflows show a negative effect on housing growth, suggesting that initial boosts in housing demand may be followed by a lagged response, possibly due to market adjustments, overbuilding in earlier periods, or delayed policy interventions.</p>
+<p>The inclusion of housing supply growth control suggests positive effect of refugees dominate, however, the positive coefficient on housing supply is contrary to expectations.</p>
+<p>This suggests possible endogeneity concerns in the data that we have been working with. Therefore, we have come forth with the Shift Share approach which can be viewed in the next section.</p>
+</section>
+<section id="shift-share-approach" class="level2">
+<h2 class="anchored" data-anchor-id="shift-share-approach">Shift Share Approach</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_rvxxtqqwppjpnadz0qaa(i, j, css_id) {
+          var table = document.getElementById("tinytable_rvxxtqqwppjpnadz0qaa");
+          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function spanCell_rvxxtqqwppjpnadz0qaa(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_rvxxtqqwppjpnadz0qaa");
+        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+        if (!targetCell) {
+          console.warn(`Cell at (${i}, ${j}) not found.`);
+        }
+
+        // Get all cells that need to be removed
+        const cellsToRemove = [];
+        for (let r = 0; r < rowspan; r++) {
+          for (let c = 0; c < colspan; c++) {
+            if (r === 0 && c === 0) continue; // Skip the target cell
+            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
+            if (cell) {
+              cellsToRemove.push(cell);
+            }
+          }
+        }
+
+        // Remove all cells
+        cellsToRemove.forEach(cell => cell.remove());
+
+        // Set rowspan and colspan of the target cell if it exists
+        if (targetCell) {
+          targetCell.rowSpan = rowspan;
+          targetCell.colSpan = colspan;
+        }
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '12', j: 1 },  ], css_id: 'tinytable_css_zzxs5tawuu8d1kitvizc',}, 
+          { positions: [ { i: '4', j: 1 },  ], css_id: 'tinytable_css_by2on55my18328301gi6',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '8', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 },  ], css_id: 'tinytable_css_y7lozdpolssmjuqmhabz',}, 
+          { positions: [ { i: '0', j: 1 },  ], css_id: 'tinytable_css_dl320ggskjyu6lfywq5a',}, 
+          { positions: [ { i: '12', j: 0 },  ], css_id: 'tinytable_css_us33uj077ai3ek0c91ag',}, 
+          { positions: [ { i: '4', j: 0 },  ], css_id: 'tinytable_css_ut1d9j37thfbnyt2yf6v',}, 
+          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '8', j: 0 }, { i: '5', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 }, { i: '9', j: 0 }, { i: '10', j: 0 }, { i: '11', j: 0 },  ], css_id: 'tinytable_css_ehmy7mvrdvfnc36uv7yj',}, 
+          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_shhi6x18pt41812lsaop',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_rvxxtqqwppjpnadz0qaa(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_zzxs5tawuu8d1kitvizc, .table th.tinytable_css_zzxs5tawuu8d1kitvizc { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_by2on55my18328301gi6, .table th.tinytable_css_by2on55my18328301gi6 { text-align: center; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_y7lozdpolssmjuqmhabz, .table th.tinytable_css_y7lozdpolssmjuqmhabz { text-align: center; }
+      .table td.tinytable_css_dl320ggskjyu6lfywq5a, .table th.tinytable_css_dl320ggskjyu6lfywq5a { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_us33uj077ai3ek0c91ag, .table th.tinytable_css_us33uj077ai3ek0c91ag { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_ut1d9j37thfbnyt2yf6v, .table th.tinytable_css_ut1d9j37thfbnyt2yf6v { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_ehmy7mvrdvfnc36uv7yj, .table th.tinytable_css_ehmy7mvrdvfnc36uv7yj { text-align: left; }
+      .table td.tinytable_css_shhi6x18pt41812lsaop, .table th.tinytable_css_shhi6x18pt41812lsaop { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+    </style>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_rvxxtqqwppjpnadz0qaa" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        <thead>
+        
+              <tr>
+                <th scope="col" data-row="0" data-col="0"> </th>
+                <th scope="col" data-row="0" data-col="1">(1)</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="2">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="0">(Intercept)</td>
+                  <td data-row="1" data-col="1">13863.860</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="0"></td>
+                  <td data-row="2" data-col="1">(10923.869)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="0">Bartik_Z</td>
+                  <td data-row="3" data-col="1">12.226***</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="0"></td>
+                  <td data-row="4" data-col="1">(0.488)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="0">Num.Obs.</td>
+                  <td data-row="5" data-col="1">234</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="0">R2</td>
+                  <td data-row="6" data-col="1">0.730</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="0">R2 Adj.</td>
+                  <td data-row="7" data-col="1">0.729</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="0">AIC</td>
+                  <td data-row="8" data-col="1">6257.6</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="0">BIC</td>
+                  <td data-row="9" data-col="1">6268.0</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="0">Log.Lik.</td>
+                  <td data-row="10" data-col="1">-3125.796</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="0">F</td>
+                  <td data-row="11" data-col="1">627.448</td>
+                </tr>
+                <tr>
+                  <td data-row="12" data-col="0">RMSE</td>
+                  <td data-row="12" data-col="1">153148.31</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+2SLS Regression Results: Effect of Refugees on Housing Prices
+===============================================
+                        Dependent variable:    
+                    ---------------------------
+                                HPI            
+-----------------------------------------------
+Total_Refugees                0.00000          
+                             (0.00001)         
+                                               
+Constant                    129.097***         
+                              (2.181)          
+                                               
+-----------------------------------------------
+Observations                    234            
+R2                             0.008           
+Adjusted R2                    0.004           
+Residual Std. Error      30.074 (df = 232)     
+===============================================
+Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>IV Regression Diagnostics (Weak Instruments, Endogeneity, etc.)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Test</th>
+<th style="text-align: right;">df1</th>
+<th style="text-align: right;">df2</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Weak instruments</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">232</td>
+<td style="text-align: right;">627.448</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wu-Hausman</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">231</td>
+<td style="text-align: right;">2.963</td>
+<td style="text-align: right;">0.087</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sargan</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The first-stage regression confirms that the Bartik instrument is a strong predictor of actual refugee inflows. The coefficient on Bartik_Z is 12.23 (SE = 0.49), highly significant at the 1% level, indicating a strong positive relationship. The model explains 73% of the variation in refugee inflows (R² = 0.73), and the weak instruments test statistic of 627.45 far exceeds the conventional threshold, ruling out weak instrument concerns. These results validate the strength and relevance of the instrument that we will be employing in the ensuing the second-stage analysis.</p>
+<p>Here, our group also wants to highlight before presenting the Bartik approach results that, we constructed the instrument by interacting global, origin-specific refugee supply shocks with each country’s historical settlement shares, averaged over the <em>2010–2014</em> pre-crisis period. This design assumes that historical refugee settlement patterns are exogenous to future housing market shocks and that global refugee flows are driven primarily by geopolitical events outside the control of host countries. We deliberately limit our baseline specification to exclude additional controls such as GDP or inflation to avoid overfitting, multicollinearity, and possible post-treatment bias, focusing instead on the exogenous variation introduced by the instrument.</p>
+<p>This table presents the second-stage results of a two-stage least squares (2SLS) regression estimating the causal impact of refugee inflows on housing prices (HPI), using a Bartik-style instrument to address endogeneity concerns. The coefficient on Total_Refugees is effectively zero and statistically insignificant, suggesting that instrumented refugee inflows do not have a detectable impact on country level HPI throughout the countries and years studied. The constant term is highly significant, reflecting the baseline level of HPI when refugee inflows are <em>zero</em>. With an R² of <em>0.008</em>, the model explains less than 1% of the variation in HPI, reinforcing the conclusion that, at the aggregate level, refugee arrivals—when instrumented by exogenous global shocks—do not significantly influence housing market prices (which our group has proxied by way of HPI).</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>This report set out to investigate the impact of refugee inflows on housing prices across European countries, leveraging the policy shock of increased refugee acceptance post-2015/16. The study used a panel dataset of country-year observations and employed a shift-share instrumental variable approach to address potential endogeneity concerns. Initial empirical models suggested a nuanced relationship, with current refugee growth appearing to exert upward pressure on housing prices, while lagged refugee growth indicated a potential dampening effect. However, these preliminary findings were subject to concerns about endogeneity, which motivated the application of the shift-share instrumental variable approach.</p>
+<p>The implementation of the Bartik-style instrument, utilizing historical refugee settlement patterns to isolate exogenous variation in refugee allocation, yielded a critical shift in our understanding. The strength and validity of the instrument were confirmed through robust first-stage regression results, effectively addressing the endogeneity issue.</p>
+<p>Crucially, the second-stage analysis revealed that, once endogeneity is accounted for, refugee inflows do not demonstrate a statistically significant impact on housing prices at the aggregate country level. This finding implies that the observed correlations in initial models were likely confounded by other factors, and that exogenous variations in refugee inflows, driven by broader geopolitical events and historical settlement patterns, do not exert a measurable influence on housing market dynamics within the studied European context.</p>
+<p>These results contribute to the ongoing debate on the socio-economic consequences of refugee migration, suggesting that concerns about inflationary pressures on housing markets due to refugee influx may be overstated at the macroeconomic level. It is important to acknowledge the limitations of this study, primarily its focus on aggregate country-level effects. Future research could explore more granular regional or local impacts, or investigate the role of specific housing policies and market structures in mediating the relationship between refugee inflows and housing prices. Further research can also examine the long term effects.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,341 @@
+---
+title: ' Report \break "Fertility Rate Forecasting for Saudi Arabia" '
+author: |
+  **Studnet**  
+  Ahmed Albarqi (aa5550)  
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: yes
+    highlight: tango
+    theme: default
+    fig_caption: yes
+    df_print: tibble
+  pdf_document:
+    toc: no
+    latex_engine: xelatex
+    toc_depth: '3'
+    number_sections: yes
+urlcolor: blue
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+library(dynlm)
+library(modelsummary)
+library(ggplot2)
+library(broom)
+library(lmtest)
+library(knitr)
+library(MuMIn)
+library(tseries)
+library(forecast)
+library(urca)
+library(aTSA)
+library(FinTS) 
+load("project1_data.RData")
+```
+# Introduction
+
+Over the past six decades, Saudi Arabia has undergone one of the most rapid fertility transitions in the world. In the 1960s, the fertility rate was nearly eight children per woman, largely driven by the country’s conservative and religious social structure. In contrast, recent decades have seen a dramatic decline, with fertility rates falling to around two children per woman. This sharp reduction can be attributed to sweeping socio-economic reforms, including the expansion of women’s education, shifts in female labor market participation, and broader societal transformations under Vision 2030.
+
+This project aims to analyze and forecast Saudi Arabia’s fertility rate using the ARIMA model. By modeling historical trends and projecting future changes, the study seeks to shed light on the potential implications of fertility dynamics for labor market policies and broader social development strategies in Saudi Arabia.
+
+# Definition & Data Source
+
+The Total Fertility Rate (TFR) measures the average number of children a woman would have over her lifetime if she were to experience the current age-specific fertility rates throughout her childbearing years. It is expressed as the number of births per woman in a given year.
+
+For this study, the analysis covers the period 1960–2023, utilizing annual data obtained from the World Bank Open Data platform. The dataset provides consistent and internationally comparable fertility indicators, making it a reliable source for examining long-term demographic trends in Saudi Arab
+
+# Methodolgy
+
+To drive the forecasting model we will transform the dataset from  fertility rate to growth rate of fertility rate by using this equation:
+$$
+\text{Growth Rate}_t = \Delta \ln(\text{Fertility Rate}_t)
+$$
+Additionally, we will conduct differencing to the series with (I=1), to make the series stationary. Finally, we chose AR(4) for this analysis because it passed all the tests. 
+
+# Diagnosing
+
+To start the analysis, Referring to the figure below, the series seems to have a severe downward trend, and a severe variance as well. This is an indication that the series isn't stationary. 
+
+
+```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
+Fert_ts <- ts(df_saudi$value, start=1960, frequency = 1) 
+plot(Fert_ts, type = "l", col = "blue", lwd = 2,
+     main = "Time Series of Fertility rate KSA 1960-2023",
+     xlab = "Time", ylab = "Fertility rate")
+```
+
+
+## Data Processing 
+To overcome this nonstationarity, The series will be transformed from Fertility Rate to The Growth Rate of The Fertility Rate following this equation:
+
+$$
+\text{Growth Rate}_t = \Delta \ln(\text{Fertility Rate}_t)
+$$
+
+By doing this, the graph looks way better as shown below. However, the series still looks non-stationary, and to confirm these I conducted both ADF & DF-GLS to check for stationarity. 
+
+```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
+ln_fer <- log(Fert_ts)
+growth_rate <- diff(ln_fer)   
+
+plot(growth_rate, main="Growth Rate of Fertility Rate", ylab="% Growth Rate")
+```
+
+In this report I will focus more on DF-GLS since it is more accurate and the results are below.
+
+```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
+# adf_result <- adf.test(growth_rate)
+dfgls_result <- ur.ers(growth_rate, type = "DF-GLS", model = "constant", lag.max = 7)
+dfgls_stat <- as.numeric(dfgls_result@teststat)
+dfgls_table <- data.frame(
+  Test = "DF-GLS ",
+  Statistic = round(dfgls_stat, 3))
+
+kable(dfgls_table, caption = "DF-GLS Stationarity Test")
+
+```
+
+
+The DF-GLS absolute value of test statistic is `r abs(round(dfgls_stat, 3))` and it is < 1.96. This confirms the null hypothesis of non-stationarity.
+
+
+
+## Differncing
+
+Now to make the series stationary, differencing is required. We will start by taking the first difference (I=1)
+```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
+model_diff <- diff(growth_rate)
+#model_diff <- diff(model_diff)
+
+
+plot(model_diff, main="I=1 of Growth Rate of Fertility Rate", ylab="% Growth Rate")
+```
+
+The series looks way better than before, and potentially stationary. However, the variance still a concern that might result in heteroskedasticity. Now, to proceed forward same test of stationarity will be conducted
+```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
+##adf.test(model_diff)
+dfgls_result <- ur.ers(model_diff, type = "DF-GLS", model = "constant", lag.max = 7)
+dfgls_stat <- as.numeric(dfgls_result@teststat)
+dfgls_table <- data.frame(
+  Test = "DF-GLS ",
+  Statistic = round(dfgls_stat, 3))
+
+kable(dfgls_table, caption = "DF-GLS Stationarity Test")
+```
+
+The DF-GLS absolute value of test statistic is `r abs(round(dfgls_stat, 3))` and it is > 1.96. This rejects the null hypothesis of non-stationarity, and accept that the series is stationary now.
+
+## ARIMA modeling 
+
+To start, we know that our ARIMA model has (I=1) now. To choose the proper model and the respective values of (p,q), I have tested and trialed multiple models and combinations of (p,q). Referring to the table below, we can see the different models I have tested:  
+
+```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
+
+## AR(1)
+
+ar1 <- arima(growth_rate, order = c(1,1,0), include.mean = FALSE)
+coefs1 <- coef(ar1)
+se1 <- sqrt(diag(vcov(ar1)))
+tvals1 <- coefs1 / se1
+BT1_lag8 <- Box.test(ar1$residuals, lag = 8, type = "Ljung-Box", fitdf = 1)
+BT1_lag16 <- Box.test(ar1$residuals, lag = 16, type = "Ljung-Box", fitdf = 1)
+
+## ARMA(1,1)
+
+ar11 <- arima(growth_rate, order = c(1,1,1), include.mean = FALSE)
+coefs11 <- coef(ar11)
+se11 <- sqrt(diag(ar11$var.coef))
+tvals11 <- coefs11 / se11
+BT11_lag8 <- Box.test(ar11$residuals, lag = 8, type = "Ljung-Box", fitdf = 1)
+BT11_lag16 <-Box.test(ar11$residuals, lag = 16, type = "Ljung-Box", fitdf = 1)
+
+
+## AR2
+
+ar2 <- arima(growth_rate, order = c(2,1,0), include.mean = FALSE)
+coefs2 <- coef(ar2)
+se2 <- sqrt(diag(ar2$var.coef))
+tvals2 <- coefs2 / se2
+BT2_lag8 <-Box.test(ar2$residuals, lag = 8, type = "Ljung-Box", fitdf = 2)
+BT2_lag16 <-Box.test(ar2$residuals, lag = 16, type = "Ljung-Box", fitdf = 2)
+
+## AR4
+ar4 <- arima(growth_rate, order = c(4,1,0), include.mean = FALSE)
+coefs4 <- coef(ar4)
+se4 <- sqrt(diag(ar4$var.coef))
+tvals4 <- coefs4 / se4
+BT4_lag8 <-Box.test(ar4$residuals, lag = 8, type = "Ljung-Box", fitdf = 4)
+BT4_lag16 <-Box.test(ar4$residuals, lag = 16, type = "Ljung-Box", fitdf = 4)
+
+# Comparison Table
+comp_table <- data.frame(
+  Model = c("AR(1)", "ARMA(1,1)", "AR(2)", "AR(4)"),
+  `Theta1(SE)` = c(
+    paste(round(coefs1[1], 3), " (", round(se1[1], 3), ")", sep = ""),
+    paste(round(coefs11[1], 3), " (", round(se11[1], 3), ")", sep = ""),
+    paste(round(coefs2[1], 3), " (", round(se2[1], 3), ")", sep = ""),
+    paste(round(coefs4[1], 3), " (", round(se4[1], 3), ")", sep = "") ),
+  
+  `Theta2(SE)` = c(
+    "N/A",
+    "N/A",
+    paste(round(coefs2[2], 3), " (", round(se2[2], 3), ")", sep = ""),
+    paste(round(coefs4[2], 3), " (", round(se4[2], 3), ")", sep = "") ),
+    `Theta3(SE)` = c(
+    "N/A",
+    "N/A",
+    "N/A",
+    paste(round(coefs4[3], 3), " (", round(se4[3], 3), ")", sep = "")),`Theta4(SE)` = c(
+    "N/A",
+    "N/A",
+    "N/A",
+    paste(round(coefs4[4], 3), " (", round(se4[4], 3), ")", sep = "")),
+  
+  `Phi1(SE)` = c(
+    "N/A",
+    paste(round(coefs11[2], 3), " (", round(se11[2], 3), ")", sep = ""),
+    "N/A",
+    "N/A"),
+  
+  AICc = c(round(AICc(ar1), 3), round(AICc(ar11), 3), round(AICc(ar2), 3),round(AICc(ar4), 3)),
+  BIC  = c(round(BIC(ar1), 3),  round(BIC(ar11), 3),  round(BIC(ar2), 3),round(BIC(ar4), 3)),
+  
+  `LB8(p-value)`  = c(
+    paste(round(BT1_lag8$statistic, 2), " (", round(BT1_lag8$p.value, 5), ")"),
+    paste(round(BT11_lag8$statistic, 2), " (", round(BT11_lag8$p.value, 5), ")"),
+    paste(round(BT2_lag8$statistic, 2), " (", round(BT2_lag8$p.value, 5), ")"),
+    paste(round(BT4_lag8$statistic, 2), " (", round(BT4_lag8$p.value, 5), ")")),
+  
+  `LB16(p-value)` = c(
+    paste0(round(BT1_lag16$statistic, 2), " (", round(BT1_lag16$p.value, 5), ")"),
+    paste0(round(BT11_lag16$statistic, 2), " (", round(BT11_lag16$p.value, 5), ")"),
+    paste0(round(BT2_lag16$statistic, 2), " (", round(BT2_lag16$p.value, 5), ")"),
+    paste0(round(BT4_lag16$statistic, 2), " (", round(BT4_lag16$p.value, 5), ")")))
+
+# To show it vertically because horizontally is hard to compare (my preference)
+comp_table_t <- as.data.frame(t(comp_table))
+colnames(comp_table_t) <- comp_table_t[1, ]  
+comp_table_t <- comp_table_t[-1, ]           
+kable(comp_table_t, caption = "Comparison of ARIMA Models", align = "c")
+
+```
+
+To give a context, my series has 64 observation and the reason I chose 16 lags for the Ljung–Box test is because that N/4 = 16. 
+
+After running multiple tests and iterations for the ARIMA models (1,1,0),(2,1,0),(1,1,1), and (4,1,0) we saw that:
+
+-- ARIMA(1,1,0): This model gave good results for AICc, BIC. However, it rejects the null hypothesis of Box-Ljung that the time series acts as a white noise. so the model is inadequate for the analysis
+
+-- ARIMA(1,1,1): This model gave good results for AICc, BIC. However, it rejects the null hypothesis of Box-Ljung that the time series acts as a white noise. so the model is inadequate for the analysis
+
+-- ARIMA(2,1,0): This model gave good results for AICc, BIC. However, it rejects the null hypothesis of Box-Ljung that the time series acts as a white noise. so the model is inadequate for the analysis
+
+-- AR(4,1,0): This model gave superior results for all the test, and most importantly, if failed to reject the null hypothesis of Box-Ljung, making the assumption of the time series acting as a white noise still stands.
+
+## AR(4) 
+
+To proceed forward, now we have to examine the model to properly assess any potential risks.
+
+### Coefficients 
+
+To start with the basics, we need to see if the necessary & sufficient conditions are met or not.
+
+-- Sum of Coefficients = `r round(sum(coefs4[1], coefs4[2], coefs4[3], coefs4[4]), 3)` . 
+
+-- Sum of absolute values of Coefficients = `r round(sum(abs(coefs4[1]), abs(coefs4[2]), abs(coefs4[3]), abs(coefs4[4])), 3)`
+
+So for both condition, we can't entail anything about the process. the necessary condition wasn't violated, and the sufficient condition wasn't met.
+
+### Residual Plot
+
+The residual plot fluctuate around a mean = 0 which is good. However, we can observe that the variance has changed around 2000 and later meaning the series doen't have a constant variance anymore.
+```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
+##
+residuals_ar4 <- residuals(ar4)
+plot(residuals_ar4, type = "l", col = "blue", lwd = 2,
+     main = "Residuals from AR(4) model",
+     ylab = "Residuals", xlab = "Time")
+abline(h = 0, col = "red", lty = 2)
+```
+
+
+### ACF & PACF
+
+The graphs is perfect, nothing violating the significance level interval. 
+
+```{r echo=FALSE,fig.height=3, fig.align='center'}
+
+par(mfrow = c(1, 2))
+acf(residuals_ar4, main = "ACF of Residuals", lwd = 2, col = "blue")
+pacf(residuals_ar4, main = "PACF of Residuals", lwd = 2, col = "red")
+par(mfrow = c(1, 1)) 
+
+```
+
+### Heteroskedasticity Test
+
+The concerns for heteroskedasticity is still valid, and to confirm that I decided to conduct ARCH Engle's Test for Residual Heteroscedasticity. 
+
+```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
+## chosing 10 because it is the safe option 
+arch_test <- ArchTest(residuals_ar4, lags = 10)
+arch_pval <- data.frame(
+  `ARCH LM-test` = formatC(arch_test$p.value, format = "e", digits = 2)
+)
+row.names(arch_pval) <- c("P-Value")
+kable(arch_pval, caption = "ARCH LM Test")
+```
+
+The ARCH Engle's test statistic has a p-value of `r abs(round(arch_test$p.value, 3))` and it is < 0.05. This rejects the null hypothesis of ARCH effect, and confirming that the series has Heteroskedasticity.
+
+To obtain a unbiased, one must use GARCH-Model in this case to capture this variance correctly. However, the results of the ARIMA model would still generate good results at least for the short run.
+
+
+## Forecasting
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+fc_ar4 <- forecast::forecast(ar4, lead = 10)
+```
+
+```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
+autoplot(fc_ar4)
+```
+
+
+```{r echo=FALSE, fig.width=3, fig.height=3, fig.align='center'}
+growth_forecast <- as.numeric(fc_ar4$mean)
+
+last_fert <- as.numeric(tail(Fert_ts, 1))
+
+fert_forecast <- numeric(length(growth_forecast))
+for (i in seq_along(growth_forecast)) {
+  if (i == 1) {
+    fert_forecast[i] <- (1 + growth_forecast[i]) * last_fert
+  } else {
+    fert_forecast[i] <- (1 + growth_forecast[i]) * fert_forecast[i - 1] }}
+
+forecast_years <- max(time(Fert_ts)) + seq_len(length(growth_forecast))
+results_table <- data.frame(
+  Year = forecast_years,
+  Forecasted_Growth = round(growth_forecast, 4),
+  Forecasted_Fertility = round(fert_forecast, 3)
+)
+
+kable(results_table, caption = "Forecasted Growth and Fertility Rate For AR(4) Model (I=1)")
+```
+
+
+# Conclusion
+
+In this paper, we employed the ARIMA modeling approach to forecast the fertility rate in Saudi Arabia. The analysis began by transforming the data into the growth rate of the fertility rate and applying differencing to achieve stationarity. To identify the most suitable model, we evaluated several diagnostic criteria, including the Akaike Information Criterion (AICc), Bayesian Information Criterion (BIC), and the Autocorrelation (ACF) and Partial Autocorrelation (PACF) functions, alongside the Box–Ljung test. Based on these diagnostics, the AR(4) model was selected as the best-fitting specification.
+
+Using this model, we generated forecasts for both the growth rates and the fertility rates. However, the residual analysis revealed evidence of heteroskedasticity, suggesting that future work could benefit from applying a GARCH model to better capture the observed volatility in the series and improve the accuracy of the forecasts.
