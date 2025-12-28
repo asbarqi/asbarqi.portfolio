@@ -30,4 +30,4 @@ format:
     page-layout: full
     css: assets/css/styles.css
     include-after-body:
-      - assets/js/typed-role.js
+      - assets/includes/after-body.html

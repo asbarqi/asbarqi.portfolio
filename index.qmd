@@ -3,6 +3,16 @@ title: ""
 page-layout: full
 ---
 
+<div class="hero">
+
+<div class="hero-bg" aria-hidden="true">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+</div>
+
+<div class="hero-inner">
+
 # Ahmed Albarqi  
 <span id="typed-role" class="typed-role"></span>
 
@@ -17,12 +27,8 @@ Skilled in building statistical models, conducting program and policy evaluation
 <div class="pill">Applied ML</div>
 <div class="pill">Program Evaluation</div>
 
-<br><br>
-
-[Email](mailto:asbarqi@gmail.com){.btn .btn-primary} &nbsp;
-[GitHub](https://github.com/asbarqi){.btn .btn-outline-primary} &nbsp;
-[LinkedIn](https://www.linkedin.com/in/asbarqi/){.btn .btn-outline-primary};
-[CV](assets/files/Ahmed_Albarqi_CV.pdf){.btn .btn-outline-primary}
+</div>
+</div>
 
 ---
 
@@ -31,4 +37,3 @@ Skilled in building statistical models, conducting program and policy evaluation
 - Econometric and time-series modeling  
 - Social policy research and evaluation  
 - Computational social science and applied machine learning  
-
