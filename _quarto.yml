@@ -15,10 +15,13 @@ website:
     right:
       - icon: github
         href: https://github.com/asbarqi
+        target: _blank
       - icon: linkedin
         href: https://www.linkedin.com/in/asbarqi/
-      - icon: file-earmark-person
+        target: _blank
+      - icon: file-earmark-pdf
         href: assets/files/Ahmed_Albarqi_CV.pdf
+        target: _blank
 
 format:
   html:
