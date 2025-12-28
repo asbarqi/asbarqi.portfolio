@@ -1,43 +1,37 @@
 (function () {
   let timer = null;
 
-  function startTyped() {
+  function stop() {
+    if (timer) clearTimeout(timer);
+    timer = null;
+  }
+
+  function start() {
     const el = document.getElementById("typed-role");
     if (!el) return;
 
-    // Prevent multiple runs if user navigates back to Home
-    if (el.dataset.typedRunning === "true") return;
-    el.dataset.typedRunning = "true";
+    // Always reset text when (re)entering Home
+    el.textContent = "";
 
-    const phrases = [
-      "Policy Research",
-      "Computational Social Science",
-      "Applied Research"
-    ];
-
-    let p = 0, i = 0;
-    let deleting = false;
+    const phrases = ["Policy Research", "Computational Social Science", "Applied Research"];
+    let p = 0, i = 0, deleting = false;
 
     function tick() {
-      // If user navigated away and element is gone, stop cleanly
       const node = document.getElementById("typed-role");
       if (!node) {
-        if (timer) clearTimeout(timer);
-        timer = null;
-        return;
+        stop();
+        return; // user navigated away
       }
 
       const current = phrases[p];
-      const text = deleting ? current.slice(0, i--) : current.slice(0, i++);
+      node.textContent = deleting ? current.slice(0, i--) : current.slice(0, i++);
 
-      node.textContent = text;
-
-      let delay = deleting ? 40 : 70;
+      let delay = deleting ? 45 : 70;
 
       if (!deleting && i === current.length + 1) {
-        delay = 900;
         deleting = true;
         i = current.length;
+        delay = 900;
       } else if (deleting && i < 0) {
         deleting = false;
         p = (p + 1) % phrases.length;
@@ -51,17 +45,24 @@
     tick();
   }
 
-  // Run on normal page load
-  document.addEventListener("DOMContentLoaded", startTyped);
+  function restartIfHome() {
+    // Always stop old timers first
+    stop();
+    // Restart only if we're on a page that has the typed element
+    start();
+  }
 
-  // Run again on back/forward cache restores
-  window.addEventListener("pageshow", startTyped);
+  // Normal load
+  document.addEventListener("DOMContentLoaded", restartIfHome);
 
-  // Optional: if Quarto does internal navigation, this catches it too
-  document.addEventListener("quarto:after-navigate", () => {
-    // Reset flag so it can start again on Home
-    const el = document.getElementById("typed-role");
-    if (el) el.dataset.typedRunning = "false";
-    startTyped();
+  // Back/forward cache restores
+  window.addEventListener("pageshow", restartIfHome);
+
+  // Quarto navigation event (works when Quarto does internal page swaps)
+  document.addEventListener("quarto:after-navigate", restartIfHome);
+
+  // Extra safety: if Quarto uses turbo-like events in your version
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) restartIfHome();
   });
 })();
