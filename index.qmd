@@ -1,7 +1,33 @@
 ---
-title: "Ahmed's Portfolio"
+title: "Home"
 ---
 
-This is a Quarto website.
+## Ahmed Albarqi  
+** Policy Research | Computational Social Science Research  | Applied Research **
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Policy & Computational Social Science Researcher with strong expertise in causal inference, econometrics, and applied machine learning. Experienced in designing and executing quasi-experimental analyses using large-scale administrative and survey data to evaluate urban & social policies.
+
+Skilled in building statistical models, conducting program and policy evaluations, and applying time series, machine learning, and panel data methods. Demonstrated ability to translate complex quantitative findings into clear, actionable insights for policymakers, regulators, international institutions, and business leaders.
+
+---
+
+## Area of Interests
+- Causal inference and quasi-experimental methods  
+- Econometric and time-series modeling  
+- Social policy research and evaluation  
+- Computational social science and applied machine learning  
+
+---
+
+## Contact
+
+- **Email:** asbarqi@gmail.com 
+- **GitHub:** https://github.com/asbarqi  
+- **LinkedIn:** https://www.linkedin.com/in/asbarqi/
+
+---
+
+## Selected Work
+- [Rent vs Shelter Population in NYC](projects/rent_shelter_var.Rmd)
+- [Refugees and House Prices in Europe](projects/Refugees_EU.Rmd)
+- [Fertility Rate Forecasting](projects/fert_rate.Rmd)

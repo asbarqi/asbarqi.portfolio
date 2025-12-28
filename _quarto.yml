@@ -3,17 +3,22 @@ project:
   output-dir: docs
 
 website:
-  title: "Ahmed's Portfolio"
+  title: "Ahmed Albarqi"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - href: projects.qmd
-        text: Projects
-      - href: about.qmd
-        text: About
+        text: Research & Projects
+      - href: visualizations.qmd
+        text: Visualizations
+    right:
+      - icon: github
+        href: https://github.com/asbarqi
+      - icon: linkedin
+        href: https://www.linkedin.com/in/YOUR-LINKEDIN/
 
 format:
   html:
-    theme: cosmo
+    theme: litera
     toc: true
