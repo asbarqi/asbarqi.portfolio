@@ -1,13 +1,8 @@
 ---
 title: ' Report \break "Vector Autoregressive (VAR) Modeling for Shelter Population & Median rent asked in NYC" '
-author: "**Studnet**  \nAhmed Albarqi (aa5550)  \n"
+author: "**Studnet**  \nAhmed Albarqi  \n"
 date: "`r Sys.Date()`"
 output:
-  bookdown::pdf_document2:
-    toc: false
-    latex_engine: xelatex
-    toc_depth: '3'
-    number_sections: true
   html_document:
     toc: true
     toc_depth: 3
@@ -17,6 +12,11 @@ output:
     theme: default
     fig_caption: true
     df_print: tibble
+  bookdown::pdf_document2:
+    toc: false
+    latex_engine: xelatex
+    toc_depth: '3'
+    number_sections: true
   bookdown: default
 urlcolor: blue
 ---
@@ -54,6 +54,18 @@ Homelessness is one of New York City’s most persistent and structurally comple
 
 This report conducts a detailed time-series analysis using a Vector Autoregressive (VAR) framework to examine the relationship between the monthly average shelter population and the median asking rent in New York City over the period from March 2021 to October 2025. The analysis explores how these two variables co-evolve over time and interact through their respective lag structures. In addition, the estimated model is used to generate forecasts for both variables over a 12-month horizon, from November 2025 to October 2026, providing insight into potential future trends in housing affordability and shelter demand.
 
+## Research Questions
+
+This report examines the dynamic relationship between housing affordability and homelessness in New York City using a Vector Autoregressive (VAR) framework. The analysis is guided by the following research questions:
+
+1. **What is the dynamic relationship between median asking rents and the shelter population in New York City?**  
+   How do changes in rental prices and shelter population co-evolve over time, and how does each variable respond to its own past values and those of the other variable?
+
+2. **Do changes in median asking rents Granger-cause changes in the shelter population, and vice versa?**  
+   To what extent do past movements in rents help predict future shelter demand, and is there evidence of feedback effects from shelter population changes to rental prices?
+
+3. **What is the timing and magnitude of the shelter population’s response to rental price shocks?**  
+   How quickly do shocks to housing affordability transmit to the shelter system, and are these effects short-lived or persistent?
 
 # Data Sources and Description
 The analysis relies on two primary variables: the monthly average number of individuals in homeless shelters and the median asking rent in New York City. While rental data are reported at a monthly frequency, the shelter population data are originally available on a daily basis. To ensure consistency across series, the daily shelter counts were aggregated to monthly averages.
@@ -146,11 +158,95 @@ adf_dln_rent    <- adf.test(Ys_dlogs[,"dln_rent"])
 
 Stationarity is a prerequisite for valid VAR estimation and forecasting. Time series that exhibit trends or unit roots can lead to spurious regression results if modeled in levels.
 
-Visual inspection of the level series **Figure 1 in the Appendix** indicates that both the monthly average shelter population and the median asking rent display trending behavior. Consistent with this observation, Augmented Dickey–Fuller (ADF) test results reported in **Table 1** fail to reject the null hypothesis of a unit root for both series.
+Visual inspection of the level series **Figure 1** indicates that both the monthly average shelter population and the median asking rent display trending behavior hence the series are non-stationarity. Consistent with this observation, Augmented Dickey–Fuller (ADF) test results reported in **Table 1** fail to reject the null hypothesis of a unit root for both series.
 
-Applying logarithmic transformations does not resolve the non-stationarity. As shown in **Figure 2** and confirmed by the ADF results in **Table 2**, the log-transformed series remain non-stationary.
 
-However, taking first differences of the logarithmic series yields stationary processes. **Figure 3** demonstrates stable behavior for both differenced series, and the ADF test results in **Table 3** reject the null hypothesis of non-stationarity at conventional significance levels. Consequently, both variables are treated as integrated of order one, I(1), and the VAR model is estimated using first differences of the log-transformed series.
+```{r shelter-rent-subfigures, echo=FALSE, fig.align='center', fig.cap="Figure 1: Shelter Population and Median Rent Over Time", fig.subcap=c("Shelter Population", "Median Rent Asked"), message=FALSE, warning=FALSE, out.height="40%", out.width="100%"}
+par(mfrow = c(1, 2))
+
+plot(Ys[, "shelter"],main = "Shelter Population",ylab = "Average Individuals in Shelters")
+
+plot(Ys[, "rent"], main = "Median Rent Asked", ylab = "Median Rent Asked ($)")
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+adf_results <- tribble(
+  ~Variable,             ~Lag, ~ADF,    ~P_value,
+  "Shelter Population",   0,   -0.34,   0.986,
+  "Shelter Population",   1,   -1.20,   0.899,
+  "Shelter Population",   2,   -1.03,   0.925,
+  "Shelter Population",   3,   -1.63,   0.721,
+  "Median Rent",          0,   -1.54,   0.755,
+  "Median Rent",          1,   -2.42,   0.397,
+  "Median Rent",          2,   -2.83,   0.238,
+  "Median Rent",          3,   -2.49,   0.371)
+
+adf_results %>% 
+  kable(digits = 3, caption = "Table 1: ADF Test Results for Shelter Population and Median Rent") %>%
+  kable_styling(latex_options = c("hold_position", "striped"))
+```
+
+
+Applying logarithmic transformations does not resolve the non-stationarity. As shown and confirmed by ADF results in **Table 2**, the log-transformed series remain non-stationary.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+adf_ln_results <- tribble(
+  ~Variable,        ~Lag, ~ADF,     ~P_value,
+  "Log Shelter",     0,   -0.437,   0.981,
+  "Log Shelter",     1,   -1.377,   0.824,
+  "Log Shelter",     2,   -1.179,   0.902,
+  "Log Shelter",     3,   -1.742,   0.673,
+  
+  "Log Rent",        0,   -1.600,   0.731,
+  "Log Rent",        1,   -2.310,   0.440,
+  "Log Rent",        2,   -2.690,   0.290,
+  "Log Rent",        3,   -2.290,   0.451
+)
+
+adf_ln_results %>%
+  kable( digits = 3,
+        caption = " Table 2: ADF Test Results (Log Variables) with Drift and Trend") %>%
+  kable_styling(latex_options = c("hold_position", "striped"))
+```
+
+
+However, taking first differences of the logarithmic series yields stationary processes. **Figure 2** demonstrates stable behavior for both differenced series, and the ADF test results in **Table 3** reject the null hypothesis of non-stationarity at conventional significance levels. Consequently, both variables are treated as integrated of order one, I(1), and the VAR model is estimated using first differences of the log-transformed series.
+
+
+```{r shelter-rent-growth-subfigures, echo=FALSE, fig.align='center', fig.cap="Figure 2: Growth Rates of Shelter Population and Median Rent", fig.subcap=c("Growth Rate of Shelter Population", "Growth Rate of Median Rent"), message=FALSE, warning=FALSE, out.height="40%", out.width="100%"}
+
+par(mfrow = c(1, 2))
+
+plot(Ys_dlogs[, "dln_shelter"],
+     main = "Growth Rate of Shelter",
+     ylab = "% Growth Rate")
+
+plot(Ys_dlogs[, "dln_rent"],
+     main = "Growth Rate of Rent",
+     ylab = "% Growth Rate")
+```
+
+
+```{r echo=FALSE}
+adf_dlog_results <- tribble(
+  ~Variable,              ~Lag, ~ADF,    ~P_value,
+  "Diff Log Shelter",      0,   -2.96,   0.0100,
+  "Diff Log Shelter",      1,   -2.83,   0.0100,
+  "Diff Log Shelter",      2,   -1.93,   0.0537,
+  "Diff Log Shelter",      3,   -2.18,   0.0311,
+
+  "Diff Log Rent",         0,   -3.91,   0.0100,
+  "Diff Log Rent",         1,   -2.82,   0.0100,
+  "Diff Log Rent",         2,   -2.87,   0.0100,
+  "Diff Log Rent",         3,   -3.35,   0.0100
+)
+
+adf_dlog_results %>%
+  kable( digits = 3,
+        caption = "Table 3: ADF Test Results for Differenced Log Variables") %>%
+  kable_styling(latex_options = c("hold_position", "striped"))
+```
+
 
 
 ## Cointegration
@@ -172,6 +268,22 @@ Johansen’s cointegration test was conducted using the log-level series. As rep
 
 Given the absence of cointegration, a VAR model in first differences is appropriate, and a VECM specification is not warranted.
 
+
+```{r echo=FALSE}
+
+johansen_results <- tribble(
+  ~Hypothesis, ~Test_Statistic, ~Crit_10pct, ~Crit_5pct, ~Crit_1pct,
+  "r ≤ 1",        3.22,             7.52,        9.24,       12.97,
+  "r = 0",        8.26,            13.75,       15.67,       20.20
+)
+
+johansen_results %>%
+  kable(digits = 2,
+        caption = "Table 4: Johansen Cointegration Test Results (Maximum Eigenvalue Statistic)") %>%
+  kable_styling(latex_options = c("hold_position", "striped"))
+```
+
+
 # VAR Model
 
 Since both series are I(1) and not cointegrated, a VAR model is estimated using the first differences of their logarithms. This specification captures short-run dynamics and interdependencies without imposing long-run equilibrium restrictions.
@@ -188,6 +300,24 @@ p_choice
 ```
 
 Optimal lag length was determined using information criteria, including AIC, SC, and HQ, as shown in **Table 5**. Based on the majority of criteria, the selected lag order is **VAR(4)**.
+
+
+
+```{r echo=FALSE}
+
+lag_selection <- tribble(
+  ~Criterion, ~Lag1, ~Lag2, ~Lag3, ~Lag4, ~Lag5,
+  "AIC", -1.581616e+01, -1.570725e+01, -1.607660e+01, -1.617376e+01, -1.607701e+01,
+  "HQ",  -1.572827e+01, -1.556077e+01, -1.587153e+01, -1.591010e+01, -1.575475e+01,
+  "SC",  -1.558451e+01, -1.532116e+01, -1.553608e+01, -1.547881e+01, -1.522762e+01
+)
+
+lag_selection %>%
+  kable(digits = 4,
+        caption = "Table 5: Lag Length Selection Criteria (AIC, HQ, SC(BIC))") %>%
+  kable_styling(latex_options = c("hold_position", "striped"))
+```
+
 
 
 ## Model Specifications
@@ -239,6 +369,20 @@ To assess model validity and robustness, several diagnostic tests were conducted
 
 Visual inspection of the residual plots **Figure 3** suggests no systematic patterns, indicating the absence of heteroskedasticity or remaining serial correlation.
 
+
+```{r shelter-rent-resid-subfigures, echo=FALSE, fig.align='center', fig.cap="Figure 3: Residuals Plots of VAR(4) Model", fig.subcap=c("Change in Shelter (Percentage Change)", "Change in Rent (Percentage Change)"), message=FALSE, warning=FALSE, out.height="40%", out.width="100%"}
+
+var_resid <- residuals(var_model)
+
+par(mfrow = c(1, 2))
+
+plot(var_resid[, "dln_shelter"], type = "l", main = " Shelter Residual Plot", ylab = "Residual", xlab = "")
+
+plot(var_resid[, "dln_rent"], type = "l", main = "Rent Residual Plot", ylab = "Residual", xlab = "")
+```
+
+
+
 ## Portmanteau-test for Autocorrelation
 ```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 serial_test <- serial.test(var_model, lags.pt = 12, type = "PT.asymptotic")
@@ -247,12 +391,45 @@ df_val  <- serial_test$serial$parameter
 p_val   <- serial_test$serial$p.value
 serial_test
 ```
-The Portmanteau test was applied to formally test for residual autocorrelation. As reported in **Table 6**, the test yields a p-value of **`r round(p_val,2)`**, which is greater than 0.05. Consequently, we fail to reject the null hypothesis of no serial correlation, supporting the adequacy of the model specification.
+The Portmanteau test was applied to formally test for residual autocorrelation. As reported in **Table 7**, the test yields a p-value of **`r round(p_val,2)`**, which is greater than 0.05. Consequently, we fail to reject the null hypothesis of no serial correlation, supporting the adequacy of the model specification.
+
+```{r echo=FALSE}
+serial_tbl <- tibble(
+  Statistic = chi_sq,
+  Degrees_of_Freedom = df_val,
+  P_Value = p_val
+)
+
+serial_tbl %>% kable(digits = 4, caption = "Table 7: Portmanteau Serial Correlation Test (12 Lags)") %>%
+  kable_styling(latex_options = c("hold_position"))
+```
 
 
 ## Autocorrelation Function (ACF) & Partiall Autocorrelation Function (PACF)
 
 Further confirmation is provided by the ACF and PACF plots **Figure 4**, where all autocorrelation coefficients lie within the 95 percent confidence bounds. These results indicate that the residuals behave as white noise.
+
+
+
+
+```{r acf-pacf-residuals, echo=FALSE, fig.align='center', fig.cap="Figure 4: ACF and PACF of Residuals for Shelter and Rent", fig.subcap=c("ACF: Shelter", "PACF: Shelter", "ACF: Rent", "PACF: Rent"), message=FALSE, warning=FALSE, out.height="80%", out.width="100%"}
+
+var_resid <- residuals(var_model)
+
+par(mfrow = c(2, 2))
+
+acf(var_resid[, "dln_shelter"], main = "ACF:Shelter", lag.max = "10")
+
+pacf(var_resid[, "dln_shelter"], main = "PACF: Shelter", lag.max = "10")
+
+acf(var_resid[, "dln_rent"], main = "ACF: Rent", lag.max = "10")
+
+pacf(var_resid[, "dln_rent"], main = "PACF: Rent ", lag.max = "10")
+
+```
+
+
+
 
 # Impulse Response Functions (IRF)
 
@@ -262,9 +439,49 @@ Impulse response functions illustrate how a one-time shock to one variable affec
 
 **Figure 5** shows that a 1 percent shock to shelter population growth has a persistent effect on itself, lasting approximately nine months and peaking in the fourth month after the shock. The same shock exerts a smaller and shorter-lived effect on rent growth, lasting around four months, with an initial positive response followed by a brief negative adjustment.
 
+
+
+```{r irf-shelter, echo=FALSE, fig.cap="Figure 5: Impulse Response Functions to a Shock in Shelter Population", message=FALSE, warning=FALSE, out.width="100%"}
+par(cex.axis = 0.7, cex.lab = 0.8)
+
+irf_shelter <- irf(
+  var_model,
+  impulse  = "dln_shelter",
+  response = c("dln_shelter", "dln_rent"),
+  n.ahead  = 12,
+  boot     = TRUE,
+  ci       = 0.95
+)
+
+plot(irf_shelter)
+
+par(cex.axis = 1, cex.lab = 1)
+
+```
+
+
 ## Rent Impulse Response Functions (IRF)
 
 **Figure 6** indicates that a 1 percent shock to median rent growth generates a delayed but positive response in shelter population growth, beginning in the second month and persisting for up to nine months, with the largest effect occurring in the fourth month. The impact on rent growth itself declines over time, turning negative after the fourth month and persisting for roughly ten periods.
+
+```{r irf-rent, echo=FALSE, fig.cap="Figure 6: Impulse Response Functions to a Shock in Median Rent", message=FALSE, warning=FALSE, out.width="100%"}
+par(cex.axis = 0.7, cex.lab = 0.8)
+
+irf_rent <- irf(
+  var_model,
+  impulse  = "dln_rent",
+  response = c("dln_shelter", "dln_rent"),
+  n.ahead  = 12,
+  boot     = TRUE,
+  ci       = 0.95
+)
+
+plot(irf_rent)
+
+par(cex.axis = 1, cex.lab = 1)
+
+```
+
 
 
 # Granger Causality
@@ -284,16 +501,29 @@ p_shelter_to_rent  <- gc_shelter_to_rent$Granger$p.value
 
 Granger causality tests were conducted to examine whether lagged values of one variable improve the prediction of the other.
 
-Results reported in **Table 7** show that changes in median rent Granger-cause changes in shelter population, with a p-value of **`r round(p_rent_to_shelter,2)`**. Similarly, changes in shelter population Granger-cause changes in median rent, with a p-value of **`r round(p_shelter_to_rent,2)`**.
+Results reported in **Table 8** show that changes in median rent Granger-cause changes in shelter population, with a p-value of **`r round(p_rent_to_shelter,2)`**. Similarly, changes in shelter population Granger-cause changes in median rent, with a p-value of **`r round(p_shelter_to_rent,2)`**.
 
 These findings indicate bilateral (feedback) Granger causality, suggesting that both variables contain predictive information about each other’s future movements.
 
 
+```{r echo=FALSE}
+granger_tbl <- tribble(
+  ~Null_Hypothesis,                                      ~F_Test, ~df1, ~df2, ~P_Value,
+  "dln_rent does NOT Granger-cause dln_shelter",          4.2827,   4,    84,   0.003341,
+  "dln_shelter does NOT Granger-cause dln_rent",          3.6639,   4,    84,   0.008439
+)
+
+granger_tbl %>%
+  kable( digits = 4, caption = "Table 8: Granger Test Results") %>%
+  kable_styling(latex_options = c("hold_position", "striped"))
+```
+
+
 # Forecasting
 
-Using the estimated VAR(4) model, 12-month-ahead forecasts were generated for both variables. **Figure 7** presents forecasts of percentage changes, which were subsequently transformed back into levels for interpretability.
+Using the estimated VAR(4) model, 12-month-ahead forecasts were generated for both variables. **Figure 7** in the appendix presents forecasts of percentage changes, which were subsequently transformed back into levels for interpretability.
 
-**Table 8** reports the forecasted values for both growth rates and levels, while **Figures 8 and 9** compare historical data with projected paths for shelter population and median rent. These forecasts provide insight into expected short-run dynamics in housing affordability and shelter demand, conditional on historical relationships.
+**Table 9** in the appendix reports the forecasted values for both growth rates and levels, while **Figures 8 and 9** compare historical data with projected paths for shelter population and median rent. These forecasts provide insight into expected short-run dynamics in housing affordability and shelter demand, conditional on historical relationships.
 
 ```{r message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
 # 1. Forecast 12 months ahead
@@ -358,102 +588,6 @@ level_forecasts
 ```
 
 
-# Conclusion
-
-This report developed and evaluated a VAR(4) model to analyze the dynamic relationship between monthly average shelter population and median asking rent in New York City. Using data from the Department of Homeless Services and StreetEasy, the analysis carefully addressed stationarity, cointegration, and model specification to avoid spurious inference. Diagnostic tests confirmed that the estimated model is well specified and free from residual autocorrelation.
-
-The results reveal strong short-run interactions between rent growth and shelter population growth, including evidence of bilateral Granger causality. Impulse response analysis highlights the persistence and timing of shocks across variables, while the forecasts provide forward-looking insights into potential trends over the next year.
-
-Overall, the findings underscore the tight and dynamic linkage between housing affordability and homelessness in New York City, reinforcing the importance of coordinated housing and social policy interventions to address shelter demand and housing market pressures simultaneously.
-
-\newpage
-
-
-# Appendix
-
-## Figures & Tables
-
-
-```{r shelter-rent-subfigures, echo=FALSE, fig.align='center', fig.cap="Shelter Population and Median Rent Over Time", fig.subcap=c("Shelter Population", "Median Rent Asked"), message=FALSE, warning=FALSE, out.height="40%", out.width="100%"}
-par(mfrow = c(1, 2))
-
-plot(Ys[, "shelter"],main = "Shelter Population",ylab = "Average Individuals in Shelters")
-
-plot(Ys[, "rent"], main = "Median Rent Asked", ylab = "Median Rent Asked ($)")
-```
-
-
-
-```{r shelter-rent-growth-subfigures, echo=FALSE, fig.align='center', fig.cap="Growth Rates of Shelter Population and Median Rent", fig.subcap=c("Growth Rate of Shelter Population", "Growth Rate of Median Rent"), message=FALSE, warning=FALSE, out.height="40%", out.width="100%"}
-
-par(mfrow = c(1, 2))
-
-plot(Ys_dlogs[, "dln_shelter"],
-     main = "Growth Rate of Shelter",
-     ylab = "% Growth Rate")
-
-plot(Ys_dlogs[, "dln_rent"],
-     main = "Growth Rate of Rent",
-     ylab = "% Growth Rate")
-```
-
-
-
-```{r shelter-rent-resid-subfigures, echo=FALSE, fig.align='center', fig.cap="Residuals Plots of VAR(4) Model", fig.subcap=c("Change in Shelter (Percentage Change)", "Change in Rent (Percentage Change)"), message=FALSE, warning=FALSE, out.height="40%", out.width="100%"}
-
-var_resid <- residuals(var_model)
-
-par(mfrow = c(1, 2))
-
-plot(var_resid[, "dln_shelter"], type = "l", main = " Shelter Residual Plot", ylab = "Residual", xlab = "")
-
-plot(var_resid[, "dln_rent"], type = "l", main = "Rent Residual Plot", ylab = "Residual", xlab = "")
-```
-
-
-
-```{r acf-pacf-residuals, echo=FALSE, fig.align='center', fig.cap="ACF and PACF of Residuals for Shelter and Rent", fig.subcap=c("ACF: Shelter", "PACF: Shelter", "ACF: Rent", "PACF: Rent"), message=FALSE, warning=FALSE, out.height="80%", out.width="100%"}
-
-var_resid <- residuals(var_model)
-
-par(mfrow = c(2, 2))
-
-acf(var_resid[, "dln_shelter"], main = "ACF:Shelter", lag.max = "10")
-
-pacf(var_resid[, "dln_shelter"], main = "PACF: Shelter", lag.max = "10")
-
-acf(var_resid[, "dln_rent"], main = "ACF: Rent", lag.max = "10")
-
-pacf(var_resid[, "dln_rent"], main = "PACF: Rent ", lag.max = "10")
-
-```
-
-
-
-```{r irf-plot, echo=FALSE, fig.cap="Impulse Response Functions from VAR(4)", message=FALSE, warning=FALSE, out.width="100%"}
-
-
-par(cex.axis = 0.7,  
-    cex.lab  = 0.8)  
-
-irf_all <- irf(var_model,impulse  = c("dln_shelter", "dln_rent"), response = c("dln_shelter", "dln_rent"), n.ahead  = 12, boot     = TRUE,ci= 0.95)
-
-plot(irf_all)
-
-# Reset par()
-par(cex.axis = 1, cex.lab = 1)
-
-```
-
-
-
-```{r var-forecast-subfigures, echo=FALSE, fig.align='center', fig.cap="12-Month Forecasts from the VAR(4) Model", fig.subcap=c("Forecast of dln(Shelter)", "Forecast of dln(Rent)"), message=FALSE, warning=FALSE, out.height="45%", out.width="100%"}
-
-plot(fcst)
-```
-
-
-
 ```{r forecast, echo=FALSE, fig.cap="Forecasting", message=FALSE, warning=FALSE, out.width="100%"}
 
 # dates
@@ -500,7 +634,7 @@ plot_shelter <- ggplot(shelter_all, aes(x = month, y = shelter,
                                         color = type, linetype = type)) +
   geom_line(size = 1) +
   labs(
-    title = "Shelter Population: Actual and Forecast",
+    title = "Figure 8: Shelter Population: Actual and Forecast",
     x = "Month",
     y = "Shelter Population"
   ) +
@@ -516,7 +650,7 @@ plot_rent <- ggplot(rent_all, aes(x = month, y = rent,
                                   color = type, linetype = type)) +
   geom_line(size = 1) +
   labs(
-    title = "Median Rent: Actual and Forecast",
+    title = "Figure 9: Median Rent: Actual and Forecast",
     x = "Month",
     y = "Median Rent (USD)"
   ) +
@@ -529,102 +663,45 @@ print(plot_rent)
 
 ```
 
+# Policy Implications 
+
+The results of the VAR analysis carry several important implications for housing and homelessness policy in New York City. First, the presence of bilateral Granger causality between rent growth and shelter population growth suggests that homelessness should not be treated solely as a downstream consequence of housing market conditions. Instead, the findings indicate a feedback relationship, where pressures in the shelter system may also be associated with subsequent movements in the rental market. This reinforces the need for policy frameworks that jointly address housing affordability and homelessness, rather than treating them as separate domains governed by distinct agencies or interventions.
+
+Second, the impulse response analysis highlights the timing and persistence of housing affordability shocks. A shock to median rent growth generates a delayed but sustained increase in shelter population growth, with effects lasting up to nine months. This lagged response implies that homelessness prevention policies must be forward-looking rather than reactive. By the time shelter entries rise sharply, affordability pressures have often been building for several months. Early warning indicators based on rental market dynamics—such as rapid rent acceleration in specific submarkets—could therefore be used to trigger preemptive interventions, including emergency rental assistance, eviction prevention, and short-term subsidies targeted at at-risk households.
+
+Third, the persistence of shocks to shelter population growth suggests that once individuals enter the shelter system, elevated demand can remain for an extended period. This underscores the importance of policies that focus on reducing shelter inflows, not merely expanding shelter capacity. While short-run capacity expansions may be necessary during periods of stress, the results imply that without addressing the underlying affordability constraints, shelter demand is likely to remain elevated. Investments in rapid rehousing, housing vouchers, and supportive housing placements can help shorten shelter stays and reduce the persistence of shelter population growth following adverse shocks.
+
+Finally, the forecast results indicate continued short-run volatility in both rent growth and shelter demand, reinforcing the value of integrating forecast-based planning into policy design. City agencies could use similar time-series models as part of an operational monitoring system to anticipate shelter demand and budgetary needs under different housing market scenarios. Such an approach would allow policymakers to better align housing production, rental assistance funding, and homelessness services with expected conditions, improving both fiscal planning and policy effectiveness.
+
+Taken together, the findings suggest that effective homelessness policy in New York City requires a coordinated, anticipatory approach that links housing affordability interventions with shelter system management. Policies that stabilize rents, expand access to affordable housing, and intervene early in response to emerging affordability pressures are likely to be more effective than strategies that respond only after homelessness has already increased.
+
+# Conclusion
+
+This report developed and evaluated a VAR(4) model to analyze the dynamic relationship between monthly average shelter population and median asking rent in New York City. Using data from the Department of Homeless Services and StreetEasy, the analysis carefully addressed stationarity, cointegration, and model specification to avoid spurious inference. Diagnostic tests confirmed that the estimated model is well specified and free from residual autocorrelation.
+
+The results reveal strong short-run interactions between rent growth and shelter population growth, including evidence of bilateral Granger causality. Impulse response analysis highlights the persistence and timing of shocks across variables, while the forecasts provide forward-looking insights into potential trends over the next year.
+
+Overall, the findings underscore the tight and dynamic linkage between housing affordability and homelessness in New York City, reinforcing the importance of coordinated housing and social policy interventions to address shelter demand and housing market pressures simultaneously.
+
+\newpage
+
+
+# Appendix
+
+## Figures & Tables
+
+
+
+```{r var-forecast-subfigures, echo=FALSE, fig.align='center', fig.cap="12-Month Forecasts from the VAR(4) Model", fig.subcap=c("Forecast of dln(Shelter)", "Forecast of dln(Rent)"), message=FALSE, warning=FALSE, out.height="45%", out.width="100%"}
+
+plot(fcst)
+```
+
 
 \newpage
 
 \newpage
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
-adf_results <- tribble(
-  ~Variable,             ~Lag, ~ADF,    ~P_value,
-  "Shelter Population",   0,   -0.34,   0.986,
-  "Shelter Population",   1,   -1.20,   0.899,
-  "Shelter Population",   2,   -1.03,   0.925,
-  "Shelter Population",   3,   -1.63,   0.721,
-  "Median Rent",          0,   -1.54,   0.755,
-  "Median Rent",          1,   -2.42,   0.397,
-  "Median Rent",          2,   -2.83,   0.238,
-  "Median Rent",          3,   -2.49,   0.371)
-
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
-adf_results %>% 
-  kable("latex", booktabs = TRUE, digits = 3, caption = "ADF Test Results for Shelter Population and Median Rent") %>%
-  kable_styling(latex_options = c("hold_position", "striped"))
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
-adf_ln_results <- tribble(
-  ~Variable,        ~Lag, ~ADF,     ~P_value,
-  "Log Shelter",     0,   -0.437,   0.981,
-  "Log Shelter",     1,   -1.377,   0.824,
-  "Log Shelter",     2,   -1.179,   0.902,
-  "Log Shelter",     3,   -1.742,   0.673,
-  
-  "Log Rent",        0,   -1.600,   0.731,
-  "Log Rent",        1,   -2.310,   0.440,
-  "Log Rent",        2,   -2.690,   0.290,
-  "Log Rent",        3,   -2.290,   0.451
-)
-
-adf_ln_results %>%
-  kable("latex", booktabs = TRUE, digits = 3,
-        caption = "ADF Test Results (Log Variables) with Drift and Trend") %>%
-  kable_styling(latex_options = c("hold_position", "striped"))
-```
-
-
-
-```{r echo=FALSE}
-adf_dlog_results <- tribble(
-  ~Variable,              ~Lag, ~ADF,    ~P_value,
-  "Diff Log Shelter",      0,   -2.96,   0.0100,
-  "Diff Log Shelter",      1,   -2.83,   0.0100,
-  "Diff Log Shelter",      2,   -1.93,   0.0537,
-  "Diff Log Shelter",      3,   -2.18,   0.0311,
-
-  "Diff Log Rent",         0,   -3.91,   0.0100,
-  "Diff Log Rent",         1,   -2.82,   0.0100,
-  "Diff Log Rent",         2,   -2.87,   0.0100,
-  "Diff Log Rent",         3,   -3.35,   0.0100
-)
-
-adf_dlog_results %>%
-  kable("latex", booktabs = TRUE, digits = 3,
-        caption = "ADF Test Results for Differenced Log Variables") %>%
-  kable_styling(latex_options = c("hold_position", "striped"))
-```
-
-
-```{r echo=FALSE}
-
-johansen_results <- tribble(
-  ~Hypothesis, ~Test_Statistic, ~Crit_10pct, ~Crit_5pct, ~Crit_1pct,
-  "r ≤ 1",        3.22,             7.52,        9.24,       12.97,
-  "r = 0",        8.26,            13.75,       15.67,       20.20
-)
-
-johansen_results %>%
-  kable("latex", booktabs = TRUE, digits = 2,
-        caption = "Johansen Cointegration Test Results (Maximum Eigenvalue Statistic)") %>%
-  kable_styling(latex_options = c("hold_position", "striped"))
-```
-
-```{r echo=FALSE}
-
-lag_selection <- tribble(
-  ~Criterion, ~Lag1, ~Lag2, ~Lag3, ~Lag4, ~Lag5,
-  "AIC", -1.581616e+01, -1.570725e+01, -1.607660e+01, -1.617376e+01, -1.607701e+01,
-  "HQ",  -1.572827e+01, -1.556077e+01, -1.587153e+01, -1.591010e+01, -1.575475e+01,
-  "SC",  -1.558451e+01, -1.532116e+01, -1.553608e+01, -1.547881e+01, -1.522762e+01
-)
-
-lag_selection %>%
-  kable("latex", booktabs = TRUE, digits = 4,
-        caption = "Lag Length Selection Criteria (AIC, HQ, SC(BIC))") %>%
-  kable_styling(latex_options = c("hold_position", "striped"))
-```
 
 ```{r echo=FALSE}
 var_results <- tribble(
@@ -652,33 +729,11 @@ var_results <- tribble(
 )
 
 var_results %>%
-  kable("latex", booktabs = TRUE, digits = 4,
-        caption = "Estimation Results for VAR(4) Model") %>%
+  kable(digits = 4,
+        caption = "Table 6: Estimation Results for VAR(4) Model") %>%
   kable_styling(latex_options = c("hold_position", "striped"))
 ```
 
-```{r echo=FALSE}
-serial_tbl <- tibble(
-  Statistic = chi_sq,
-  Degrees_of_Freedom = df_val,
-  P_Value = p_val
-)
-
-serial_tbl %>% kable("latex", booktabs = TRUE, digits = 4, caption = "Portmanteau Serial Correlation Test (12 Lags)") %>%
-  kable_styling(latex_options = c("hold_position"))
-```
-
-```{r echo=FALSE}
-granger_tbl <- tribble(
-  ~Null_Hypothesis,                                      ~F_Test, ~df1, ~df2, ~P_Value,
-  "dln_rent does NOT Granger-cause dln_shelter",          4.2827,   4,    84,   0.003341,
-  "dln_shelter does NOT Granger-cause dln_rent",          3.6639,   4,    84,   0.008439
-)
-
-granger_tbl %>%
-  kable("latex", booktabs = TRUE, digits = 4) %>%
-  kable_styling(latex_options = c("hold_position", "striped"))
-```
 
 ```{r echo=FALSE}
 
@@ -707,7 +762,7 @@ forecast_manual <- tibble(
     84999.40, 85827.52, 86708.61, 87622.68
   ),
 
-  rent_mean = c(
+  rent_median = c(
     3934.561, 3940.279, 3966.668, 4015.964,
     4072.544, 4124.471, 4169.828, 4209.056,
     4240.883, 4268.211, 4295.197, 4323.089
@@ -715,11 +770,8 @@ forecast_manual <- tibble(
 )
 
 forecast_manual %>%
-  kable(
-    "latex",
-    booktabs = TRUE,
-    digits = 4,
-    caption = "12-Month Forecasts: Percentage Changes and Levels"
+  kable(digits = 4,
+    caption = "Table 9: 12-Month Forecasts: Percentage Changes and Levels"
   ) %>%
   kable_styling(latex_options = c("hold_position"))
 ```
