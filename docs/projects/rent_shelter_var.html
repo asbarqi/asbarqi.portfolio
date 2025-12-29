@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Studnet Ahmed Albarqi (aa5550)">
+<meta name="author" content="Studnet Ahmed Albarqi">
 <meta name="dcterms.date" content="2025-12-29">
 
 <title>Report “Vector Autoregressive (VAR) Modeling for Shelter Population &amp; Median rent asked in NYC”</title>
@@ -73,6 +73,8 @@ ul.task-list li input[type="checkbox"] {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -198,6 +200,18 @@ window.Quarto = {
 <h1>Introdution</h1>
 <p>Homelessness is one of New York City’s most persistent and structurally complex policy challenges. It has remained a central issue for successive governors, mayors, and political leaders, reflecting deep-rooted pressures in the city’s housing market and social safety net. Public discourse and empirical research have consistently linked homelessness to housing affordability, particularly rising rents, with higher rental costs often associated with increases in the number of individuals relying on shelter systems. Understanding the dynamic relationship between rental prices and shelter population is therefore critical for policymakers seeking to design effective housing and homelessness interventions.</p>
 <p>This report conducts a detailed time-series analysis using a Vector Autoregressive (VAR) framework to examine the relationship between the monthly average shelter population and the median asking rent in New York City over the period from March 2021 to October 2025. The analysis explores how these two variables co-evolve over time and interact through their respective lag structures. In addition, the estimated model is used to generate forecasts for both variables over a 12-month horizon, from November 2025 to October 2026, providing insight into potential future trends in housing affordability and shelter demand.</p>
+<section id="research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
+<p>This report examines the dynamic relationship between housing affordability and homelessness in New York City using a Vector Autoregressive (VAR) framework. The analysis is guided by the following research questions:</p>
+<ol type="1">
+<li><p><strong>What is the dynamic relationship between median asking rents and the shelter population in New York City?</strong><br>
+How do changes in rental prices and shelter population co-evolve over time, and how does each variable respond to its own past values and those of the other variable?</p></li>
+<li><p><strong>Do changes in median asking rents Granger-cause changes in the shelter population, and vice versa?</strong><br>
+To what extent do past movements in rents help predict future shelter demand, and is there evidence of feedback effects from shelter population changes to rental prices?</p></li>
+<li><p><strong>What is the timing and magnitude of the shelter population’s response to rental price shocks?</strong><br>
+How quickly do shocks to housing affordability transmit to the shelter system, and are these effects short-lived or persistent?</p></li>
+</ol>
+</section>
 </section>
 <section id="data-sources-and-description" class="level1">
 <h1>Data Sources and Description</h1>
@@ -245,15 +259,264 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 <section id="stationarity-test" class="level2">
 <h2 class="anchored" data-anchor-id="stationarity-test">Stationarity Test</h2>
 <p>Stationarity is a prerequisite for valid VAR estimation and forecasting. Time series that exhibit trends or unit roots can lead to spurious regression results if modeled in levels.</p>
-<p>Visual inspection of the level series <strong>Figure 1 in the Appendix</strong> indicates that both the monthly average shelter population and the median asking rent display trending behavior. Consistent with this observation, Augmented Dickey–Fuller (ADF) test results reported in <strong>Table 1</strong> fail to reject the null hypothesis of a unit root for both series.</p>
-<p>Applying logarithmic transformations does not resolve the non-stationarity. As shown in <strong>Figure 2</strong> and confirmed by the ADF results in <strong>Table 2</strong>, the log-transformed series remain non-stationary.</p>
-<p>However, taking first differences of the logarithmic series yields stationary processes. <strong>Figure 3</strong> demonstrates stable behavior for both differenced series, and the ADF test results in <strong>Table 3</strong> reject the null hypothesis of non-stationarity at conventional significance levels. Consequently, both variables are treated as integrated of order one, I(1), and the VAR model is estimated using first differences of the log-transformed series.</p>
+<p>Visual inspection of the level series <strong>Figure 1</strong> indicates that both the monthly average shelter population and the median asking rent display trending behavior hence the series are non-stationarity. Consistent with this observation, Augmented Dickey–Fuller (ADF) test results reported in <strong>Table 1</strong> fail to reject the null hypothesis of a unit root for both series.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rent_shelter_var_files/figure-html/shelter-rent-subfigures-1.png" style="width:100.0%;height:40.0%" class="figure-img"></p>
+<figcaption>Shelter Population</figcaption>
+</figure>
+</div>
+</div>
+<p>Figure 1: Shelter Population and Median Rent Over Time</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Table 1: ADF Test Results for Shelter Population and Median Rent</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Lag</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ADF</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">P_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Shelter Population</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-0.34</td>
+<td style="text-align: right;">0.986</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shelter Population</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1.20</td>
+<td style="text-align: right;">0.899</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shelter Population</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-1.03</td>
+<td style="text-align: right;">0.925</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shelter Population</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-1.63</td>
+<td style="text-align: right;">0.721</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Median Rent</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1.54</td>
+<td style="text-align: right;">0.755</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Median Rent</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-2.42</td>
+<td style="text-align: right;">0.397</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Median Rent</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-2.83</td>
+<td style="text-align: right;">0.238</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Median Rent</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-2.49</td>
+<td style="text-align: right;">0.371</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Applying logarithmic transformations does not resolve the non-stationarity. As shown and confirmed by ADF results in <strong>Table 2</strong>, the log-transformed series remain non-stationary.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Table 2: ADF Test Results (Log Variables) with Drift and Trend</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Lag</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ADF</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">P_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Log Shelter</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-0.437</td>
+<td style="text-align: right;">0.981</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log Shelter</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1.377</td>
+<td style="text-align: right;">0.824</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Log Shelter</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-1.179</td>
+<td style="text-align: right;">0.902</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log Shelter</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-1.742</td>
+<td style="text-align: right;">0.673</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Log Rent</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1.600</td>
+<td style="text-align: right;">0.731</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log Rent</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-2.310</td>
+<td style="text-align: right;">0.440</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Log Rent</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-2.690</td>
+<td style="text-align: right;">0.290</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Log Rent</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-2.290</td>
+<td style="text-align: right;">0.451</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>However, taking first differences of the logarithmic series yields stationary processes. <strong>Figure 2</strong> demonstrates stable behavior for both differenced series, and the ADF test results in <strong>Table 3</strong> reject the null hypothesis of non-stationarity at conventional significance levels. Consequently, both variables are treated as integrated of order one, I(1), and the VAR model is estimated using first differences of the log-transformed series.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rent_shelter_var_files/figure-html/shelter-rent-growth-subfigures-1.png" style="width:100.0%;height:40.0%" class="figure-img"></p>
+<figcaption>Growth Rate of Shelter Population</figcaption>
+</figure>
+</div>
+</div>
+<p>Figure 2: Growth Rates of Shelter Population and Median Rent</p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Table 3: ADF Test Results for Differenced Log Variables</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Lag</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ADF</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">P_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Diff Log Shelter</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-2.96</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diff Log Shelter</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-2.83</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diff Log Shelter</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-1.93</td>
+<td style="text-align: right;">0.054</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diff Log Shelter</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-2.18</td>
+<td style="text-align: right;">0.031</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diff Log Rent</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-3.91</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diff Log Rent</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-2.82</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diff Log Rent</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-2.87</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diff Log Rent</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-3.35</td>
+<td style="text-align: right;">0.010</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="cointegration" class="level2">
 <h2 class="anchored" data-anchor-id="cointegration">Cointegration</h2>
 <p>When multiple series are I(1), it is necessary to test for cointegration to determine whether a long-run equilibrium relationship exists. If such a relationship is present, a Vector Error Correction Model (VECM) would be more appropriate than a VAR in differences.</p>
 <p>Johansen’s cointegration test was conducted using the log-level series. As reported in <strong>Table 4</strong>, the test statistic for the null hypothesis of no cointegration (r = 0) is 8.26, which is below the 5 percent critical value of 15.67. Therefore, the null hypothesis cannot be rejected, indicating no evidence of a stable long-run relationship between shelter population and median rent.</p>
 <p>Given the absence of cointegration, a VAR model in first differences is appropriate, and a VECM specification is not warranted.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Table 4: Johansen Cointegration Test Results (Maximum Eigenvalue Statistic)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Hypothesis</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Test_Statistic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Crit_10pct</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Crit_5pct</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Crit_1pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">r ≤ 1</td>
+<td style="text-align: right;">3.22</td>
+<td style="text-align: right;">7.52</td>
+<td style="text-align: right;">9.24</td>
+<td style="text-align: right;">12.97</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">r = 0</td>
+<td style="text-align: right;">8.26</td>
+<td style="text-align: right;">13.75</td>
+<td style="text-align: right;">15.67</td>
+<td style="text-align: right;">20.20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 </section>
 <section id="var-model" class="level1">
@@ -262,6 +525,49 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 <section id="lags-specifications" class="level2">
 <h2 class="anchored" data-anchor-id="lags-specifications">Lags specifications</h2>
 <p>Optimal lag length was determined using information criteria, including AIC, SC, and HQ, as shown in <strong>Table 5</strong>. Based on the majority of criteria, the selected lag order is <strong>VAR(4)</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Table 5: Lag Length Selection Criteria (AIC, HQ, SC(BIC))</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Criterion</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Lag1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Lag2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Lag3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Lag4</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Lag5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AIC</td>
+<td style="text-align: right;">-15.8162</td>
+<td style="text-align: right;">-15.7072</td>
+<td style="text-align: right;">-16.0766</td>
+<td style="text-align: right;">-16.1738</td>
+<td style="text-align: right;">-16.0770</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HQ</td>
+<td style="text-align: right;">-15.7283</td>
+<td style="text-align: right;">-15.5608</td>
+<td style="text-align: right;">-15.8715</td>
+<td style="text-align: right;">-15.9101</td>
+<td style="text-align: right;">-15.7548</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SC</td>
+<td style="text-align: right;">-15.5845</td>
+<td style="text-align: right;">-15.3212</td>
+<td style="text-align: right;">-15.5361</td>
+<td style="text-align: right;">-15.4788</td>
+<td style="text-align: right;">-15.2276</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="model-specifications" class="level2">
 <h2 class="anchored" data-anchor-id="model-specifications">Model Specifications</h2>
@@ -302,72 +608,6 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 <section id="residual-plot" class="level2">
 <h2 class="anchored" data-anchor-id="residual-plot">Residual Plot</h2>
 <p>Visual inspection of the residual plots <strong>Figure 3</strong> suggests no systematic patterns, indicating the absence of heteroskedasticity or remaining serial correlation.</p>
-</section>
-<section id="portmanteau-test-for-autocorrelation" class="level2">
-<h2 class="anchored" data-anchor-id="portmanteau-test-for-autocorrelation">Portmanteau-test for Autocorrelation</h2>
-<p>The Portmanteau test was applied to formally test for residual autocorrelation. As reported in <strong>Table 6</strong>, the test yields a p-value of <strong>0.58</strong>, which is greater than 0.05. Consequently, we fail to reject the null hypothesis of no serial correlation, supporting the adequacy of the model specification.</p>
-</section>
-<section id="autocorrelation-function-acf-partiall-autocorrelation-function-pacf" class="level2">
-<h2 class="anchored" data-anchor-id="autocorrelation-function-acf-partiall-autocorrelation-function-pacf">Autocorrelation Function (ACF) &amp; Partiall Autocorrelation Function (PACF)</h2>
-<p>Further confirmation is provided by the ACF and PACF plots <strong>Figure 4</strong>, where all autocorrelation coefficients lie within the 95 percent confidence bounds. These results indicate that the residuals behave as white noise.</p>
-</section>
-</section>
-<section id="impulse-response-functions-irf" class="level1">
-<h1>Impulse Response Functions (IRF)</h1>
-<p>Impulse response functions illustrate how a one-time shock to one variable affects the current and future values of both variables in the system.</p>
-<section id="shelter-impulse-response-functions-irf" class="level2">
-<h2 class="anchored" data-anchor-id="shelter-impulse-response-functions-irf">Shelter Impulse Response Functions (IRF)</h2>
-<p><strong>Figure 5</strong> shows that a 1 percent shock to shelter population growth has a persistent effect on itself, lasting approximately nine months and peaking in the fourth month after the shock. The same shock exerts a smaller and shorter-lived effect on rent growth, lasting around four months, with an initial positive response followed by a brief negative adjustment.</p>
-</section>
-<section id="rent-impulse-response-functions-irf" class="level2">
-<h2 class="anchored" data-anchor-id="rent-impulse-response-functions-irf">Rent Impulse Response Functions (IRF)</h2>
-<p><strong>Figure 6</strong> indicates that a 1 percent shock to median rent growth generates a delayed but positive response in shelter population growth, beginning in the second month and persisting for up to nine months, with the largest effect occurring in the fourth month. The impact on rent growth itself declines over time, turning negative after the fourth month and persisting for roughly ten periods.</p>
-</section>
-</section>
-<section id="granger-causality" class="level1">
-<h1>Granger Causality</h1>
-<p>Granger causality tests were conducted to examine whether lagged values of one variable improve the prediction of the other.</p>
-<p>Results reported in <strong>Table 7</strong> show that changes in median rent Granger-cause changes in shelter population, with a p-value of <strong>0</strong>. Similarly, changes in shelter population Granger-cause changes in median rent, with a p-value of <strong>0.01</strong>.</p>
-<p>These findings indicate bilateral (feedback) Granger causality, suggesting that both variables contain predictive information about each other’s future movements.</p>
-</section>
-<section id="forecasting" class="level1">
-<h1>Forecasting</h1>
-<p>Using the estimated VAR(4) model, 12-month-ahead forecasts were generated for both variables. <strong>Figure 7</strong> presents forecasts of percentage changes, which were subsequently transformed back into levels for interpretability.</p>
-<p><strong>Table 8</strong> reports the forecasted values for both growth rates and levels, while <strong>Figures 8 and 9</strong> compare historical data with projected paths for shelter population and median rent. These forecasts provide insight into expected short-run dynamics in housing affordability and shelter demand, conditional on historical relationships.</p>
-</section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
-<p>This report developed and evaluated a VAR(4) model to analyze the dynamic relationship between monthly average shelter population and median asking rent in New York City. Using data from the Department of Homeless Services and StreetEasy, the analysis carefully addressed stationarity, cointegration, and model specification to avoid spurious inference. Diagnostic tests confirmed that the estimated model is well specified and free from residual autocorrelation.</p>
-<p>The results reveal strong short-run interactions between rent growth and shelter population growth, including evidence of bilateral Granger causality. Impulse response analysis highlights the persistence and timing of shocks across variables, while the forecasts provide forward-looking insights into potential trends over the next year.</p>
-<p>Overall, the findings underscore the tight and dynamic linkage between housing affordability and homelessness in New York City, reinforcing the importance of coordinated housing and social policy interventions to address shelter demand and housing market pressures simultaneously.</p>
-<div style="page-break-after: always;"></div>
-</section>
-<section id="appendix" class="level1">
-<h1>Appendix</h1>
-<section id="figures-tables" class="level2">
-<h2 class="anchored" data-anchor-id="figures-tables">Figures &amp; Tables</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="rent_shelter_var_files/figure-html/shelter-rent-subfigures-1.png" style="width:100.0%;height:40.0%" class="figure-img"></p>
-<figcaption>Shelter Population</figcaption>
-</figure>
-</div>
-</div>
-<p>Shelter Population and Median Rent Over Time</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="rent_shelter_var_files/figure-html/shelter-rent-growth-subfigures-1.png" style="width:100.0%;height:40.0%" class="figure-img"></p>
-<figcaption>Growth Rate of Shelter Population</figcaption>
-</figure>
-</div>
-</div>
-<p>Growth Rates of Shelter Population and Median Rent</p>
-</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -377,8 +617,37 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 </figure>
 </div>
 </div>
-<p>Residuals Plots of VAR(4) Model</p>
+<p>Figure 3: Residuals Plots of VAR(4) Model</p>
 </div>
+</section>
+<section id="portmanteau-test-for-autocorrelation" class="level2">
+<h2 class="anchored" data-anchor-id="portmanteau-test-for-autocorrelation">Portmanteau-test for Autocorrelation</h2>
+<p>The Portmanteau test was applied to formally test for residual autocorrelation. As reported in <strong>Table 7</strong>, the test yields a p-value of <strong>0.58</strong>, which is greater than 0.05. Consequently, we fail to reject the null hypothesis of no serial correlation, supporting the adequacy of the model specification.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Table 7: Portmanteau Serial Correlation Test (12 Lags)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Statistic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Degrees_of_Freedom</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">P_Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">29.7452</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">0.5811</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="autocorrelation-function-acf-partiall-autocorrelation-function-pacf" class="level2">
+<h2 class="anchored" data-anchor-id="autocorrelation-function-acf-partiall-autocorrelation-function-pacf">Autocorrelation Function (ACF) &amp; Partiall Autocorrelation Function (PACF)</h2>
+<p>Further confirmation is provided by the ACF and PACF plots <strong>Figure 4</strong>, where all autocorrelation coefficients lie within the 95 percent confidence bounds. These results indicate that the residuals behave as white noise.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -388,37 +657,84 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 </figure>
 </div>
 </div>
-<p>ACF and PACF of Residuals for Shelter and Rent</p>
+<p>Figure 4: ACF and PACF of Residuals for Shelter and Rent</p>
 </div>
+</section>
+</section>
+<section id="impulse-response-functions-irf" class="level1">
+<h1>Impulse Response Functions (IRF)</h1>
+<p>Impulse response functions illustrate how a one-time shock to one variable affects the current and future values of both variables in the system.</p>
+<section id="shelter-impulse-response-functions-irf" class="level2">
+<h2 class="anchored" data-anchor-id="shelter-impulse-response-functions-irf">Shelter Impulse Response Functions (IRF)</h2>
+<p><strong>Figure 5</strong> shows that a 1 percent shock to shelter population growth has a persistent effect on itself, lasting approximately nine months and peaking in the fourth month after the shock. The same shock exerts a smaller and shorter-lived effect on rent growth, lasting around four months, with an initial positive response followed by a brief negative adjustment.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="rent_shelter_var_files/figure-html/irf-plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Impulse Response Functions from VAR(4)</figcaption>
+<p><img src="rent_shelter_var_files/figure-html/irf-shelter-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Figure 5: Impulse Response Functions to a Shock in Shelter Population</figcaption>
 </figure>
 </div>
 </div>
+</div>
+</section>
+<section id="rent-impulse-response-functions-irf" class="level2">
+<h2 class="anchored" data-anchor-id="rent-impulse-response-functions-irf">Rent Impulse Response Functions (IRF)</h2>
+<p><strong>Figure 6</strong> indicates that a 1 percent shock to median rent growth generates a delayed but positive response in shelter population growth, beginning in the second month and persisting for up to nine months, with the largest effect occurring in the fourth month. The impact on rent growth itself declines over time, turning negative after the fourth month and persisting for roughly ten periods.</p>
+<div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="rent_shelter_var_files/figure-html/irf-plot-2.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Impulse Response Functions from VAR(4)</figcaption>
+<p><img src="rent_shelter_var_files/figure-html/irf-rent-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Figure 6: Impulse Response Functions to a Shock in Median Rent</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
+</section>
+</section>
+<section id="granger-causality" class="level1">
+<h1>Granger Causality</h1>
+<p>Granger causality tests were conducted to examine whether lagged values of one variable improve the prediction of the other.</p>
+<p>Results reported in <strong>Table 8</strong> show that changes in median rent Granger-cause changes in shelter population, with a p-value of <strong>0</strong>. Similarly, changes in shelter population Granger-cause changes in median rent, with a p-value of <strong>0.01</strong>.</p>
+<p>These findings indicate bilateral (feedback) Granger causality, suggesting that both variables contain predictive information about each other’s future movements.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="rent_shelter_var_files/figure-html/var-forecast-subfigures-1.png" style="width:100.0%;height:45.0%" class="figure-img"></p>
-<figcaption>Forecast of dln(Shelter)</figcaption>
-</figure>
+<table class="table caption-top table-sm table-striped small">
+<caption>Table 8: Granger Test Results</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Null_Hypothesis</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">F_Test</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">P_Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">dln_rent does NOT Granger-cause dln_shelter</td>
+<td style="text-align: right;">4.2827</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0.0033</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_shelter does NOT Granger-cause dln_rent</td>
+<td style="text-align: right;">3.6639</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0.0084</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>12-Month Forecasts from the VAR(4) Model</p>
-</div>
+</section>
+<section id="forecasting" class="level1">
+<h1>Forecasting</h1>
+<p>Using the estimated VAR(4) model, 12-month-ahead forecasts were generated for both variables. <strong>Figure 7</strong> in the appendix presents forecasts of percentage changes, which were subsequently transformed back into levels for interpretability.</p>
+<p><strong>Table 9</strong> in the appendix reports the forecasted values for both growth rates and levels, while <strong>Figures 8 and 9</strong> compare historical data with projected paths for shelter population and median rent. These forecasts provide insight into expected short-run dynamics in housing affordability and shelter demand, conditional on historical relationships.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -437,51 +753,302 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 </div>
 </div>
 </div>
+</section>
+<section id="policy-implications" class="level1">
+<h1>Policy Implications</h1>
+<p>The results of the VAR analysis carry several important implications for housing and homelessness policy in New York City. First, the presence of bilateral Granger causality between rent growth and shelter population growth suggests that homelessness should not be treated solely as a downstream consequence of housing market conditions. Instead, the findings indicate a feedback relationship, where pressures in the shelter system may also be associated with subsequent movements in the rental market. This reinforces the need for policy frameworks that jointly address housing affordability and homelessness, rather than treating them as separate domains governed by distinct agencies or interventions.</p>
+<p>Second, the impulse response analysis highlights the timing and persistence of housing affordability shocks. A shock to median rent growth generates a delayed but sustained increase in shelter population growth, with effects lasting up to nine months. This lagged response implies that homelessness prevention policies must be forward-looking rather than reactive. By the time shelter entries rise sharply, affordability pressures have often been building for several months. Early warning indicators based on rental market dynamics—such as rapid rent acceleration in specific submarkets—could therefore be used to trigger preemptive interventions, including emergency rental assistance, eviction prevention, and short-term subsidies targeted at at-risk households.</p>
+<p>Third, the persistence of shocks to shelter population growth suggests that once individuals enter the shelter system, elevated demand can remain for an extended period. This underscores the importance of policies that focus on reducing shelter inflows, not merely expanding shelter capacity. While short-run capacity expansions may be necessary during periods of stress, the results imply that without addressing the underlying affordability constraints, shelter demand is likely to remain elevated. Investments in rapid rehousing, housing vouchers, and supportive housing placements can help shorten shelter stays and reduce the persistence of shelter population growth following adverse shocks.</p>
+<p>Finally, the forecast results indicate continued short-run volatility in both rent growth and shelter demand, reinforcing the value of integrating forecast-based planning into policy design. City agencies could use similar time-series models as part of an operational monitoring system to anticipate shelter demand and budgetary needs under different housing market scenarios. Such an approach would allow policymakers to better align housing production, rental assistance funding, and homelessness services with expected conditions, improving both fiscal planning and policy effectiveness.</p>
+<p>Taken together, the findings suggest that effective homelessness policy in New York City requires a coordinated, anticipatory approach that links housing affordability interventions with shelter system management. Policies that stabilize rents, expand access to affordable housing, and intervene early in response to emerging affordability pressures are likely to be more effective than strategies that respond only after homelessness has already increased.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>This report developed and evaluated a VAR(4) model to analyze the dynamic relationship between monthly average shelter population and median asking rent in New York City. Using data from the Department of Homeless Services and StreetEasy, the analysis carefully addressed stationarity, cointegration, and model specification to avoid spurious inference. Diagnostic tests confirmed that the estimated model is well specified and free from residual autocorrelation.</p>
+<p>The results reveal strong short-run interactions between rent growth and shelter population growth, including evidence of bilateral Granger causality. Impulse response analysis highlights the persistence and timing of shocks across variables, while the forecasts provide forward-looking insights into potential trends over the next year.</p>
+<p>Overall, the findings underscore the tight and dynamic linkage between housing affordability and homelessness in New York City, reinforcing the importance of coordinated housing and social policy interventions to address shelter demand and housing market pressures simultaneously.</p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="appendix" class="level1">
+<h1>Appendix</h1>
+<section id="figures-tables" class="level2">
+<h2 class="anchored" data-anchor-id="figures-tables">Figures &amp; Tables</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rent_shelter_var_files/figure-html/var-forecast-subfigures-1.png" style="width:100.0%;height:45.0%" class="figure-img"></p>
+<figcaption>Forecast of dln(Shelter)</figcaption>
+</figure>
+</div>
+</div>
+<p>12-Month Forecasts from the VAR(4) Model</p>
+</div>
 <div style="page-break-after: always;"></div>
 <div style="page-break-after: always;"></div>
 <div class="cell">
 <div class="cell-output-display">
-
+<table class="table caption-top table-sm table-striped small">
+<caption>Table 6: Estimation Results for VAR(4) Model</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Equation</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Std_Error</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">t_value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">P_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">dln_shelter</td>
+<td style="text-align: left;">dln_shelter.l1</td>
+<td style="text-align: right;">0.5490</td>
+<td style="text-align: right;">0.1423</td>
+<td style="text-align: right;">3.859</td>
+<td style="text-align: right;">0.0004</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_shelter</td>
+<td style="text-align: left;">dln_rent.l1</td>
+<td style="text-align: right;">0.0047</td>
+<td style="text-align: right;">0.1444</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.9743</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dln_shelter</td>
+<td style="text-align: left;">dln_shelter.l2</td>
+<td style="text-align: right;">-0.2178</td>
+<td style="text-align: right;">0.1577</td>
+<td style="text-align: right;">-1.381</td>
+<td style="text-align: right;">0.1747</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_shelter</td>
+<td style="text-align: left;">dln_rent.l2</td>
+<td style="text-align: right;">-0.0881</td>
+<td style="text-align: right;">0.1452</td>
+<td style="text-align: right;">-0.607</td>
+<td style="text-align: right;">0.5474</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dln_shelter</td>
+<td style="text-align: left;">dln_shelter.l3</td>
+<td style="text-align: right;">0.2254</td>
+<td style="text-align: right;">0.1580</td>
+<td style="text-align: right;">1.427</td>
+<td style="text-align: right;">0.1610</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_shelter</td>
+<td style="text-align: left;">dln_rent.l3</td>
+<td style="text-align: right;">0.4075</td>
+<td style="text-align: right;">0.1474</td>
+<td style="text-align: right;">2.764</td>
+<td style="text-align: right;">0.0084</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dln_shelter</td>
+<td style="text-align: left;">dln_shelter.l4</td>
+<td style="text-align: right;">0.1553</td>
+<td style="text-align: right;">0.1419</td>
+<td style="text-align: right;">1.095</td>
+<td style="text-align: right;">0.2799</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_shelter</td>
+<td style="text-align: left;">dln_rent.l4</td>
+<td style="text-align: right;">0.2424</td>
+<td style="text-align: right;">0.1448</td>
+<td style="text-align: right;">1.674</td>
+<td style="text-align: right;">0.1015</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dln_shelter</td>
+<td style="text-align: left;">const</td>
+<td style="text-align: right;">-0.0007</td>
+<td style="text-align: right;">0.0032</td>
+<td style="text-align: right;">-0.208</td>
+<td style="text-align: right;">0.8361</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_rent</td>
+<td style="text-align: left;">dln_shelter.l1</td>
+<td style="text-align: right;">-0.0054</td>
+<td style="text-align: right;">0.1397</td>
+<td style="text-align: right;">-0.039</td>
+<td style="text-align: right;">0.9692</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dln_rent</td>
+<td style="text-align: left;">dln_rent.l1</td>
+<td style="text-align: right;">0.4296</td>
+<td style="text-align: right;">0.1417</td>
+<td style="text-align: right;">3.032</td>
+<td style="text-align: right;">0.0042</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_rent</td>
+<td style="text-align: left;">dln_shelter.l2</td>
+<td style="text-align: right;">-0.2940</td>
+<td style="text-align: right;">0.1548</td>
+<td style="text-align: right;">-1.899</td>
+<td style="text-align: right;">0.0645</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dln_rent</td>
+<td style="text-align: left;">dln_rent.l2</td>
+<td style="text-align: right;">0.3031</td>
+<td style="text-align: right;">0.1425</td>
+<td style="text-align: right;">2.127</td>
+<td style="text-align: right;">0.0394</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_rent</td>
+<td style="text-align: left;">dln_shelter.l3</td>
+<td style="text-align: right;">0.5483</td>
+<td style="text-align: right;">0.1551</td>
+<td style="text-align: right;">3.536</td>
+<td style="text-align: right;">0.0010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dln_rent</td>
+<td style="text-align: left;">dln_rent.l3</td>
+<td style="text-align: right;">-0.0647</td>
+<td style="text-align: right;">0.1447</td>
+<td style="text-align: right;">-0.447</td>
+<td style="text-align: right;">0.6571</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_rent</td>
+<td style="text-align: left;">dln_shelter.l4</td>
+<td style="text-align: right;">-0.2996</td>
+<td style="text-align: right;">0.1392</td>
+<td style="text-align: right;">-2.152</td>
+<td style="text-align: right;">0.0372</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dln_rent</td>
+<td style="text-align: left;">dln_rent.l4</td>
+<td style="text-align: right;">-0.2730</td>
+<td style="text-align: right;">0.1421</td>
+<td style="text-align: right;">-1.921</td>
+<td style="text-align: right;">0.0615</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dln_rent</td>
+<td style="text-align: left;">const</td>
+<td style="text-align: right;">0.0048</td>
+<td style="text-align: right;">0.0031</td>
+<td style="text-align: right;">1.533</td>
+<td style="text-align: right;">0.1327</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
+<table class="table caption-top table-sm table-striped small">
+<caption>Table 9: 12-Month Forecasts: Percentage Changes and Levels</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">shelter_pct_change</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">rent_pct_change</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">shelter_mean</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">rent_mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2025-11-01</td>
+<td style="text-align: right;">0.0006</td>
+<td style="text-align: right;">-0.0039</td>
+<td style="text-align: right;">85808.10</td>
+<td style="text-align: right;">3934.561</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025-12-01</td>
+<td style="text-align: right;">-0.0024</td>
+<td style="text-align: right;">0.0015</td>
+<td style="text-align: right;">85604.28</td>
+<td style="text-align: right;">3940.279</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2026-01-01</td>
+<td style="text-align: right;">-0.0079</td>
+<td style="text-align: right;">0.0067</td>
+<td style="text-align: right;">84928.17</td>
+<td style="text-align: right;">3966.668</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2026-02-01</td>
+<td style="text-align: right;">-0.0087</td>
+<td style="text-align: right;">0.0124</td>
+<td style="text-align: right;">84190.35</td>
+<td style="text-align: right;">4015.964</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2026-03-01</td>
+<td style="text-align: right;">-0.0051</td>
+<td style="text-align: right;">0.0140</td>
+<td style="text-align: right;">83765.53</td>
+<td style="text-align: right;">4072.544</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2026-04-01</td>
+<td style="text-align: right;">-0.0016</td>
+<td style="text-align: right;">0.0127</td>
+<td style="text-align: right;">83627.76</td>
+<td style="text-align: right;">4124.471</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2026-05-01</td>
+<td style="text-align: right;">0.0018</td>
+<td style="text-align: right;">0.0109</td>
+<td style="text-align: right;">83779.83</td>
+<td style="text-align: right;">4169.828</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2026-06-01</td>
+<td style="text-align: right;">0.0058</td>
+<td style="text-align: right;">0.0094</td>
+<td style="text-align: right;">84269.67</td>
+<td style="text-align: right;">4209.056</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2026-07-01</td>
+<td style="text-align: right;">0.0086</td>
+<td style="text-align: right;">0.0075</td>
+<td style="text-align: right;">84999.40</td>
+<td style="text-align: right;">4240.883</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2026-08-01</td>
+<td style="text-align: right;">0.0097</td>
+<td style="text-align: right;">0.0064</td>
+<td style="text-align: right;">85827.52</td>
+<td style="text-align: right;">4268.211</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2026-09-01</td>
+<td style="text-align: right;">0.0102</td>
+<td style="text-align: right;">0.0063</td>
+<td style="text-align: right;">86708.61</td>
+<td style="text-align: right;">4295.197</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2026-10-01</td>
+<td style="text-align: right;">0.0105</td>
+<td style="text-align: right;">0.0065</td>
+<td style="text-align: right;">87622.68</td>
+<td style="text-align: right;">4323.089</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
