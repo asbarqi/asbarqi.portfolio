@@ -11,7 +11,7 @@
     "href": "projects.html",
     "title": "Research & Projects",
     "section": "",
-    "text": "Research & Projects\n\nSelected research projects in causal inference, econometrics, and time-series modeling.\n\n\n\n\nRent vs Shelter Population in NYC\n\nTime Series VAR R\n\n\nVector autoregression analysis of the co-movement between NYC median asking rent and shelter population (monthly).\n\n\nFinished\n\n\nOpen\n\n\n\nThe Impact of Refugees on House Prices in European Countries\n\nPanel Data TWFE R\n\n\nTwo-way fixed effects estimation of refugee inflows and housing prices across European countries, with spatial considerations.\n\n\nFinished\n\n\nOpen\n\n\n\nFertility Rate Forecast\n\nTime Series ARCH/GARCH R\n\n\nForecasting fertility rates using ARCH/GARCH volatility modeling and time-series diagnostics.\n\n\nFinished\n\n\nOpen"
+    "text": "Research & Projects\n\nSelected research projects in causal inference, econometrics, and time-series modeling.\n\n\n\n\nRent vs Shelter Population in NYC\n\nTime Series VAR R\n\n\nVector autoregression analysis of the co-movement between NYC median asking rent and shelter population (monthly).\n\n\nFinished\n\n\nOpen\n\n\n\nThe Impact of Refugees inflows on House Prices across EU Countries\n\nPanel Data TWFE R\n\n\nTwo-way fixed effects estimation of refugee inflows and housing prices across European countries, with spatial considerations.\n\n\nFinished\n\n\nOpen\n\n\n\nFertility Rate Forecast\n\nTime Series ARCH/GARCH R\n\n\nForecasting fertility rates using ARCH/GARCH volatility modeling and time-series diagnostics.\n\n\nFinished\n\n\nOpen"
   },
   {
     "objectID": "projects/rent_shelter_var.html",
@@ -228,6 +228,6 @@
     "href": "index.html#areas-of-interest",
     "title": "Ahmed Albarqi",
     "section": "Areas of Interest",
-    "text": "Areas of Interest\n\n\nSocial Policy & Welfare Systems\n\n\nMachine Learning & Technology Development\n\n\nUrban Economics\n\n\nBehavioral & Decision Science"
+    "text": "Areas of Interest\n\n\nSocial Policy & Welfare Systems\n\n\nApplied Machine Learning\n\n\nUrban Economics & Policy\n\n\nBehavioral & Decision Science"
   }
 ]

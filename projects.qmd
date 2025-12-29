@@ -35,7 +35,7 @@ Vector autoregression analysis of the co-movement between NYC median asking rent
 :::
 
 ::: {.project-card}
-### The Impact of Refugees on House Prices in European Countries
+### The Impact of Refugees inflows on House Prices across EU Countries
 
 ::: {.project-tags}
 <span class="tag">Panel Data</span>
