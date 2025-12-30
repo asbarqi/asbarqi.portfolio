@@ -558,12 +558,6 @@ legend("topright",
       
 ```
 
-# Policy Implications
-
-The forecast results have direct implications for demographic and social policy planning in Saudi Arabia, particularly in the context of Vision 2030 and ongoing reforms to labor markets, housing, and family support systems. Under the AR(4) specification, fertility growth turns negative after 2024, leading to a projected decline in fertility levels from 2.36 in 2024 to 2.07 by 2027. If interpreted in isolation, this trajectory would suggest a sustained decline in fertility, potentially reinforcing concerns about long-term population dynamics, workforce replacement, and dependency ratios.
-
-In contrast, the AR(4)–GARCH(1,1) model projects consistently positive fertility growth over the same period, with fertility levels increasing from 2.43 in 2024 to 2.72 by 2027. This divergence reflects not a reversal in underlying behavioral trends, but rather the role of persistent uncertainty in shaping fertility outcomes. In the Saudi context—where fertility decisions are closely tied to housing access, employment stability, and evolving gender norms, uncertainty surrounding economic conditions and policy credibility can materially influence family formation behavior.
-
 
 # Conclusion
 
