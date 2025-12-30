@@ -1,8 +1,6 @@
 ---
 title: ' Report \break "Fertility Rate Forecasting for Saudi Arabia" '
-author: |
-  **Studnet**  
-  Ahmed Albarqi (aa5550)  
+author: Ahmed Albarqi  
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -51,7 +49,7 @@ This project aims to analyze and forecast Saudi Arabia’s fertility rate using 
 
 The Total Fertility Rate (TFR) measures the average number of children a woman would have over her lifetime if she were to experience the current age-specific fertility rates throughout her childbearing years. It is expressed as the number of births per woman in a given year.
 
-For this study, the analysis covers the period 1960–2023, utilizing annual data obtained from the World Bank Open Data platform. The dataset provides consistent and internationally comparable fertility indicators, making it a reliable source for examining long-term demographic trends in Saudi Arab
+For this study, the analysis covers the period 1960–2023, utilizing annual data obtained from the World Bank Open Data platform. The dataset provides consistent and internationally comparable fertility indicators, making it a reliable source for examining long-term demographic trends in Saudi Arabia
 
 # Methodolgy
 
@@ -63,34 +61,35 @@ Additionally, we will conduct differencing to the series with (I=1), to make the
 
 # Diagnosing
 
-To start the analysis, Referring to the figure below, the series seems to have a severe downward trend, and a severe variance as well. This is an indication that the series isn't stationary. 
+To start the analysis, Referring to the **Figure 1**, the series seems to have a severe downward trend, and a severe variance as well. This is an indication that the series isn't stationary. 
 
 
 ```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
 Fert_ts <- ts(df_saudi$value, start=1960, frequency = 1) 
 plot(Fert_ts, type = "l", col = "blue", lwd = 2,
-     main = "Time Series of Fertility rate KSA 1960-2023",
+     main = "Figure 1: Time Series of Fertility rate KSA 1960-2023",
      xlab = "Time", ylab = "Fertility rate")
 ```
 
 
 ## Data Processing 
-To overcome this nonstationarity, The series will be transformed from Fertility Rate to The Growth Rate of The Fertility Rate following this equation:
+To address the non-stationarity observed in the fertility rate series, the variable is transformed from levels to growth rates using a log-difference transformation:
 
 $$
 \text{Growth Rate}_t = \Delta \ln(\text{Fertility Rate}_t)
 $$
 
-By doing this, the graph looks way better as shown below. However, the series still looks non-stationary, and to confirm these I conducted both ADF & DF-GLS to check for stationarity. 
+This transformation substantially improves the visual properties of the series by removing the pronounced trend present in the level data as shown in **Figure 2**. However, despite the improved appearance, visual inspection alone is insufficient to establish stationarity. Therefore, formal unit root tests are conducted to assess whether the transformed series is stationary.
 
 ```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
 ln_fer <- log(Fert_ts)
 growth_rate <- diff(ln_fer)   
 
-plot(growth_rate, main="Growth Rate of Fertility Rate", ylab="% Growth Rate")
+plot(growth_rate, main="Figure 2: Growth Rate of Fertility Rate", ylab="% Growth Rate")
 ```
 
-In this report I will focus more on DF-GLS since it is more accurate and the results are below.
+Both the Augmented Dickey–Fuller (ADF) test and the DF-GLS test are applied. In this report, greater emphasis is placed on the DF-GLS test, as it is generally more powerful than the standard ADF test, particularly in small samples and in the presence of deterministic components.
+The results of the DF-GLS test are shown below in **Table 1**:
 
 ```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
 # adf_result <- adf.test(growth_rate)
@@ -100,27 +99,29 @@ dfgls_table <- data.frame(
   Test = "DF-GLS ",
   Statistic = round(dfgls_stat, 3))
 
-kable(dfgls_table, caption = "DF-GLS Stationarity Test")
+kable(dfgls_table, caption = "Table 1: DF-GLS Stationarity Test")
 
 ```
 
-
-The DF-GLS absolute value of test statistic is `r abs(round(dfgls_stat, 3))` and it is < 1.96. This confirms the null hypothesis of non-stationarity.
+The absolute value of the DF-GLS t-statistic is `r abs(round(dfgls_stat, 3))`, which is smaller than the 5% critical value of 1.96. As a result, the null hypothesis of a unit root cannot be rejected. This indicates that the growth rate of the fertility rate remains non-stationary, even after log-differencing.
 
 
 
 ## Differncing
 
-Now to make the series stationary, differencing is required. We will start by taking the first difference (I=1)
+To achieve stationarity, further differencing is applied to the growth rate series. Specifically, the first difference of the growth rate is taken (I=1):
 ```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
 model_diff <- diff(growth_rate)
 #model_diff <- diff(model_diff)
 
 
-plot(model_diff, main="I=1 of Growth Rate of Fertility Rate", ylab="% Growth Rate")
+plot(model_diff, main="Figure 3: I=1 of Growth Rate of Fertility Rate", ylab="% Growth Rate")
 ```
 
-The series looks way better than before, and potentially stationary. However, the variance still a concern that might result in heteroskedasticity. Now, to proceed forward same test of stationarity will be conducted
+The differenced series in **Figure 3** exhibits a substantial improvement in its time-series properties. Visual inspection suggests that the mean is now stable over time, indicating potential stationarity. However, some variability in the variance remains, which may raise concerns about heteroskedasticity and will be addressed in subsequent diagnostics.
+
+To formally assess stationarity, the same unit root testing procedure is applied to the differenced series, focusing again on the DF-GLS test due to its superior power properties. the results of the test is shown in **Table 2**
+
 ```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
 ##adf.test(model_diff)
 dfgls_result <- ur.ers(model_diff, type = "DF-GLS", model = "constant", lag.max = 7)
@@ -129,14 +130,19 @@ dfgls_table <- data.frame(
   Test = "DF-GLS ",
   Statistic = round(dfgls_stat, 3))
 
-kable(dfgls_table, caption = "DF-GLS Stationarity Test")
+kable(dfgls_table, caption = "Table 2: DF-GLS Stationarity Test")
 ```
 
-The DF-GLS absolute value of test statistic is `r abs(round(dfgls_stat, 3))` and it is > 1.96. This rejects the null hypothesis of non-stationarity, and accept that the series is stationary now.
+The absolute value of the DF-GLS t-statistic is `r abs(round(dfgls_stat, 3))` which exceeds the 5% critical value of 1.96. Consequently, the null hypothesis of a unit root is rejected. This provides strong evidence that the differenced growth rate series is stationary.
+
+Thus, after first differencing, the fertility rate series satisfies the stationarity condition required for subsequent time-series modeling.
 
 ## ARIMA modeling 
 
-To start, we know that our ARIMA model has (I=1) now. To choose the proper model and the respective values of (p,q), I have tested and trialed multiple models and combinations of (p,q). Referring to the table below, we can see the different models I have tested:  
+Having established that the series is integrated of order one (I=1) , the next step is to identify the appropriate ARIMA specification by selecting the autoregressive (p), and moving average (q) orders. 
+
+Multiple ARIMA models were estimated and evaluated through an iterative process, including ARIMA(1,1,0), ARIMA(2,1,0), ARIMA(1,1,1), and ARIMA(4,1,0). Model performance was assessed using information criteria (AICc and BIC) as well as residual diagnostics based on the Ljung–Box test.The Ljung–Box test was conducted at lags 8 and 16. The choice of 16 lags follows the standard rule-of-thumb of N/4, where N = 64 in this case.
+**Table 3** summarizes the estimated coefficients, information criteria, and Ljung–Box test statistics for each candidate model.
 
 ```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
 
@@ -225,54 +231,71 @@ comp_table <- data.frame(
 comp_table_t <- as.data.frame(t(comp_table))
 colnames(comp_table_t) <- comp_table_t[1, ]  
 comp_table_t <- comp_table_t[-1, ]           
-kable(comp_table_t, caption = "Comparison of ARIMA Models", align = "c")
+kable(comp_table_t, caption = "Table 3: Comparison of ARIMA Models", align = "c")
 
 ```
 
-To give a context, my series has 64 observation and the reason I chose 16 lags for the Ljung–Box test is because that N/4 = 16. 
+The results indicate the following:
 
-After running multiple tests and iterations for the ARIMA models (1,1,0),(2,1,0),(1,1,1), and (4,1,0) we saw that:
+ARIMA(1,1,0):
+This model performs well in terms of AICc and BIC. However, the Ljung–Box test rejects the null hypothesis of no residual autocorrelation at both lag lengths, indicating that the residuals do not behave as white noise. As a result, the model is deemed inadequate.
 
--- ARIMA(1,1,0): This model gave good results for AICc, BIC. However, it rejects the null hypothesis of Box-Ljung that the time series acts as a white noise. so the model is inadequate for the analysis
+ARIMA(1,1,1):
+Despite competitive information criteria values, this model also fails the Ljung–Box test, rejecting the null hypothesis of white-noise residuals. This suggests remaining serial correlation and model misspecification.
 
--- ARIMA(1,1,1): This model gave good results for AICc, BIC. However, it rejects the null hypothesis of Box-Ljung that the time series acts as a white noise. so the model is inadequate for the analysis
+ARIMA(2,1,0):
+Although this specification improves flexibility relative to the AR(1) model and maintains reasonable AICc and BIC values, it similarly fails the Ljung–Box diagnostic tests, indicating persistent autocorrelation in the residuals.
 
--- ARIMA(2,1,0): This model gave good results for AICc, BIC. However, it rejects the null hypothesis of Box-Ljung that the time series acts as a white noise. so the model is inadequate for the analysis
+ARIMA(4,1,0):
+This model delivers superior overall performance. It achieves competitive information criteria values while, crucially, failing to reject the null hypothesis of the Ljung–Box test at both lag lengths. This implies that the residuals behave as white noise, satisfying the key assumption of model adequacy.
 
--- AR(4,1,0): This model gave superior results for all the test, and most importantly, if failed to reject the null hypothesis of Box-Ljung, making the assumption of the time series acting as a white noise still stands.
+# AR(4) 
 
-## AR(4) 
+Having selected the ARIMA(4,1,0) specification, the model’s adequacy is assessed through an examination of coefficient properties, residual behavior, and potential violations of key assumptions. The AR(4) specification used throughout the analysis is given by:
 
-To proceed forward, now we have to examine the model to properly assess any potential risks.
+\[
+\Delta y_t
+=
+\texttt{`r round(coefs4[1],3)`}\,\Delta y_{t-1}
++
+\texttt{`r round(coefs4[2],3)`}\,\Delta y_{t-2}
++
+\texttt{`r round(coefs4[3],3)`}\,\Delta y_{t-3}
++
+\texttt{`r round(coefs4[4],3)`}\,\Delta y_{t-4}
++
+\varepsilon_t
+\]
 
-### Coefficients 
 
-To start with the basics, we need to see if the necessary & sufficient conditions are met or not.
+## Coefficients 
+
+As a preliminary diagnostic, the necessary and sufficient conditions for stationarity of the autoregressive component are examined.
 
 -- Sum of Coefficients = `r round(sum(coefs4[1], coefs4[2], coefs4[3], coefs4[4]), 3)` . 
 
 -- Sum of absolute values of Coefficients = `r round(sum(abs(coefs4[1]), abs(coefs4[2]), abs(coefs4[3]), abs(coefs4[4])), 3)`
 
-So for both condition, we can't entail anything about the process. the necessary condition wasn't violated, and the sufficient condition wasn't met.
+The sum of coefficients does not violate the necessary condition, while the sum of absolute coefficients exceeds unity, meaning the sufficient condition for stationarity is not satisfied. As expected for higher-order AR processes, these conditions alone are inconclusive and do not provide definitive evidence regarding the stability of the process. Consequently, further diagnostics based on residual behavior are required.
 
-### Residual Plot
+## Residual Plot
 
-The residual plot fluctuate around a mean = 0 which is good. However, we can observe that the variance has changed around 2000 and later meaning the series doen't have a constant variance anymore.
+The residuals from the AR(4) model fluctuate around a zero mean, indicating that the model successfully captures the conditional mean dynamics. However, visual inspection reveals a noticeable change in variance beginning around the year 2000, suggesting a potential violation of the homoskedasticity assumption.
 ```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
 ##
 residuals_ar4 <- residuals(ar4)
 plot(residuals_ar4, type = "l", col = "blue", lwd = 2,
-     main = "Residuals from AR(4) model",
+     main = "Figure 4: Residuals from AR(4) model",
      ylab = "Residuals", xlab = "Time")
 abline(h = 0, col = "red", lty = 2)
 ```
 
 
-### ACF & PACF
+## ACF & PACF
 
-The graphs is perfect, nothing violating the significance level interval. 
+The autocorrelation and partial autocorrelation functions of the residuals show no statistically significant spikes outside the confidence bounds. This confirms that the AR(4) model adequately removes serial correlation and that the residuals behave as white noise in the mean.
 
-```{r echo=FALSE,fig.height=3, fig.align='center'}
+```{r echo=FALSE,fig.height=3, fig.align='center', fig.cap="Figure 5: ACF & PACF of AR4 model"}
 
 par(mfrow = c(1, 2))
 acf(residuals_ar4, main = "ACF of Residuals", lwd = 2, col = "blue")
@@ -281,9 +304,9 @@ par(mfrow = c(1, 1))
 
 ```
 
-### Heteroskedasticity Test
+## Heteroskedasticity Test
 
-The concerns for heteroskedasticity is still valid, and to confirm that I decided to conduct ARCH Engle's Test for Residual Heteroscedasticity. 
+Given the visual evidence of changing variance, Engle’s ARCH LM test is applied to formally assess the presence of conditional heteroskedasticity. A lag length of 10 is chosen as a conservative diagnostic choice given the sample size, with results shown in **Table 4**
 
 ```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
 ## chosing 10 because it is the safe option 
@@ -292,50 +315,260 @@ arch_pval <- data.frame(
   `ARCH LM-test` = formatC(arch_test$p.value, format = "e", digits = 2)
 )
 row.names(arch_pval) <- c("P-Value")
-kable(arch_pval, caption = "ARCH LM Test")
+kable(arch_pval, caption = "Table 4: ARCH LM Test")
 ```
 
 The ARCH Engle's test statistic has a p-value of `r abs(round(arch_test$p.value, 3))` and it is < 0.05. This rejects the null hypothesis of ARCH effect, and confirming that the series has Heteroskedasticity.
 
-To obtain a unbiased, one must use GARCH-Model in this case to capture this variance correctly. However, the results of the ARIMA model would still generate good results at least for the short run.
+The detection of ARCH effects implies that while the ARIMA(4,1,0) model adequately captures the conditional mean dynamics, it fails to account for time-varying volatility. To obtain efficient and unbiased inference—particularly for volatility dynamics—a GARCH-type specification is required.
+
+That said, the ARIMA model remains informative for short-run forecasting of the conditional mean, especially when volatility dynamics are not the primary object of interest. Subsequent analysis will therefore extend the model by incorporating a GARCH structure to appropriately model the variance process.
 
 
-## Forecasting
+# GARCH Extension: Modeling Time-Varying Volatility
+
+The presence of significant ARCH effects in the residuals of the AR(4) model indicates that, while the conditional mean dynamics are well specified, the assumption of constant variance is violated. To account for volatility clustering and time-varying uncertainty, the model is extended by specifying a GARCH process for the conditional variance. Given the sample size (64 observations), a GARCH(1,1) specification is adopted, which is widely used and typically sufficient to capture persistent volatility dynamics.
+
+## Estimate AR(4)–GARCH(1,1)
+Building on the previous results, the ARIMA(4,1,0) specification is retained to model the conditional mean dynamics of the series, as it adequately removes serial correlation in the residuals. However, diagnostic evidence indicates the presence of time-varying volatility, motivating an extension of the model to explicitly account for conditional heteroskedasticity.
+
+Accordingly, the model is specified as an AR(4) process in the mean combined with a GARCH(1,1) process for the conditional variance. The estimated variance parameters from the GARCH(1,1) specification are reported in **Table 5**, and the full model is summarized by the mean and variance equations presented below. This framework allows the dynamics of the series to be decomposed into systematic persistence in the mean and persistent volatility in the variance, providing a more complete representation of both the level and uncertainty of the process.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-fc_ar4 <- forecast::forecast(ar4, lead = 10)
-```
+library(rugarch)
 
-```{r echo=FALSE, fig.width=4, fig.height=3, fig.align='center'}
-autoplot(fc_ar4)
-```
+# Ensure numeric vector
+y <- as.numeric(growth_rate)
 
-
-```{r echo=FALSE, fig.width=3, fig.height=3, fig.align='center'}
-growth_forecast <- as.numeric(fc_ar4$mean)
-
-last_fert <- as.numeric(tail(Fert_ts, 1))
-
-fert_forecast <- numeric(length(growth_forecast))
-for (i in seq_along(growth_forecast)) {
-  if (i == 1) {
-    fert_forecast[i] <- (1 + growth_forecast[i]) * last_fert
-  } else {
-    fert_forecast[i] <- (1 + growth_forecast[i]) * fert_forecast[i - 1] }}
-
-forecast_years <- max(time(Fert_ts)) + seq_len(length(growth_forecast))
-results_table <- data.frame(
-  Year = forecast_years,
-  Forecasted_Growth = round(growth_forecast, 4),
-  Forecasted_Fertility = round(fert_forecast, 3)
+# -------------------------------
+# Specify AR(4) mean + GARCH(1,1) variance
+# -------------------------------
+spec_ar4_garch11 <- ugarchspec(
+  variance.model = list(model = "sGARCH", garchOrder = c(1, 1)),
+  mean.model     = list(armaOrder = c(4, 0), include.mean = FALSE),
+  distribution.model = "norm"
 )
 
-kable(results_table, caption = "Forecasted Growth and Fertility Rate For AR(4) Model (I=1)")
+# Fit the model
+fit_ar4_garch11 <- ugarchfit(
+  spec = spec_ar4_garch11,
+  data = y,
+  solver = "hybrid"
+)
+
+# -------------------------------
+# Extract alpha and beta
+# -------------------------------
+coef_vec <- coef(fit_ar4_garch11)
+
+alpha1 <- coef_vec["alpha1"]
+beta1  <- coef_vec["beta1"]
+omega  <- coef_vec["omega"]
+
+# Persistence
+persistence <- alpha1 + beta1
+
+# Show results
+alpha_beta_table <- data.frame(
+  Parameter = c("omega", "alpha1", "beta1", "alpha1 + beta1"),
+  Estimate  = round(c(omega, alpha1, beta1, persistence), 4)
+)
+
+knitr::kable(alpha_beta_table, caption = "Table 5: GARCH(1,1) Variance Parameters")
 ```
+
+The estimated GARCH(1,1) variance parameters indicate strong and highly persistent volatility dynamics in the series. The ARCH coefficient, \(\alpha_1 =\) `r round(alpha1, 4)`, captures the short-run response of conditional variance to unexpected shocks and suggests that large innovations have a substantial immediate impact on volatility. The GARCH coefficient, \(\beta_1 =\) `r round(beta1, 4)`, reflects persistence in volatility, indicating that periods of elevated uncertainty tend to persist over time.
+
+The sum of the ARCH and GARCH coefficients, \(\alpha_1 + \beta_1 =\) `r round(alpha1 + beta1, 4)`, is extremely close to unity, implying near-integrated volatility dynamics. While the condition \(\alpha_1 + \beta_1 < 1\) technically ensures covariance stationarity of the variance process, the proximity to one suggests that shocks to volatility decay very slowly and have long-lasting effects. This behavior is consistent with pronounced volatility clustering.
+
+The estimated constant term in the variance equation, \(\omega =\) `r round(omega, 6)`, is effectively zero, indicating that the evolution of volatility is largely driven by past shocks and past conditional variance rather than by a fixed long-run variance level.
+
+Overall, these results confirm that extending the AR(4) mean specification with a GARCH(1,1) variance process is necessary to appropriately model time-varying volatility and to obtain reliable inference and forecast uncertainty.
+
+The AR(4)–GARCH(1,1) model is formally specified below through its conditional mean and variance equations.
+
+The mean equation remains the selected AR(4) specification:
+
+\[
+\Delta y_t
+=
+\texttt{`r round(coefs4[1],3)`}\,\Delta y_{t-1}
++
+\texttt{`r round(coefs4[2],3)`}\,\Delta y_{t-2}
++
+\texttt{`r round(coefs4[3],3)`}\,\Delta y_{t-3}
++
+\texttt{`r round(coefs4[4],3)`}\,\Delta y_{t-4}
++
+\varepsilon_t
+\]
+
+The conditional variance follows a GARCH(1,1) process:
+
+\[
+\sigma_t^2
+=
+0.4338\,\varepsilon_{t-1}^2
++
+0.5652\,\sigma_{t-1}^2
+\]
+
+
+## Residual Diagnostics and Model Adequacy
+
+To assess model adequacy, we examine the standardized residuals from the AR(4)–GARCH(1,1) model. **Figure 6** shows that the standardized residuals fluctuate around zero without visible persistence. Also, it indicates no meaningful autocorrelation in the standardized residuals, suggesting that the mean dynamics are adequately captured.
+
+```{r stdres, echo=FALSE, fig.width=6, fig.height=3.2, fig.align='center' }
+z <- as.numeric(residuals(fit_ar4_garch11, standardize = TRUE))
+
+plot(z, type = "l", lwd = 1.5,
+     main = "Figure 6: Standardized Residuals: AR(4)–GARCH(1,1)",
+     ylab = expression(z[t]), xlab = "Time")
+abline(h = 0, lty = 2)
+```
+
+To formally confirm the absence of serial correlation, Ljung–Box tests are applied to the standardized residuals at lags 8 and 16. The results, reported in **Table 6**, fail to reject the null hypothesis of no autocorrelation at conventional significance levels, confirming that the residuals behave as white noise in the mean.
+
+```{r lbtest, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+
+lb_8  <- Box.test(z, lag = 8,  type = "Ljung-Box")
+lb_16 <- Box.test(z, lag = 16, type = "Ljung-Box")
+
+lb_table <- data.frame(
+  Test = c("Ljung–Box (lag 8)", "Ljung–Box (lag 16)"),
+  Statistic = round(c(as.numeric(lb_8$statistic),
+                      as.numeric(lb_16$statistic)), 3),
+  `p-value` = signif(c(as.numeric(lb_8$p.value),
+                       as.numeric(lb_16$p.value)), 3)
+)
+
+kable(lb_table, caption = "Table 6: Ljung–Box tests on standardized residuals (post-GARCH)")
+
+```
+# Forecasting
+
+Having established the adequacy of the AR(4) and AR(4)–GARCH(1,1) specifications, this section presents short-run forecasts of the fertility rate. Forecasts are generated over a 4-period horizon. The AR(4) model provides forecasts based solely on conditional mean dynamics, while the AR(4)–GARCH(1,1) model incorporates time-varying volatility, allowing forecast uncertainty to evolve over time. Comparing these forecasts highlights the role of conditional heteroskedasticity in shaping forecast behavior and uncertainty.
+
+
+**Figure 7** & **Table 7** compare forecasted fertility rates generated by the AR(4) model and the AR(4)–GARCH(1,1) model over the forecast horizon. Although both models share the same conditional mean structure, their forecasts diverge markedly once projected back into fertility levels.
+
+The AR(4) model predicts a gradual decline in fertility rates, with minor short-run fluctuations. This pattern reflects the persistence captured by the autoregressive structure and extrapolates recent downward dynamics in the growth rate of fertility. Because the AR(4) model assumes constant variance, forecast paths are driven solely by mean dynamics, resulting in relatively smooth and conservative projections.
+
+In contrast, the AR(4)–GARCH(1,1) model produces a steadily increasing fertility path. This divergence arises because the GARCH component captures highly persistent volatility, as evidenced by the near-unit volatility persistence (alpha + beta ≈1). When forecasts are iteratively transformed from growth rates back into fertility levels, periods of elevated conditional variance amplify forecast uncertainty and compound upward movements in the level series. As a result, even small positive expected growth rates translate into increasingly larger fertility projections over time.
+
+Importantly, this difference does not imply that the GARCH model fundamentally predicts higher mean fertility growth. Rather, it highlights how persistent volatility interacts with nonlinear level transformations, causing forecasts to diverge despite identical mean specifications. The AR(4)–GARCH(1,1) model therefore produces more dispersed and dynamic level forecasts, reflecting uncertainty accumulation rather than deterministic trend reversal.
+
+Overall, the comparison underscores that incorporating time-varying volatility can materially affect long-horizon level forecasts, even when point forecasts of the growth rate are similar. This finding emphasizes the importance of accounting for volatility dynamics when forecasting demographic variables that are reconstructed through nonlinear transformations.
+
+```{r level-forecast, echo=FALSE, message=FALSE, warning=FALSE}
+library(forecast)
+library(rugarch)
+
+h <- 4
+
+# --- AR(4) forecast (growth) ---
+fc_ar4 <- forecast::forecast(ar4, lead = h)
+
+# Robust: if fc_ar4 is a list/forecast object use $mean, otherwise use the vector itself
+ar4_growth_forecast <- if (is.list(fc_ar4) && !is.null(fc_ar4$mean)) {
+  as.numeric(fc_ar4$mean)
+} else {
+  as.numeric(fc_ar4)
+}
+
+# --- AR(4)–GARCH(1,1) forecast (growth) ---
+garch_fc <- ugarchforecast(fit_ar4_garch11, n.ahead = h)
+garch_growth_forecast <- as.numeric(garch_fc@forecast$seriesFor)
+
+# --- Convert growth forecasts to fertility levels ---
+last_fert <- as.numeric(tail(Fert_ts, 1))
+
+fert_forecast_ar4   <- numeric(h)
+fert_forecast_garch <- numeric(h)
+
+for (i in 1:h) {
+  if (i == 1) {
+    fert_forecast_ar4[i]   <- (1 + ar4_growth_forecast[i]) * last_fert
+    fert_forecast_garch[i] <- (1 + garch_growth_forecast[i]) * last_fert
+  } else {
+    fert_forecast_ar4[i]   <- (1 + ar4_growth_forecast[i]) * fert_forecast_ar4[i - 1]
+    fert_forecast_garch[i] <- (1 + garch_growth_forecast[i]) * fert_forecast_garch[i - 1]
+  }
+}
+
+forecast_years <- max(time(Fert_ts)) + seq_len(h)
+```
+
+```{r forecast-table, echo=FALSE}
+library(knitr)
+
+h_use <- min(
+  length(forecast_years),
+  length(ar4_growth_forecast),
+  length(garch_growth_forecast),
+  length(fert_forecast_ar4),
+  length(fert_forecast_garch)
+)
+
+forecast_table <- data.frame(
+  Year = forecast_years[1:h_use],
+  AR4_Growth = round(ar4_growth_forecast[1:h_use], 4),
+  GARCH_Growth = round(garch_growth_forecast[1:h_use], 4),
+  AR4_Fertility = round(fert_forecast_ar4[1:h_use], 3),
+  GARCH_Fertility = round(fert_forecast_garch[1:h_use], 3)
+)
+
+kable(
+  forecast_table,
+  caption = "Table 7: Forecasted Growth and Fertility Rates — AR(4) vs AR(4)–GARCH(1,1) (7-step horizon)"
+)
+
+
+```
+
+```{r fertility-forecast-plot, echo=FALSE, fig.width=6, fig.height=4, fig.align='center',fig.cap="Figure 7: Forecasted fertility rates from AR(4) and AR(4)–GARCH(1,1) models."}
+# Make sure both are numeric and same length
+fert_forecast_ar4   <- as.numeric(fert_forecast_ar4)
+fert_forecast_garch <- as.numeric(fert_forecast_garch)
+
+# Safety: remove NA (if any)
+ok <- is.finite(fert_forecast_ar4) & is.finite(fert_forecast_garch)
+x  <- forecast_years[ok]
+y1 <- fert_forecast_ar4[ok]
+y2 <- fert_forecast_garch[ok]
+
+# y-limits based on BOTH series
+yl <- range(c(y1, y2), na.rm = TRUE)
+
+# Plot AR(4)
+plot(x, y1, type = "l", lwd = 2,
+     col = "blue", ylim = yl,
+     ylab = "Fertility Rate", xlab = "Year",
+     main = "Forecasted Fertility Rates")
+
+# Add GARCH (use different linetype + points so overlap is visible)
+lines(x, y2, lwd = 2, col = "red", lty = 2)
+points(x, y2, pch = 16, col = "red", cex = 0.6)
+
+legend("topright",
+       legend = c("AR(4)", "AR(4)–GARCH(1,1)"),
+       col = c("blue", "red"),
+       lwd = 2, lty = c(1, 2), bty = "n")
+      
+```
+
+# Policy Implications
+
+The forecast results have direct implications for demographic and social policy planning in Saudi Arabia, particularly in the context of Vision 2030 and ongoing reforms to labor markets, housing, and family support systems. Under the AR(4) specification, fertility growth turns negative after 2024, leading to a projected decline in fertility levels from 2.36 in 2024 to 2.07 by 2027. If interpreted in isolation, this trajectory would suggest a sustained decline in fertility, potentially reinforcing concerns about long-term population dynamics, workforce replacement, and dependency ratios.
+
+In contrast, the AR(4)–GARCH(1,1) model projects consistently positive fertility growth over the same period, with fertility levels increasing from 2.43 in 2024 to 2.72 by 2027. This divergence reflects not a reversal in underlying behavioral trends, but rather the role of persistent uncertainty in shaping fertility outcomes. In the Saudi context—where fertility decisions are closely tied to housing access, employment stability, and evolving gender norms, uncertainty surrounding economic conditions and policy credibility can materially influence family formation behavior.
 
 
 # Conclusion
 
-In this paper, we employed the ARIMA modeling approach to forecast the fertility rate in Saudi Arabia. The analysis began by transforming the data into the growth rate of the fertility rate and applying differencing to achieve stationarity. To identify the most suitable model, we evaluated several diagnostic criteria, including the Akaike Information Criterion (AICc), Bayesian Information Criterion (BIC), and the Autocorrelation (ACF) and Partial Autocorrelation (PACF) functions, alongside the Box–Ljung test. Based on these diagnostics, the AR(4) model was selected as the best-fitting specification.
+This report examined the dynamics of fertility in Saudi Arabia using a time-series framework that jointly models mean behavior and time-varying uncertainty. After establishing non-stationarity in the fertility rate series, the analysis proceeded by modeling fertility growth and identifying an ARIMA(4,1,0) specification as the most appropriate representation of the conditional mean. Diagnostic tests confirmed that the AR(4) structure adequately removed serial correlation from the residuals, but also revealed the presence of significant conditional heteroskedasticity.
 
-Using this model, we generated forecasts for both the growth rates and the fertility rates. However, the residual analysis revealed evidence of heteroskedasticity, suggesting that future work could benefit from applying a GARCH model to better capture the observed volatility in the series and improve the accuracy of the forecasts.
+To address this limitation, the model was extended to an AR(4)–GARCH(1,1) specification. The GARCH results indicated highly persistent volatility, with the sum of the ARCH and GARCH parameters close to unity, implying that shocks to fertility growth uncertainty decay slowly over time. This finding highlights that fertility dynamics in Saudi Arabia are shaped not only by expected trends but also by prolonged periods of uncertainty, likely reflecting structural transitions in labor markets, housing conditions, and social norms.
+
+Short-run forecasts illustrate the practical importance of accounting for volatility. While the AR(4) model projects declining fertility levels after 2024, the AR(4)–GARCH(1,1) model generates rising fertility paths over the same horizon. This divergence underscores that ignoring time-varying uncertainty can materially alter conclusions about future fertility trajectories, particularly when forecasts are reconstructed in levels. The results therefore caution against reliance on mean-only projections for demographic planning.
