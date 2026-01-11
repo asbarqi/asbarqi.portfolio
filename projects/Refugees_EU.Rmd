@@ -291,79 +291,114 @@ print(facet_plot)
 
 To assess the relationship between refugee inflows and countries’ geographic proximity, **Figure 4** illustrates the spatial distribution of refugee inflows across European countries from 2010 to 2023. This spatial analysis helps identify potential geographic patterns, clustering, and regional trends in refugee movements, thereby providing deeper insight into the spatial dimensions of refugee inflows across Europe.
 
-```{r echo = FALSE, results = FALSE, warning = FALSE, error = FALSE, message = FALSE}
+```{r fig-refugee-map-labeled, echo=FALSE, message=FALSE, warning=FALSE, fig.width=11, fig.height=8, dpi=300}
 
-europe <- ne_countries(scale = "medium", returnclass = "sf", continent = "Europe")
+library(dplyr)
+library(sf)
+library(ggplot2)
+library(rnaturalearth)
 
+sf::sf_use_s2(FALSE)
+
+# ---- Build Europe spatial dataset ----
+europe <- ne_countries(scale = "medium", returnclass = "sf", continent = "Europe") %>%
+  mutate(country_name = as.character(name))
+
+# ---- Compute average refugees per 1,000 and classify groups ----
 df_avg <- df_fin %>%
   group_by(Country) %>%
   summarise(
-    avg_refugees_per_1000 = mean(Refugees_per_1000, na.rm = TRUE)
-  )
+    avg_refugees_per_1000 = mean(Refugees_per_1000, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Country = as.character(Country))
 
 medi <- median(df_avg$avg_refugees_per_1000, na.rm = TRUE)
-Q3 <- quantile(df_avg$avg_refugees_per_1000, 0.75, na.rm = TRUE)
+Q3   <- quantile(df_avg$avg_refugees_per_1000, 0.75, na.rm = TRUE)
 
-# Step 3: Classify countries based on Q1 and Q3
 df_avg <- df_avg %>%
   mutate(refugee_influx_group = case_when(
-    avg_refugees_per_1000 > Q3 ~ "High",
+    avg_refugees_per_1000 > Q3   ~ "High",
     avg_refugees_per_1000 < medi ~ "Low",
-    TRUE ~ "Medium"
+    TRUE                        ~ "Medium"
   ))
 
-
-# Assuming 'df_avg' is your dataframe
-df_avg$Country <- as.character(df_avg$Country)
-europe$country_name <- as.character(europe$name)
-
-europe_filtered <- europe %>%
-  filter(country_name %in% df_avg$Country)
-
-europe_merged <- left_join(europe_filtered, df_avg, by = c("country_name" = "Country"))
+# ---- Merge spatial + data ----
+europe_merged <- europe %>%
+  filter(country_name %in% df_avg$Country) %>%
+  left_join(df_avg, by = c("country_name" = "Country"))
 
 europe_merged$refugee_influx_group <- factor(
   europe_merged$refugee_influx_group,
   levels = c("Low", "Medium", "High")
 )
 
-europe_centroids <- st_centroid(europe_merged)
+if (nrow(europe_merged) == 0) {
+  stop("europe_merged is empty. Likely country-name mismatch between df_fin$Country and rnaturalearth names.")
+}
 
-ggplot(data = europe_merged) +
-  geom_sf(aes(fill = refugee_influx_group), color = "#d9d9d9", linewidth = 0.15) +
+# ---- IMPORTANT: confirm Norway is actually in the merged data ----
+if (!("Norway" %in% europe_merged$country_name)) {
+  stop("Norway is NOT in europe_merged. This is a country-name mismatch in df_fin$Country (e.g., 'Norway ' with a space, or a different spelling).")
+}
+
+# ---- Label points for all countries EXCEPT Norway (we'll force Norway manually) ----
+label_points <- st_point_on_surface(europe_merged) %>%
+  filter(country_name != "Norway")
+
+# ---- Legend labels with cutoffs ----
+legend_labels <- c(
+  paste0("Low (< ", round(medi, 2), ")"),
+  paste0("Medium (", round(medi, 2), " – ", round(Q3, 2), ")"),
+  paste0("High (> ", round(Q3, 2), ")")
+)
+
+# ---- Plot ----
+p <- ggplot(europe_merged) +
+  geom_sf(aes(fill = refugee_influx_group),
+          color = "white", linewidth = 0.25) +
   geom_sf_text(
-    data = europe_centroids,
+    data = label_points,
     aes(label = country_name),
-    size = 2,
-    color = "#333333"
+    size = 2.2,
+    color = "#2b2b2b"
+  ) +
+  # Force Norway label at a fixed (lon, lat) so it ALWAYS shows
+  geom_text(
+    data = data.frame(x = 10, y = 62, label = "Norway"),
+    aes(x = x, y = y, label = label),
+    inherit.aes = FALSE,
+    size = 2.2,
+    color = "#2b2b2b"
   ) +
   scale_fill_manual(
     values = c("Low" = "#deebf7", "Medium" = "#9ecae1", "High" = "#3182bd"),
-    name = "Refugee Influx",
-    labels = c("Low", "Medium", "High")
+    labels = legend_labels,
+    name = "Average refugees per 1,000 residents",
+    na.value = "#f0f0f0"
   ) +
   coord_sf(xlim = c(-25, 45), ylim = c(34, 72), expand = FALSE) +
-  theme_minimal(base_family = "sans") +
   labs(
     title = "Figure 4: Refugee Influx Groups in Europe (2010–2023)",
-    subtitle = "Average refugee influx per 1,000 residents",
-    x = NULL, # Remove x-axis label
-    y = NULL  # Remove y-axis label
+    subtitle = "Classification based on median and upper-quartile thresholds"
   ) +
+  theme_void(base_family = "sans") +
   theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, margin = margin(b = 5)),
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, margin = margin(b = 4)),
     plot.subtitle = element_text(size = 11, hjust = 0.5, color = "#666666", margin = margin(b = 10)),
     legend.position = "bottom",
+    legend.direction = "horizontal",
     legend.title = element_text(face = "bold", size = 10),
     legend.text = element_text(size = 9),
-    axis.text.x = element_blank(), # Remove x-axis text
-    axis.ticks.x = element_blank(), # Remove x-axis ticks
-    axis.text.y = element_blank(), # Remove y-axis text
-    axis.ticks.y = element_blank(), # Remove y-axis ticks
-    panel.grid = element_blank(),
-    plot.background = element_rect(fill = "white", color = NA),
-    panel.background = element_rect(fill = "white", color = NA)
+    legend.key.width = unit(20, "pt"),
+    legend.key.height = unit(10, "pt"),
+    plot.margin = margin(8, 10, 8, 10)
   )
+
+print(p)
+
+
+
 ```
 
 Interestingly, while geographic proximity might be expected to be associated with higher refugee inflows, the spatial distribution shown in the map suggests otherwise. Neighboring countries do not necessarily exhibit similar levels of refugee intake, and countries that are geographically distant may experience comparable refugee inflows. This pattern challenges the assumption that refugee arrivals are primarily driven by geographic closeness and points to the importance of institutional, policy, and economic factors in shaping refugee settlement patterns.
