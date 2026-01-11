@@ -3,7 +3,7 @@ title: "Visualizations"
 page-layout: full
 ---
 
-A selection of figures from my research and projects.
+Effective policy research depends on clear and interpretable data visualization. Below are selected figures from my work, spanning spatial analysis, time-series modeling, and comparative policy insights.
 
 ---
 
@@ -86,7 +86,7 @@ Observed median rent with forecast extension (dashed).
 
 ::: {.viz-tags}
 <span class="tag">VAR</span>
-<span class="tag">Time Series</span>
+<span class="tag">Time series</span>
 :::
 
 ::: {.viz-actions}

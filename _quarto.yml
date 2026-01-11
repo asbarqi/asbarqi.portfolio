@@ -2,6 +2,9 @@ project:
   type: website
   output-dir: docs
   resources:
+    - assets/css/**
+    - assets/includes/**
+    - assets/files/**
     - assets/images/visualizations/**
 
 website:
