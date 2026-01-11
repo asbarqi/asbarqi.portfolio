@@ -1,29 +1,32 @@
 ---
-title: 'The Impact of Refugees on House Prices across EU Countries '
+title: "The Impact of Refugees on House Prices across EU Countries"
 author: |
   **Group Members**  
-  Ahmed Albarqi
-  Muhammad Usman Anwar Goraya 
+  Ahmed Albarqi  
+  Muhammad Usman Anwar Goraya  
   Sarthak Gulati
-date: "`r Sys.Date()`"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+
 output:
   html_document:
-    toc: yes
+    toc: true
     toc_depth: 3
-    toc_float: yes
-    number_sections: yes
+    toc_float: true
+    number_sections: true
     highlight: tango
     theme: default
-    fig_caption: yes
+    fig_caption: true
     df_print: tibble
+    mathjax: default
+
   pdf_document:
-    toc: no
+    toc: false
+    toc_depth: 3
+    number_sections: true
     latex_engine: xelatex
-    toc_depth: '3'
-    number_sections: yes
+
 urlcolor: blue
 ---
-
 
 ```{r echo = FALSE, results = FALSE, warning = FALSE, error = FALSE, message = FALSE}
 ## Loading libraries 
