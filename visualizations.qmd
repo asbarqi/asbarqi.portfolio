@@ -5,95 +5,59 @@ page-layout: full
 
 # Visualizations
 
-A selection of figures from my research and coursework.
+A selection of figures from my research and projects.
 
 ---
 
 ## Featured
+<section class="gallery">
 
-::: {.viz-feature}
-<div class="viz-card viz-feature-card">
-  <a class="viz-link" href="assets/images/visualizations/Absentiesm_by_county.png" target="_blank">
-    <img class="viz-img" src="assets/images/visualizations/Absentiesm_by_county.png" alt="Average Chronic Absenteeism by County (California)">
-  </a>
+  <div class="viz-card">
+    <img src="assets/images/visualizations/Refugee_map.png" alt="Refugee Influx Map">
 
-  <div class="viz-body">
-    <h3 class="viz-title">Average Chronic Absenteeism by County (California)</h3>
+    <h3 class="viz-title">Refugee Influx Groups in Europe (2010–2023)</h3>
+
     <p class="viz-caption">
-      County-level choropleth showing absenteeism intensity and highlighted top districts/schools.
+      Spatial distribution of average refugee inflows per 1,000 residents across European countries.
     </p>
 
     <div class="viz-tags">
       <span class="tag">Spatial</span>
-      <span class="tag">Education Policy</span>
-      <span class="tag">Data Viz</span>
-    </div>
-
-    <div class="viz-actions">
-      <a class="btn btn-outline-primary" href="assets/images/visualizations/Absentiesm_by_county.png" target="_blank">Open full size</a>
-    </div>
-  </div>
-</div>
-:::
-
----
-
-## Gallery
-
-::: {.viz-grid}
-
-<div class="viz-card">
-  <a class="viz-link" href="assets/images/visualizations/Europe_Refugees.png" target="_blank">
-    <img class="viz-img" src="assets/images/visualizations/Europe_Refugees.png" alt="Refugee Influx Groups in Europe (2010–2023)">
-  </a>
-  <div class="viz-body">
-    <h3 class="viz-title">Refugee Influx Groups in Europe (2010–2023)</h3>
-    <p class="viz-caption">Classification based on median and upper-quartile thresholds (refugees per 1,000 residents).</p>
-    <div class="viz-tags">
-      <span class="tag">Spatial</span>
       <span class="tag">Migration</span>
-      <span class="tag">EU</span>
+      <span class="tag">EU Policy</span>
     </div>
+
     <div class="viz-actions">
-      <a class="btn btn-outline-primary" href="assets/images/visualizations/Europe_Refugees.png" target="_blank">Open</a>
+      <a class="btn btn-outline-primary"
+         href="assets/images/visualizations/Refugee_map.png"
+         target="_blank">
+        View Full Image
+      </a>
     </div>
   </div>
-</div>
 
-<div class="viz-card">
-  <a class="viz-link" href="assets/images/visualizations/Housing_Prices_Distribution_Overtime.png" target="_blank">
-    <img class="viz-img" src="assets/images/visualizations/Housing_Prices_Distribution_Overtime.png" alt="Distribution of HPI Over Time">
-  </a>
-  <div class="viz-body">
-    <h3 class="viz-title">Distribution of EU Housing Price Index Over Time</h3>
-    <p class="viz-caption">Ridgeline distributions showing the shift in HPI across years.</p>
+  <div class="viz-card">
+    <img src="assets/images/visualizations/HPI_ridge.png" alt="HPI Ridge Plot">
+
+    <h3 class="viz-title">Distribution of HPI Over Time</h3>
+
+    <p class="viz-caption">
+      Ridge plot showing the evolution of EU housing prices across years for high-refugee-intake countries.
+    </p>
+
     <div class="viz-tags">
-      <span class="tag">Time</span>
       <span class="tag">Housing</span>
+      <span class="tag">Time Series</span>
       <span class="tag">Distribution</span>
     </div>
+
     <div class="viz-actions">
-      <a class="btn btn-outline-primary" href="assets/images/visualizations/Housing_Prices_Distribution_Overtime.png" target="_blank">Open</a>
+      <a class="btn btn-outline-primary"
+         href="assets/images/visualizations/HPI_ridge.png"
+         target="_blank">
+        View Full Image
+      </a>
     </div>
   </div>
-</div>
 
-<div class="viz-card">
-  <a class="viz-link" href="assets/images/visualizations/forecast_of_rent.png" target="_blank">
-    <img class="viz-img" src="assets/images/visualizations/forecast_of_rent.png" alt="Median Rent Actual and Forecast">
-  </a>
-  <div class="viz-body">
-    <h3 class="viz-title">Median Rent: Actual and Forecast</h3>
-    <p class="viz-caption">Observed median rent with forecast extension (dashed).</p>
-    <div class="viz-tags">
-      <span class="tag">Forecast</span>
-      <span class="tag">NYC</span>
-      <span class="tag">Time Series</span>
-    </div>
-    <div class="viz-actions">
-      <a class="btn btn-outline-primary" href="assets/images/visualizations/forecast_of_rent.png" target="_blank">Open</a>
-    </div>
-  </div>
-</div>
-
-:::
+</section>
