@@ -3,12 +3,10 @@ title: "Research & Projects"
 page-layout: full
 ---
 
-::: {.projects-header}
-# Research & Projects
 ::: {.projects-subtitle}
 Selected research projects in causal inference, econometrics, and time-series modeling.
 :::
-:::
+
 
 ::: {.projects-grid}
 
