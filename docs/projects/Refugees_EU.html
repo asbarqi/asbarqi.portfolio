@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
@@ -637,14 +666,16 @@ ul.task-list li input[type="checkbox"] {
 <section id="regression-approach" class="level2">
 <h2 class="anchored" data-anchor-id="regression-approach">Regression Approach</h2>
 <p>The primary specification is a two-way fixed effects model, accounting for country and year fixed effects, structured as follows:</p>
-<p>[ _{ct} = _c + <em>t + <em>1 </em>{ct} + </em>{ct} ]</p>
-<p>Where:</p>
+<p><span class="math display">\[
+\text{HPIGrowth}_{ct} = \alpha_c + \gamma_t + \beta_1 \,\text{RefugeeGrowth}_{ct} + \varepsilon_{ct}
+\]</span></p>
+<p>where:</p>
 <ul>
-<li>( _{ct} ): Housing Price Growth in country ( c ) at year ( t )</li>
-<li>( _c ): Country fixed effects (controls for time-invariant country-specific factors)</li>
-<li>( _t ): Year fixed effects (controls for time-specific shocks across countries)</li>
-<li>( _{ct} ): Growth in refugees and asylum seekers</li>
-<li>( _{ct} ): Error term</li>
+<li><span class="math inline">\(\text{HPIGrowth}_{ct}\)</span> is housing price growth in country <span class="math inline">\(c\)</span> at year <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(\alpha_c\)</span> denotes country fixed effects (time-invariant country characteristics)</li>
+<li><span class="math inline">\(\gamma_t\)</span> denotes year fixed effects (common macroeconomic shocks)</li>
+<li><span class="math inline">\(\text{RefugeeGrowth}_{ct}\)</span> is the growth in refugees and asylum seekers</li>
+<li><span class="math inline">\(\varepsilon_{ct}\)</span> is the error term</li>
 </ul>
 </section>
 </section>
@@ -660,8 +691,8 @@ ul.task-list li input[type="checkbox"] {
 
     <script>
 
-      function styleCell_nitmh1ci6xueqwr5kltb(i, j, css_id) {
-          var table = document.getElementById("tinytable_nitmh1ci6xueqwr5kltb");
+      function styleCell_g532ymdf1t9mgodwk7fj(i, j, css_id) {
+          var table = document.getElementById("tinytable_g532ymdf1t9mgodwk7fj");
           var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -670,8 +701,8 @@ ul.task-list li input[type="checkbox"] {
               console.warn(`Cell at (${i}, ${j}) not found.`);
           }
       }
-      function spanCell_nitmh1ci6xueqwr5kltb(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_nitmh1ci6xueqwr5kltb");
+      function spanCell_g532ymdf1t9mgodwk7fj(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_g532ymdf1t9mgodwk7fj");
         const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
         if (!targetCell) {
           console.warn(`Cell at (${i}, ${j}) not found.`);
@@ -702,20 +733,20 @@ ul.task-list li input[type="checkbox"] {
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '9', j: 1 }, { i: '9', j: 2 },  ], css_id: 'tinytable_css_i1mu6gp9zfmpzruea8ux',}, 
-          { positions: [ { i: '6', j: 2 }, { i: '6', j: 1 },  ], css_id: 'tinytable_css_tnaaayev2b5iokssgcvv',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '2', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '5', j: 2 },  ], css_id: 'tinytable_css_rkumu565k0wxd0cqzzfc',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 },  ], css_id: 'tinytable_css_quo6cyt9sel321gm4p4y',}, 
-          { positions: [ { i: '9', j: 0 },  ], css_id: 'tinytable_css_0zybzms3j5r7b5hvyk3i',}, 
-          { positions: [ { i: '6', j: 0 },  ], css_id: 'tinytable_css_p3v4jfj87x394zb1xj2y',}, 
-          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 },  ], css_id: 'tinytable_css_kwx5ue16j1ijnz42v0w0',}, 
-          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_ktoxmkoivh0aet604lcv',}, 
+          { positions: [ { i: '9', j: 1 }, { i: '9', j: 2 },  ], css_id: 'tinytable_css_ry6uwru0kvp5ioqd6kv0',}, 
+          { positions: [ { i: '6', j: 2 }, { i: '6', j: 1 },  ], css_id: 'tinytable_css_3tztajfdcicgaeid3oc3',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '2', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '5', j: 2 },  ], css_id: 'tinytable_css_f1cd881a3qpywb2fs3mh',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 },  ], css_id: 'tinytable_css_82j813i34xm08wgjw26k',}, 
+          { positions: [ { i: '9', j: 0 },  ], css_id: 'tinytable_css_gkyju31zi970jju8fx4n',}, 
+          { positions: [ { i: '6', j: 0 },  ], css_id: 'tinytable_css_r44ptlyo7b5nwggyxh6e',}, 
+          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 },  ], css_id: 'tinytable_css_jbwvbdkozm9j6v91ebuu',}, 
+          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_ztehd3jwifkc1tvs5u43',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_nitmh1ci6xueqwr5kltb(cell.i, cell.j, group.css_id);
+                  styleCell_g532ymdf1t9mgodwk7fj(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -723,17 +754,17 @@ ul.task-list li input[type="checkbox"] {
 
     <style>
       /* tinytable css entries after */
-      .table td.tinytable_css_i1mu6gp9zfmpzruea8ux, .table th.tinytable_css_i1mu6gp9zfmpzruea8ux { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_tnaaayev2b5iokssgcvv, .table th.tinytable_css_tnaaayev2b5iokssgcvv { text-align: center; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_rkumu565k0wxd0cqzzfc, .table th.tinytable_css_rkumu565k0wxd0cqzzfc { text-align: center; }
-      .table td.tinytable_css_quo6cyt9sel321gm4p4y, .table th.tinytable_css_quo6cyt9sel321gm4p4y { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-      .table td.tinytable_css_0zybzms3j5r7b5hvyk3i, .table th.tinytable_css_0zybzms3j5r7b5hvyk3i { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_p3v4jfj87x394zb1xj2y, .table th.tinytable_css_p3v4jfj87x394zb1xj2y { text-align: left; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_kwx5ue16j1ijnz42v0w0, .table th.tinytable_css_kwx5ue16j1ijnz42v0w0 { text-align: left; }
-      .table td.tinytable_css_ktoxmkoivh0aet604lcv, .table th.tinytable_css_ktoxmkoivh0aet604lcv { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_ry6uwru0kvp5ioqd6kv0, .table th.tinytable_css_ry6uwru0kvp5ioqd6kv0 { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_3tztajfdcicgaeid3oc3, .table th.tinytable_css_3tztajfdcicgaeid3oc3 { text-align: center; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_f1cd881a3qpywb2fs3mh, .table th.tinytable_css_f1cd881a3qpywb2fs3mh { text-align: center; }
+      .table td.tinytable_css_82j813i34xm08wgjw26k, .table th.tinytable_css_82j813i34xm08wgjw26k { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_gkyju31zi970jju8fx4n, .table th.tinytable_css_gkyju31zi970jju8fx4n { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_r44ptlyo7b5nwggyxh6e, .table th.tinytable_css_r44ptlyo7b5nwggyxh6e { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_jbwvbdkozm9j6v91ebuu, .table th.tinytable_css_jbwvbdkozm9j6v91ebuu { text-align: left; }
+      .table td.tinytable_css_ztehd3jwifkc1tvs5u43, .table th.tinytable_css_ztehd3jwifkc1tvs5u43 { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_nitmh1ci6xueqwr5kltb" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_g532ymdf1t9mgodwk7fj" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>

@@ -179,7 +179,7 @@
     "href": "projects/Refugees_EU.html#regression-approach",
     "title": "The Impact of Refugees on House Prices across EU Countries",
     "section": "Regression Approach",
-    "text": "Regression Approach\nThe primary specification is a two-way fixed effects model, accounting for country and year fixed effects, structured as follows:\n[ _{ct} = _c + t + 1 {ct} + {ct} ]\nWhere:\n\n( _{ct} ): Housing Price Growth in country ( c ) at year ( t )\n( _c ): Country fixed effects (controls for time-invariant country-specific factors)\n( _t ): Year fixed effects (controls for time-specific shocks across countries)\n( _{ct} ): Growth in refugees and asylum seekers\n( _{ct} ): Error term"
+    "text": "Regression Approach\nThe primary specification is a two-way fixed effects model, accounting for country and year fixed effects, structured as follows:\n\\[\n\\text{HPIGrowth}_{ct} = \\alpha_c + \\gamma_t + \\beta_1 \\,\\text{RefugeeGrowth}_{ct} + \\varepsilon_{ct}\n\\]\nwhere:\n\n\\(\\text{HPIGrowth}_{ct}\\) is housing price growth in country \\(c\\) at year \\(t\\)\n\\(\\alpha_c\\) denotes country fixed effects (time-invariant country characteristics)\n\\(\\gamma_t\\) denotes year fixed effects (common macroeconomic shocks)\n\\(\\text{RefugeeGrowth}_{ct}\\) is the growth in refugees and asylum seekers\n\\(\\varepsilon_{ct}\\) is the error term"
   },
   {
     "objectID": "projects/Refugees_EU.html#regression-results",

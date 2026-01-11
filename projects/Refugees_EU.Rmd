@@ -570,20 +570,18 @@ The empirical analysis which our group intends to employ, seeks to explore the c
 
 The primary specification is a two-way fixed effects model, accounting for country and year fixed effects, structured as follows:
 
-\[
-\text{HPIGrowth}_{ct} = \alpha_c + \gamma_t + \beta_1 \cdot \text{RefugeeGrowth}_{ct} + \epsilon_{ct}
-\]
+$$
+\text{HPIGrowth}_{ct} = \alpha_c + \gamma_t + \beta_1 \,\text{RefugeeGrowth}_{ct} + \varepsilon_{ct}
+$$
 
-Where:
+where:
 
-- \( \text{HPI}_{ct} \): Housing Price Growth in country \( c \) at year \( t \)
-- \( \alpha_c \): Country fixed effects (controls for time-invariant country-specific factors)
-- \( \gamma_t \): Year fixed effects (controls for time-specific shocks across countries)
-- \( \text{RefugeeGrowth}_{ct} \): Growth in refugees and asylum seekers
-- \( \epsilon_{ct} \): Error term
+- $\text{HPIGrowth}_{ct}$ is housing price growth in country $c$ at year $t$
+- $\alpha_c$ denotes country fixed effects (time-invariant country characteristics)
+- $\gamma_t$ denotes year fixed effects (common macroeconomic shocks)
+- $\text{RefugeeGrowth}_{ct}$ is the growth in refugees and asylum seekers
+- $\varepsilon_{ct}$ is the error term
 
-
-\break
 
 # Findings
 
