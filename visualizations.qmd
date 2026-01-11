@@ -10,7 +10,8 @@ A selection of figures from my research and projects.
 ::: {.viz-grid}
 
 ::: {.viz-card}
-[![](assets/images/visualizations/Absentiesm_by_county.png){.viz-img alt="Average Chronic Absenteeism by County (California)"}](assets/images/visualizations/Absentiesm_by_county.png){target="_blank"}
+[![](assets/images/visualizations/Absentiesm_by_county.png){.viz-img}](assets/images/visualizations/Absentiesm_by_county.png){target="_blank" .viz-link}
+
 ::: {.viz-body}
 ### Average Chronic Absenteeism by County (California)
 
@@ -21,7 +22,7 @@ County-level choropleth showing absenteeism intensity and highlighted top distri
 ::: {.viz-tags}
 <span class="tag">Spatial</span>
 <span class="tag">Education Policy</span>
-<span class="tag">Data Viz</span>
+<span class="tag">choropleth</span>
 :::
 
 ::: {.viz-actions}
@@ -31,7 +32,8 @@ County-level choropleth showing absenteeism intensity and highlighted top distri
 :::
 
 ::: {.viz-card}
-[![](assets/images/visualizations/Europe_Refugees.png){.viz-img alt="Refugee Influx Groups in Europe (2010–2023)"}](assets/images/visualizations/Europe_Refugees.png){target="_blank"}
+[![](assets/images/visualizations/Europe_Refugees.png){.viz-img}](assets/images/visualizations/Europe_Refugees.png){target="_blank" .viz-link}
+
 ::: {.viz-body}
 ### Refugee Influx Groups in Europe (2010–2023)
 
@@ -42,7 +44,7 @@ Classification based on median and upper-quartile thresholds (refugees per 1,000
 ::: {.viz-tags}
 <span class="tag">Spatial</span>
 <span class="tag">Migration</span>
-<span class="tag">EU</span>
+<span class="tag">choropleth</span>
 :::
 
 ::: {.viz-actions}
@@ -52,7 +54,8 @@ Classification based on median and upper-quartile thresholds (refugees per 1,000
 :::
 
 ::: {.viz-card}
-[![](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){.viz-img alt="Distribution of EU HPI Over Time"}](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){target="_blank"}
+[![](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){.viz-img}](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){target="_blank" .viz-link}
+
 ::: {.viz-body}
 ### Distribution of EU Housing Price Index Over Time
 
@@ -61,7 +64,6 @@ Ridgeline distributions showing the shift in HPI across years.
 :::
 
 ::: {.viz-tags}
-<span class="tag">Time</span>
 <span class="tag">Housing</span>
 <span class="tag">Distribution</span>
 :::
@@ -73,7 +75,8 @@ Ridgeline distributions showing the shift in HPI across years.
 :::
 
 ::: {.viz-card}
-[![](assets/images/visualizations/forecast_of_rent.png){.viz-img alt="Median Rent Actual and Forecast"}](assets/images/visualizations/forecast_of_rent.png){target="_blank"}
+[![](assets/images/visualizations/forecast_of_rent.png){.viz-img}](assets/images/visualizations/forecast_of_rent.png){target="_blank" .viz-link}
+
 ::: {.viz-body}
 ### Median Rent: Actual and Forecast
 
@@ -82,8 +85,7 @@ Observed median rent with forecast extension (dashed).
 :::
 
 ::: {.viz-tags}
-<span class="tag">Forecast</span>
-<span class="tag">NYC</span>
+<span class="tag">VAR</span>
 <span class="tag">Time Series</span>
 :::
 

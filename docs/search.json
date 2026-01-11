@@ -116,21 +116,7 @@
     "href": "visualizations.html",
     "title": "Visualizations",
     "section": "",
-    "text": "A selection of figures from my research and projects.\n\n\n\n\n\n\n\n\n\nCounty-level choropleth showing absenteeism intensity and highlighted top districts/schools.\n\n\nSpatial Education Policy Data Viz\n\n\nOpen full size\n\n\n\n\n\n\n\n\n\n\n ::: {.viz-body} ### Refugee Influx Groups in Europe (2010–2023) ::: {.viz-caption} Classification based on median and upper-quartile thresholds (refugees per 1,000 residents).\n\n\nSpatialMigrationEU\n\n\nOpen\n\n\n:::\n\n ::: {.viz-body} ### Distribution of EU Housing Price Index Over Time ::: {.viz-caption} Ridgeline distributions showing the shift in HPI across years.\n\n\nTimeHousingDistribution\n\n\nOpen\n\n::: :::\n\n ::: {.viz-body} ### Median Rent: Actual and Forecast ::: {.viz-caption} Observed median rent with forecast extension (dashed).\n\n\nForecastNYCTime Series\n\n\nOpen\n\n::: :::\n:::"
-  },
-  {
-    "objectID": "visualizations.html#featured",
-    "href": "visualizations.html#featured",
-    "title": "Visualizations",
-    "section": "",
-    "text": "County-level choropleth showing absenteeism intensity and highlighted top districts/schools.\n\n\nSpatial Education Policy Data Viz\n\n\nOpen full size"
-  },
-  {
-    "objectID": "visualizations.html#gallery",
-    "href": "visualizations.html#gallery",
-    "title": "Visualizations",
-    "section": "",
-    "text": "::: {.viz-body} ### Refugee Influx Groups in Europe (2010–2023) ::: {.viz-caption} Classification based on median and upper-quartile thresholds (refugees per 1,000 residents).\n\n\nSpatialMigrationEU\n\n\nOpen\n\n\n:::\n\n ::: {.viz-body} ### Distribution of EU Housing Price Index Over Time ::: {.viz-caption} Ridgeline distributions showing the shift in HPI across years.\n\n\nTimeHousingDistribution\n\n\nOpen\n\n::: :::\n\n ::: {.viz-body} ### Median Rent: Actual and Forecast ::: {.viz-caption} Observed median rent with forecast extension (dashed).\n\n\nForecastNYCTime Series\n\n\nOpen\n\n::: :::\n:::"
+    "text": "A selection of figures from my research and projects.\n\n\n\n\n\nAverage Chronic Absenteeism by County (California)\n\nCounty-level choropleth showing absenteeism intensity and highlighted top districts/schools.\n\n\nSpatial Education Policy choropleth\n\n\nOpen\n\n\n\n\n\n\nRefugee Influx Groups in Europe (2010–2023)\n\nClassification based on median and upper-quartile thresholds (refugees per 1,000 residents).\n\n\nSpatial Migration choropleth\n\n\nOpen\n\n\n\n\n\n\nDistribution of EU Housing Price Index Over Time\n\nRidgeline distributions showing the shift in HPI across years.\n\n\nHousing Distribution\n\n\nOpen\n\n\n\n\n\n\nMedian Rent: Actual and Forecast\n\nObserved median rent with forecast extension (dashed).\n\n\nVAR Time Series\n\n\nOpen"
   },
   {
     "objectID": "projects/Refugees_EU.html",
