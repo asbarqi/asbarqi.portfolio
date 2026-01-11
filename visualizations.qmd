@@ -1,32 +1,99 @@
 ---
 title: "Visualizations"
+page-layout: full
 ---
 
-## Data Visualizations
+# Visualizations
 
-This section highlights selected visualizations from my research and analysis work.  
-Additional figures and interactive graphics will be added over time.
-
----
-
-### Housing & Homelessness (NYC)
-- Rent vs shelter population trends  
-- Forecasted shelter demand  
-
-*(Coming soon)*
+A selection of figures from my research and coursework.
 
 ---
 
-### Demography & Population
-- Fertility rate trends and volatility  
-- Long-run demographic projections  
+## Featured
 
-*(Coming soon)*
+::: {.viz-feature}
+<div class="viz-card viz-feature-card">
+  <a class="viz-link" href="assets/images/visualizations/Absentiesm_by_county.png" target="_blank">
+    <img class="viz-img" src="assets/images/visualizations/Absentiesm_by_county.png" alt="Average Chronic Absenteeism by County (California)">
+  </a>
+
+  <div class="viz-body">
+    <h3 class="viz-title">Average Chronic Absenteeism by County (California)</h3>
+    <p class="viz-caption">
+      County-level choropleth showing absenteeism intensity and highlighted top districts/schools.
+    </p>
+
+    <div class="viz-tags">
+      <span class="tag">Spatial</span>
+      <span class="tag">Education Policy</span>
+      <span class="tag">Data Viz</span>
+    </div>
+
+    <div class="viz-actions">
+      <a class="btn btn-outline-primary" href="assets/images/visualizations/Absentiesm_by_county.png" target="_blank">Open full size</a>
+    </div>
+  </div>
+</div>
+:::
 
 ---
 
-### Migration & Housing
-- Refugee inflows and housing price distributions  
-- Cross-country spatial patterns  
+## Gallery
 
-*(Coming soon)*
+::: {.viz-grid}
+
+<div class="viz-card">
+  <a class="viz-link" href="assets/images/visualizations/Europe_Refugees.png" target="_blank">
+    <img class="viz-img" src="assets/images/visualizations/Europe_Refugees.png" alt="Refugee Influx Groups in Europe (2010–2023)">
+  </a>
+  <div class="viz-body">
+    <h3 class="viz-title">Refugee Influx Groups in Europe (2010–2023)</h3>
+    <p class="viz-caption">Classification based on median and upper-quartile thresholds (refugees per 1,000 residents).</p>
+    <div class="viz-tags">
+      <span class="tag">Spatial</span>
+      <span class="tag">Migration</span>
+      <span class="tag">EU</span>
+    </div>
+    <div class="viz-actions">
+      <a class="btn btn-outline-primary" href="assets/images/visualizations/Europe_Refugees.png" target="_blank">Open</a>
+    </div>
+  </div>
+</div>
+
+<div class="viz-card">
+  <a class="viz-link" href="assets/images/visualizations/Housing_Prices_Distribution_Overtime.png" target="_blank">
+    <img class="viz-img" src="assets/images/visualizations/Housing_Prices_Distribution_Overtime.png" alt="Distribution of HPI Over Time">
+  </a>
+  <div class="viz-body">
+    <h3 class="viz-title">Distribution of EU Housing Price Index Over Time</h3>
+    <p class="viz-caption">Ridgeline distributions showing the shift in HPI across years.</p>
+    <div class="viz-tags">
+      <span class="tag">Time</span>
+      <span class="tag">Housing</span>
+      <span class="tag">Distribution</span>
+    </div>
+    <div class="viz-actions">
+      <a class="btn btn-outline-primary" href="assets/images/visualizations/Housing_Prices_Distribution_Overtime.png" target="_blank">Open</a>
+    </div>
+  </div>
+</div>
+
+<div class="viz-card">
+  <a class="viz-link" href="assets/images/visualizations/forecast_of_rent.png" target="_blank">
+    <img class="viz-img" src="assets/images/visualizations/forecast_of_rent.png" alt="Median Rent Actual and Forecast">
+  </a>
+  <div class="viz-body">
+    <h3 class="viz-title">Median Rent: Actual and Forecast</h3>
+    <p class="viz-caption">Observed median rent with forecast extension (dashed).</p>
+    <div class="viz-tags">
+      <span class="tag">Forecast</span>
+      <span class="tag">NYC</span>
+      <span class="tag">Time Series</span>
+    </div>
+    <div class="viz-actions">
+      <a class="btn btn-outline-primary" href="assets/images/visualizations/forecast_of_rent.png" target="_blank">Open</a>
+    </div>
+  </div>
+</div>
+
+:::

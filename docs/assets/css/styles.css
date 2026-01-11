@@ -303,3 +303,87 @@ h3 { margin-top: 1.2rem; }
 @media (max-width: 600px) {
   .projects-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================= */
+/* Visualizations page            */
+/* ============================= */
+
+.viz-feature {
+  max-width: 980px;
+  margin: 0 auto 18px auto;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 980px;
+  margin: 0 auto 28px auto;
+}
+
+.viz-card {
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.viz-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+}
+
+.viz-link {
+  display: block;
+}
+
+.viz-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.viz-feature-card .viz-img {
+  height: 420px;
+}
+
+.viz-body {
+  padding: 16px;
+}
+
+.viz-title {
+  margin: 0 0 8px 0;
+}
+
+.viz-caption {
+  margin: 0 0 12px 0;
+  color: rgba(0,0,0,0.75);
+}
+
+.viz-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.viz-actions .btn {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .viz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .viz-feature-card .viz-img { height: 360px; }
+}
+
+@media (max-width: 600px) {
+  .viz-grid { grid-template-columns: 1fr; }
+  .viz-img { height: 220px; }
+  .viz-feature-card .viz-img { height: 280px; }
+}
