@@ -3,19 +3,14 @@ title: "Visualizations"
 page-layout: full
 ---
 
-# Visualizations
-
 A selection of figures from my research and projects.
 
 ---
 
-## Featured
+::: {.viz-grid}
 
-::: {.viz-feature}
-::: {.viz-card .viz-feature-card}
-
+::: {.viz-card}
 [![](assets/images/visualizations/Absentiesm_by_county.png){.viz-img alt="Average Chronic Absenteeism by County (California)"}](assets/images/visualizations/Absentiesm_by_county.png){target="_blank"}
-
 ::: {.viz-body}
 ### Average Chronic Absenteeism by County (California)
 
@@ -30,29 +25,26 @@ County-level choropleth showing absenteeism intensity and highlighted top distri
 :::
 
 ::: {.viz-actions}
-[Open full size](assets/images/visualizations/Absentiesm_by_county.png){.btn .btn-outline-primary target="_blank"}
+[Open](assets/images/visualizations/Absentiesm_by_county.png){.btn .btn-outline-primary target="_blank"}
 :::
 :::
-
 :::
-:::
-
----
-
-## Gallery
-
-::: {.viz-grid}
 
 ::: {.viz-card}
 [![](assets/images/visualizations/Europe_Refugees.png){.viz-img alt="Refugee Influx Groups in Europe (2010–2023)"}](assets/images/visualizations/Europe_Refugees.png){target="_blank"}
 ::: {.viz-body}
 ### Refugee Influx Groups in Europe (2010–2023)
+
 ::: {.viz-caption}
 Classification based on median and upper-quartile thresholds (refugees per 1,000 residents).
 :::
+
 ::: {.viz-tags}
-<span class="tag">Spatial</span><span class="tag">Migration</span><span class="tag">EU</span>
+<span class="tag">Spatial</span>
+<span class="tag">Migration</span>
+<span class="tag">EU</span>
 :::
+
 ::: {.viz-actions}
 [Open](assets/images/visualizations/Europe_Refugees.png){.btn .btn-outline-primary target="_blank"}
 :::
@@ -63,12 +55,17 @@ Classification based on median and upper-quartile thresholds (refugees per 1,000
 [![](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){.viz-img alt="Distribution of EU HPI Over Time"}](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){target="_blank"}
 ::: {.viz-body}
 ### Distribution of EU Housing Price Index Over Time
+
 ::: {.viz-caption}
 Ridgeline distributions showing the shift in HPI across years.
 :::
+
 ::: {.viz-tags}
-<span class="tag">Time</span><span class="tag">Housing</span><span class="tag">Distribution</span>
+<span class="tag">Time</span>
+<span class="tag">Housing</span>
+<span class="tag">Distribution</span>
 :::
+
 ::: {.viz-actions}
 [Open](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){.btn .btn-outline-primary target="_blank"}
 :::
@@ -79,12 +76,17 @@ Ridgeline distributions showing the shift in HPI across years.
 [![](assets/images/visualizations/forecast_of_rent.png){.viz-img alt="Median Rent Actual and Forecast"}](assets/images/visualizations/forecast_of_rent.png){target="_blank"}
 ::: {.viz-body}
 ### Median Rent: Actual and Forecast
+
 ::: {.viz-caption}
 Observed median rent with forecast extension (dashed).
 :::
+
 ::: {.viz-tags}
-<span class="tag">Forecast</span><span class="tag">NYC</span><span class="tag">Time Series</span>
+<span class="tag">Forecast</span>
+<span class="tag">NYC</span>
+<span class="tag">Time Series</span>
 :::
+
 ::: {.viz-actions}
 [Open](assets/images/visualizations/forecast_of_rent.png){.btn .btn-outline-primary target="_blank"}
 :::
