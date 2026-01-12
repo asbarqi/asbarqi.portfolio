@@ -21,10 +21,13 @@ website:
       - icon: github
         href: https://github.com/asbarqi
         target: _blank
+      - icon: Substack
+        href: https://substack.com/@ahmedincontext
+        target: _blank
       - icon: linkedin
         href: https://www.linkedin.com/in/asbarqi/
         target: _blank
-      - icon: file-earmark-pdf
+      - icon: file-person
         href: assets/files/Ahmed_Albarqi_CV.pdf
         target: _blank
 
