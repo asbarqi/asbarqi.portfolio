@@ -21,7 +21,7 @@ website:
       - icon: github
         href: https://github.com/asbarqi
         target: _blank
-      - icon: assets/icons/substack.svg
+      - text: '<img src="assets/icons/substack.svg" class="nav-svg-icon" alt="Substack">'
         href: https://substack.com/@ahmedincontext
         target: _blank
       - icon: linkedin
