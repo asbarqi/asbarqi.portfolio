@@ -1,8 +1,18 @@
 ---
-title: ' Report \break "Vector Autoregressive (VAR) Modeling for Shelter Population & Median rent asked in NYC" '
+title: ' Report \break "Vector Autoregressive (VAR) Modeling for Shelter Population
+  & Median rent asked in NYC" '
 author: "**Studnet**  \nAhmed Albarqi  \n"
 date: "`r Sys.Date()`"
 output:
+  pdf_document:
+    toc: false
+    toc_depth: '3'
+  bookdown::pdf_document2:
+    toc: false
+    latex_engine: xelatex
+    toc_depth: '3'
+    number_sections: true
+  bookdown: default
   html_document:
     toc: true
     toc_depth: 3
@@ -12,12 +22,6 @@ output:
     theme: default
     fig_caption: true
     df_print: tibble
-  bookdown::pdf_document2:
-    toc: false
-    latex_engine: xelatex
-    toc_depth: '3'
-    number_sections: true
-  bookdown: default
 urlcolor: blue
 ---
 

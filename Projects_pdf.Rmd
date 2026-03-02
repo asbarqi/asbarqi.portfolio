@@ -1,0 +1,12 @@
+---
+title: "Selected Research Projects"
+author: "Ahmed Albarqi"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: false
+geometry: margin=1in
+---
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)

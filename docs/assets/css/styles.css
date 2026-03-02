@@ -401,6 +401,6 @@ h3 { margin-top: 1.2rem; }
 
 /* Substack SVG ONLY — force muted grey */
 .navbar img.nav-svg-icon {
-  filter: grayscale(100%) brightness(0.6) contrast(0.8) !important;
-  opacity: 0.7;
+  filter: grayscale(80%) brightness(0.4) contrast(0.4) !important;
+  opacity: 0.6;
 }
