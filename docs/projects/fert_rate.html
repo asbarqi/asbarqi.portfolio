@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ahmed Albarqi">
-<meta name="dcterms.date" content="2026-03-04">
+<meta name="dcterms.date" content="2026-03-19">
 
 <title>Report “Fertility Rate Forecasting for Saudi Arabia”</title>
 <style>
@@ -186,7 +186,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 4, 2026</p>
+      <p class="date">March 19, 2026</p>
     </div>
   </div>
   
@@ -402,7 +402,17 @@ window.Quarto = {
 <section id="ar4" class="level1">
 <h1>AR(4)</h1>
 <p>Having selected the ARIMA(4,1,0) specification, the model’s adequacy is assessed through an examination of coefficient properties, residual behavior, and potential violations of key assumptions. The AR(4) specification used throughout the analysis is given by:</p>
-<p>[ y_t = ,y_{t-1} + ,y_{t-2} + ,y_{t-3} + ,y_{t-4} + _t ]</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Delta y_t
+=\;&amp;
+-0.148\,\Delta y_{t-1}
++ -0.174\,\Delta y_{t-2}
++ -0.462\,\Delta y_{t-3}
++ -0.513\,\Delta y_{t-4}
++ \varepsilon_t
+\end{aligned}
+\]</span></p>
 <section id="coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="coefficients">Coefficients</h2>
 <p>As a preliminary diagnostic, the necessary and sufficient conditions for stationarity of the autoregressive component are examined.</p>
@@ -508,9 +518,24 @@ window.Quarto = {
 <p>Overall, these results confirm that extending the AR(4) mean specification with a GARCH(1,1) variance process is necessary to appropriately model time-varying volatility and to obtain reliable inference and forecast uncertainty.</p>
 <p>The AR(4)–GARCH(1,1) model is formally specified below through its conditional mean and variance equations.</p>
 <p>The mean equation remains the selected AR(4) specification:</p>
-<p>[ y_t = ,y_{t-1} + ,y_{t-2} + ,y_{t-3} + ,y_{t-4} + _t ]</p>
-<p>The conditional variance follows a GARCH(1,1) process:</p>
-<p>[ <em>t^2 = 0.4338,</em>{t-1}^2 + 0.5652,_{t-1}^2 ]</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Delta y_t
+=\;&amp;
+-0.148\,\Delta y_{t-1}
++ -0.174\,\Delta y_{t-2}
++ -0.462\,\Delta y_{t-3}
++ -0.513\,\Delta y_{t-4}
++ \varepsilon_t
+\end{aligned}
+\]</span> The conditional variance follows a GARCH(1,1) process:</p>
+<p><span class="math display">\[
+\sigma_t^2
+=
+0.4338\,\varepsilon_{t-1}^2
++
+0.5652\,\sigma_{t-1}^2
+\]</span></p>
 </section>
 <section id="residual-diagnostics-and-model-adequacy" class="level2">
 <h2 class="anchored" data-anchor-id="residual-diagnostics-and-model-adequacy">Residual Diagnostics and Model Adequacy</h2>

@@ -253,19 +253,17 @@ This model delivers superior overall performance. It achieves competitive inform
 
 Having selected the ARIMA(4,1,0) specification, the model’s adequacy is assessed through an examination of coefficient properties, residual behavior, and potential violations of key assumptions. The AR(4) specification used throughout the analysis is given by:
 
-\[
+$$
+\begin{aligned}
 \Delta y_t
-=
-\texttt{`r round(coefs4[1],3)`}\,\Delta y_{t-1}
-+
-\texttt{`r round(coefs4[2],3)`}\,\Delta y_{t-2}
-+
-\texttt{`r round(coefs4[3],3)`}\,\Delta y_{t-3}
-+
-\texttt{`r round(coefs4[4],3)`}\,\Delta y_{t-4}
-+
-\varepsilon_t
-\]
+=\;&
+`r round(coefs4[1],3)`\,\Delta y_{t-1}
++ `r round(coefs4[2],3)`\,\Delta y_{t-2}
++ `r round(coefs4[3],3)`\,\Delta y_{t-3}
++ `r round(coefs4[4],3)`\,\Delta y_{t-4}
++ \varepsilon_t
+\end{aligned}
+$$
 
 
 ## Coefficients 
@@ -389,29 +387,26 @@ The AR(4)–GARCH(1,1) model is formally specified below through its conditional
 
 The mean equation remains the selected AR(4) specification:
 
-\[
+$$
+\begin{aligned}
 \Delta y_t
-=
-\texttt{`r round(coefs4[1],3)`}\,\Delta y_{t-1}
-+
-\texttt{`r round(coefs4[2],3)`}\,\Delta y_{t-2}
-+
-\texttt{`r round(coefs4[3],3)`}\,\Delta y_{t-3}
-+
-\texttt{`r round(coefs4[4],3)`}\,\Delta y_{t-4}
-+
-\varepsilon_t
-\]
-
+=\;&
+`r round(coefs4[1],3)`\,\Delta y_{t-1}
++ `r round(coefs4[2],3)`\,\Delta y_{t-2}
++ `r round(coefs4[3],3)`\,\Delta y_{t-3}
++ `r round(coefs4[4],3)`\,\Delta y_{t-4}
++ \varepsilon_t
+\end{aligned}
+$$
 The conditional variance follows a GARCH(1,1) process:
 
-\[
+$$
 \sigma_t^2
 =
 0.4338\,\varepsilon_{t-1}^2
 +
 0.5652\,\sigma_{t-1}^2
-\]
+$$
 
 
 ## Residual Diagnostics and Model Adequacy
