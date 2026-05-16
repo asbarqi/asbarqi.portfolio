@@ -19,7 +19,7 @@ Effective policy research depends on clear and interpretable data visualization.
 ### PAM Clustering: K=10 Victim Profiles (MDS Embedding)
 
 ::: {.viz-caption}
-MDS embedding of PAM clustering results using Gower distance, identifying 10 distinct forced labour victim profiles across demographic and socioeconomic dimensions.
+MDS embedding of PAM clustering results, identifying 10 distinct profiles across demographic and socioeconomic dimensions.
 :::
 
 ::: {.viz-tags}
@@ -34,6 +34,7 @@ MDS embedding of PAM clustering results using Gower distance, identifying 10 dis
 
 :::
 :::
+
 
 ::: {.viz-card}
 
@@ -55,6 +56,82 @@ County-level choropleth showing absenteeism intensity and highlighted top distri
 
 ::: {.viz-actions}
 [Open](assets/images/visualizations/Absentiesm_by_county.png){.btn .btn-outline-primary target="_blank"}
+:::
+
+:::
+:::
+
+
+::: {.viz-card}
+
+[![](assets/images/visualizations/Europe_Refugees.png){.viz-img}](assets/images/visualizations/Europe_Refugees.png){target="_blank" .viz-link}
+
+::: {.viz-body}
+
+### Refugee Influx Groups in Europe (2010–2023)
+
+::: {.viz-caption}
+Classification based on median and upper-quartile thresholds (refugees per 1,000 residents).
+:::
+
+::: {.viz-tags}
+<span class="tag">Spatial</span>
+<span class="tag">Migration</span>
+<span class="tag">choropleth</span>
+:::
+
+::: {.viz-actions}
+[Open](assets/images/visualizations/Europe_Refugees.png){.btn .btn-outline-primary target="_blank"}
+:::
+
+:::
+:::
+
+
+::: {.viz-card}
+
+[![](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){.viz-img}](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){target="_blank" .viz-link}
+
+::: {.viz-body}
+
+### Distribution of EU Housing Price Index Over Time
+
+::: {.viz-caption}
+Ridgeline distributions showing the shift in HPI across years.
+:::
+
+::: {.viz-tags}
+<span class="tag">Housing</span>
+<span class="tag">Distribution</span>
+:::
+
+::: {.viz-actions}
+[Open](assets/images/visualizations/Housing_Prices_Distribution_Overtime.png){.btn .btn-outline-primary target="_blank"}
+:::
+
+:::
+:::
+
+
+::: {.viz-card}
+
+[![](assets/images/visualizations/forecast_of_rent.png){.viz-img}](assets/images/visualizations/forecast_of_rent.png){target="_blank" .viz-link}
+
+::: {.viz-body}
+
+### Median Rent: Actual and Forecast
+
+::: {.viz-caption}
+Observed median rent with forecast extension (dashed).
+:::
+
+::: {.viz-tags}
+<span class="tag">VAR</span>
+<span class="tag">Time Series</span>
+:::
+
+::: {.viz-actions}
+[Open](assets/images/visualizations/forecast_of_rent.png){.btn .btn-outline-primary target="_blank"}
 :::
 
 :::
