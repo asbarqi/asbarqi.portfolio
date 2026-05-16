@@ -3,7 +3,7 @@ title: "Visualizations"
 page-layout: full
 ---
 
-Effective policy research depends on clear and interpretable data visualization. Below are selected figures from my work, spanning spatial analysis, time-series modeling, and comparative policy insights.
+Effective policy research depends on clear and interpretable data visualization. Below are selected figures from my work, spanning spatial analysis, time-series modeling, clustering and comparative policy insights.
 
 ---
 
