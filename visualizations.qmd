@@ -11,19 +11,25 @@ Effective policy research depends on clear and interpretable data visualization.
 
 ::: {.viz-card}
 [![](assets/images/visualizations/mds_embedding_k10.png){.viz-img}](assets/images/visualizations/mds_embedding_k10.png){target="_blank" .viz-link}
+
 ::: {.viz-body}
+
 ### PAM Clustering: K=10 Victim Profiles (MDS Embedding)
+
 ::: {.viz-caption}
 MDS embedding of PAM clustering results using Gower distance, identifying 10 distinct forced labour victim profiles across demographic and socioeconomic dimensions.
 :::
+
 ::: {.viz-tags}
 <span class="tag">Clustering</span>
 <span class="tag">Forced Labour</span>
 <span class="tag">MDS</span>
 :::
+
 ::: {.viz-actions}
 [Open](assets/images/visualizations/mds_embedding_k10.png){.btn .btn-outline-primary target="_blank"}
 :::
+
 :::
 :::
 
