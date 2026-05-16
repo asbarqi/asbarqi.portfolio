@@ -16,3 +16,4 @@ __pycache__/
 
 /.quarto/
 **/*.quarto_ipynb
+.positai
