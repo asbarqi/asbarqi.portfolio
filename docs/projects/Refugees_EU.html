@@ -700,8 +700,8 @@ Figure&nbsp;1
 
     <script>
 
-      function styleCell_rncptukpirzeetu41rbu(i, j, css_id) {
-          var table = document.getElementById("tinytable_rncptukpirzeetu41rbu");
+      function styleCell_ql58ar1mx5f0ps8pwl12(i, j, css_id) {
+          var table = document.getElementById("tinytable_ql58ar1mx5f0ps8pwl12");
           var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -710,8 +710,8 @@ Figure&nbsp;1
               console.warn(`Cell at (${i}, ${j}) not found.`);
           }
       }
-      function spanCell_rncptukpirzeetu41rbu(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_rncptukpirzeetu41rbu");
+      function spanCell_ql58ar1mx5f0ps8pwl12(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_ql58ar1mx5f0ps8pwl12");
         const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
         if (!targetCell) {
           console.warn(`Cell at (${i}, ${j}) not found.`);
@@ -742,20 +742,20 @@ Figure&nbsp;1
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '9', j: 1 }, { i: '9', j: 2 },  ], css_id: 'tinytable_css_v0vmxwu4i3xxz8ekekdn',}, 
-          { positions: [ { i: '6', j: 2 }, { i: '6', j: 1 },  ], css_id: 'tinytable_css_zprc3wvhz01k43tq2fd5',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '2', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '5', j: 2 },  ], css_id: 'tinytable_css_kr6yfmrb4j38mwqssyhp',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 },  ], css_id: 'tinytable_css_i2psnrf6deqhmmdkt6bw',}, 
-          { positions: [ { i: '9', j: 0 },  ], css_id: 'tinytable_css_a5hgd34dq90ipjwg8a5z',}, 
-          { positions: [ { i: '6', j: 0 },  ], css_id: 'tinytable_css_u4zx0ooemd39qoufx86i',}, 
-          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 },  ], css_id: 'tinytable_css_7zvpbzf2ucp6t5y9hp7d',}, 
-          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_4h0qsemu52zn0v0puqo8',}, 
+          { positions: [ { i: '9', j: 1 }, { i: '9', j: 2 },  ], css_id: 'tinytable_css_4vr4ohxfvz3l86p5snyz',}, 
+          { positions: [ { i: '6', j: 2 }, { i: '6', j: 1 },  ], css_id: 'tinytable_css_5qpwkac657jooq2ddzzr',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '2', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '5', j: 2 },  ], css_id: 'tinytable_css_m399x1x0e2v7higdvbsx',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 },  ], css_id: 'tinytable_css_wfaswhi3n5sg1ppjmbgn',}, 
+          { positions: [ { i: '9', j: 0 },  ], css_id: 'tinytable_css_hl0ldrqa21c5kfbcswh2',}, 
+          { positions: [ { i: '6', j: 0 },  ], css_id: 'tinytable_css_jvku61kjgdv4f8iw496t',}, 
+          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 },  ], css_id: 'tinytable_css_84dw4qvsejad8w2i3bsl',}, 
+          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_ttk2145s1tq8qrfuej48',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_rncptukpirzeetu41rbu(cell.i, cell.j, group.css_id);
+                  styleCell_ql58ar1mx5f0ps8pwl12(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -763,17 +763,17 @@ Figure&nbsp;1
 
     <style>
       /* tinytable css entries after */
-      .table td.tinytable_css_v0vmxwu4i3xxz8ekekdn, .table th.tinytable_css_v0vmxwu4i3xxz8ekekdn { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_zprc3wvhz01k43tq2fd5, .table th.tinytable_css_zprc3wvhz01k43tq2fd5 { text-align: center; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_kr6yfmrb4j38mwqssyhp, .table th.tinytable_css_kr6yfmrb4j38mwqssyhp { text-align: center; }
-      .table td.tinytable_css_i2psnrf6deqhmmdkt6bw, .table th.tinytable_css_i2psnrf6deqhmmdkt6bw { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-      .table td.tinytable_css_a5hgd34dq90ipjwg8a5z, .table th.tinytable_css_a5hgd34dq90ipjwg8a5z { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_u4zx0ooemd39qoufx86i, .table th.tinytable_css_u4zx0ooemd39qoufx86i { text-align: left; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_7zvpbzf2ucp6t5y9hp7d, .table th.tinytable_css_7zvpbzf2ucp6t5y9hp7d { text-align: left; }
-      .table td.tinytable_css_4h0qsemu52zn0v0puqo8, .table th.tinytable_css_4h0qsemu52zn0v0puqo8 { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_4vr4ohxfvz3l86p5snyz, .table th.tinytable_css_4vr4ohxfvz3l86p5snyz { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_5qpwkac657jooq2ddzzr, .table th.tinytable_css_5qpwkac657jooq2ddzzr { text-align: center; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_m399x1x0e2v7higdvbsx, .table th.tinytable_css_m399x1x0e2v7higdvbsx { text-align: center; }
+      .table td.tinytable_css_wfaswhi3n5sg1ppjmbgn, .table th.tinytable_css_wfaswhi3n5sg1ppjmbgn { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_hl0ldrqa21c5kfbcswh2, .table th.tinytable_css_hl0ldrqa21c5kfbcswh2 { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_jvku61kjgdv4f8iw496t, .table th.tinytable_css_jvku61kjgdv4f8iw496t { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_84dw4qvsejad8w2i3bsl, .table th.tinytable_css_84dw4qvsejad8w2i3bsl { text-align: left; }
+      .table td.tinytable_css_ttk2145s1tq8qrfuej48, .table th.tinytable_css_ttk2145s1tq8qrfuej48 { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_rncptukpirzeetu41rbu" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_ql58ar1mx5f0ps8pwl12" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
