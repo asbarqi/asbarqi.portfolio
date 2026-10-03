@@ -9,7 +9,7 @@
 <meta name="author" content="Studnet Ahmed Albarqi">
 <meta name="dcterms.date" content="2026-08-27">
 
-<title>Report “Vector Autoregressive (VAR) Modeling for Shelter Population &amp; Median rent asked in NYC”</title>
+<title>Report “Vector Autoregressive (VAR) Modeling for Shelter Population &amp; Median rent asked in NYC” – Ahmed Albarqi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,7 +26,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -37,7 +36,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -70,9 +68,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>html{ scroll-behavior: smooth; }</style>
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -115,6 +111,11 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Ahmed Albarqi</span>
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -122,37 +123,32 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html#research"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects.html"> 
-<span class="menu-text">Research &amp; Projects</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../visualizations.html"> 
+    <a class="nav-link" href="../index.html#visualizations"> 
 <span class="menu-text">Visualizations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#contact"> 
+<span class="menu-text">Contact</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/asbarqi" target="_blank"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/asbarqi" target="_blank"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/asbarqi/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://substack.com/@ahmedincontext" target="_blank"> 
-<span class="menu-text"><svg class="nav-substack" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 256 256" aria-label="Substack" role="img"><path d="M216 48H40v32h176V48zm0 56H40v32h176v-32zm0 56H40v48l88-48 88 48v-48z"></path></svg></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/asbarqi/" target="_blank"> <i class="bi bi-linkedin" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="../assets/files/Ahmed_Albarqi_CV.pdf" target="_blank"> <i class="bi bi-file-person" role="img">
-</i> 
-<span class="menu-text"></span></a>
+    <a class="nav-link" href="../assets/files/Ahmed_Albarqi_CV.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -205,7 +201,7 @@ window.Quarto = {
 <p>Homelessness is one of New York City’s most persistent and structurally complex policy challenges. It has remained a central issue for successive governors, mayors, and political leaders, reflecting deep-rooted pressures in the city’s housing market and social safety net. Public discourse and empirical research have consistently linked homelessness to housing affordability, particularly rising rents, with higher rental costs often associated with increases in the number of individuals relying on shelter systems. Understanding the dynamic relationship between rental prices and shelter population is therefore critical for policymakers seeking to design effective housing and homelessness interventions.</p>
 <p>This report conducts a detailed time-series analysis using a Vector Autoregressive (VAR) framework to examine the relationship between the monthly average shelter population and the median asking rent in New York City over the period from March 2021 to October 2025. The analysis explores how these two variables co-evolve over time and interact through their respective lag structures. In addition, the estimated model is used to generate forecasts for both variables over a 12-month horizon, from November 2025 to October 2026, providing insight into potential future trends in housing affordability and shelter demand.</p>
 <section id="research-questions" class="level2">
-<h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
+<h2 data-anchor-id="research-questions">Research Questions</h2>
 <p>This report examines the dynamic relationship between housing affordability and homelessness in New York City using a Vector Autoregressive (VAR) framework. The analysis is guided by the following research questions:</p>
 <ol type="1">
 <li><p><strong>What is the dynamic relationship between median asking rents and the shelter population in New York City?</strong><br>
@@ -221,7 +217,7 @@ How quickly do shocks to housing affordability transmit to the shelter system, a
 <h1>Data Sources and Description</h1>
 <p>The analysis relies on two primary variables: the monthly average number of individuals in homeless shelters and the median asking rent in New York City. While rental data are reported at a monthly frequency, the shelter population data are originally available on a daily basis. To ensure consistency across series, the daily shelter counts were aggregated to monthly averages.</p>
 <section id="individuals-in-shelters" class="level2">
-<h2 class="anchored" data-anchor-id="individuals-in-shelters">Individuals in Shelters</h2>
+<h2 data-anchor-id="individuals-in-shelters">Individuals in Shelters</h2>
 <ul>
 <li><p><strong>Definition:</strong> Daily numbers of individuals &amp; families living in Department of Homeless Services (DHS) shelters.</p></li>
 <li><p><strong>Source:</strong> https://catalog.data.gov/dataset/dhs-daily-report</p></li>
@@ -229,7 +225,7 @@ How quickly do shocks to housing affordability transmit to the shelter system, a
 <p>the data has been aggregated to a monthly average level</p>
 </section>
 <section id="median-rent-asked" class="level2">
-<h2 class="anchored" data-anchor-id="median-rent-asked">Median Rent Asked</h2>
+<h2 data-anchor-id="median-rent-asked">Median Rent Asked</h2>
 <ul>
 <li><p><strong>Definition:</strong> The exact monthly median rent asked among all rental listings available on StreetEasy at any point during the month/quarter/year.</p></li>
 <li><p><strong>Source:</strong> https://tinyurl.com/yysmzxca</p></li>
@@ -261,7 +257,7 @@ Y_{1,t} = \Delta \ln(\text{Shelter Population}_t)
 Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 \]</span></p>
 <section id="stationarity-test" class="level2">
-<h2 class="anchored" data-anchor-id="stationarity-test">Stationarity Test</h2>
+<h2 data-anchor-id="stationarity-test">Stationarity Test</h2>
 <p>Stationarity is a prerequisite for valid VAR estimation and forecasting. Time series that exhibit trends or unit roots can lead to spurious regression results if modeled in levels.</p>
 <p>Visual inspection of the level series <strong>Figure 1</strong> indicates that both the monthly average shelter population and the median asking rent display trending behavior hence the series are non-stationarity. Consistent with this observation, Augmented Dickey–Fuller (ADF) test results reported in <strong>Table 1</strong> fail to reject the null hypothesis of a unit root for both series.</p>
 <div class="cell" data-layout-align="center">
@@ -485,7 +481,7 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 </div>
 </section>
 <section id="cointegration" class="level2">
-<h2 class="anchored" data-anchor-id="cointegration">Cointegration</h2>
+<h2 data-anchor-id="cointegration">Cointegration</h2>
 <p>When multiple series are I(1), it is necessary to test for cointegration to determine whether a long-run equilibrium relationship exists. If such a relationship is present, a Vector Error Correction Model (VECM) would be more appropriate than a VAR in differences.</p>
 <p>Johansen’s cointegration test was conducted using the log-level series. As reported in <strong>Table 4</strong>, the test statistic for the null hypothesis of no cointegration (r = 0) is 8.26, which is below the 5 percent critical value of 15.67. Therefore, the null hypothesis cannot be rejected, indicating no evidence of a stable long-run relationship between shelter population and median rent.</p>
 <p>Given the absence of cointegration, a VAR model in first differences is appropriate, and a VECM specification is not warranted.</p>
@@ -527,7 +523,7 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 <h1>VAR Model</h1>
 <p>Since both series are I(1) and not cointegrated, a VAR model is estimated using the first differences of their logarithms. This specification captures short-run dynamics and interdependencies without imposing long-run equilibrium restrictions.</p>
 <section id="lags-specifications" class="level2">
-<h2 class="anchored" data-anchor-id="lags-specifications">Lags specifications</h2>
+<h2 data-anchor-id="lags-specifications">Lags specifications</h2>
 <p>Optimal lag length was determined using information criteria, including AIC, SC, and HQ, as shown in <strong>Table 5</strong>. Based on the majority of criteria, the selected lag order is <strong>VAR(4)</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -574,7 +570,7 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 </div>
 </section>
 <section id="model-specifications" class="level2">
-<h2 class="anchored" data-anchor-id="model-specifications">Model Specifications</h2>
+<h2 data-anchor-id="model-specifications">Model Specifications</h2>
 <p>The VAR(4) model was estimated with a constant term. Full regression results are reported in <strong>Table 6</strong> of the Appendix. The estimated equations are summarized below:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -610,7 +606,7 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 <h1>Model Evaluation</h1>
 <p>To assess model validity and robustness, several diagnostic tests were conducted, focusing on residual behavior and autocorrelation.</p>
 <section id="residual-plot" class="level2">
-<h2 class="anchored" data-anchor-id="residual-plot">Residual Plot</h2>
+<h2 data-anchor-id="residual-plot">Residual Plot</h2>
 <p>Visual inspection of the residual plots <strong>Figure 3</strong> suggests no systematic patterns, indicating the absence of heteroskedasticity or remaining serial correlation.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -625,7 +621,7 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 </div>
 </section>
 <section id="portmanteau-test-for-autocorrelation" class="level2">
-<h2 class="anchored" data-anchor-id="portmanteau-test-for-autocorrelation">Portmanteau-test for Autocorrelation</h2>
+<h2 data-anchor-id="portmanteau-test-for-autocorrelation">Portmanteau-test for Autocorrelation</h2>
 <p>The Portmanteau test was applied to formally test for residual autocorrelation. As reported in <strong>Table 7</strong>, the test yields a p-value of <strong>0.58</strong>, which is greater than 0.05. Consequently, we fail to reject the null hypothesis of no serial correlation, supporting the adequacy of the model specification.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -650,7 +646,7 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 </div>
 </section>
 <section id="autocorrelation-function-acf-partiall-autocorrelation-function-pacf" class="level2">
-<h2 class="anchored" data-anchor-id="autocorrelation-function-acf-partiall-autocorrelation-function-pacf">Autocorrelation Function (ACF) &amp; Partiall Autocorrelation Function (PACF)</h2>
+<h2 data-anchor-id="autocorrelation-function-acf-partiall-autocorrelation-function-pacf">Autocorrelation Function (ACF) &amp; Partiall Autocorrelation Function (PACF)</h2>
 <p>Further confirmation is provided by the ACF and PACF plots <strong>Figure 4</strong>, where all autocorrelation coefficients lie within the 95 percent confidence bounds. These results indicate that the residuals behave as white noise.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -669,7 +665,7 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 <h1>Impulse Response Functions (IRF)</h1>
 <p>Impulse response functions illustrate how a one-time shock to one variable affects the current and future values of both variables in the system.</p>
 <section id="shelter-impulse-response-functions-irf" class="level2">
-<h2 class="anchored" data-anchor-id="shelter-impulse-response-functions-irf">Shelter Impulse Response Functions (IRF)</h2>
+<h2 data-anchor-id="shelter-impulse-response-functions-irf">Shelter Impulse Response Functions (IRF)</h2>
 <p><strong>Figure 5</strong> shows that a 1 percent shock to shelter population growth has a persistent effect on itself, lasting approximately nine months and peaking in the fourth month after the shock. The same shock exerts a smaller and shorter-lived effect on rent growth, lasting around four months, with an initial positive response followed by a brief negative adjustment.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -683,7 +679,7 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 </div>
 </section>
 <section id="rent-impulse-response-functions-irf" class="level2">
-<h2 class="anchored" data-anchor-id="rent-impulse-response-functions-irf">Rent Impulse Response Functions (IRF)</h2>
+<h2 data-anchor-id="rent-impulse-response-functions-irf">Rent Impulse Response Functions (IRF)</h2>
 <p><strong>Figure 6</strong> indicates that a 1 percent shock to median rent growth generates a delayed but positive response in shelter population growth, beginning in the second month and persisting for up to nine months, with the largest effect occurring in the fourth month. The impact on rent growth itself declines over time, turning negative after the fourth month and persisting for roughly ten periods.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -776,7 +772,7 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 <section id="appendix" class="level1">
 <h1>Appendix</h1>
 <section id="figures-tables" class="level2">
-<h2 class="anchored" data-anchor-id="figures-tables">Figures &amp; Tables</h2>
+<h2 data-anchor-id="figures-tables">Figures &amp; Tables</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1061,16 +1057,8 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 </section>
 
 </main> <!-- /main -->
-<script src="assets/js/typed-role.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -1467,4 +1455,5 @@ Y_{2,t} = \Delta \ln(\text{Median Rent}_t)
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

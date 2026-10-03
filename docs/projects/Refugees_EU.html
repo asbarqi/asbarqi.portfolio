@@ -9,7 +9,7 @@
 <meta name="author" content="Group Members Ahmed Albarqi Muhammad Usman Anwar Goraya Sarthak Gulati">
 <meta name="dcterms.date" content="2026-08-27">
 
-<title>The Impact of Refugees on House Prices across EU Countries</title>
+<title>The Impact of Refugees on House Prices across EU Countries – Ahmed Albarqi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,7 +26,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
@@ -37,7 +36,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -70,9 +68,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>html{ scroll-behavior: smooth; }</style>
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -115,6 +111,11 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Ahmed Albarqi</span>
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -122,37 +123,32 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html#research"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects.html"> 
-<span class="menu-text">Research &amp; Projects</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../visualizations.html"> 
+    <a class="nav-link" href="../index.html#visualizations"> 
 <span class="menu-text">Visualizations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#contact"> 
+<span class="menu-text">Contact</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/asbarqi" target="_blank"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/asbarqi" target="_blank"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/asbarqi/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://substack.com/@ahmedincontext" target="_blank"> 
-<span class="menu-text"><svg class="nav-substack" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 256 256" aria-label="Substack" role="img"><path d="M216 48H40v32h176V48zm0 56H40v32h176v-32zm0 56H40v48l88-48 88 48v-48z"></path></svg></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/asbarqi/" target="_blank"> <i class="bi bi-linkedin" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="../assets/files/Ahmed_Albarqi_CV.pdf" target="_blank"> <i class="bi bi-file-person" role="img">
-</i> 
-<span class="menu-text"></span></a>
+    <a class="nav-link" href="../assets/files/Ahmed_Albarqi_CV.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -216,7 +212,7 @@ window.Quarto = {
 <p>In 2015, European countries recorded a historically high level of asylum applications and refugee arrivals. Some estimates place the total at approximately 1.3 million arrivals in that year (Pew Research Center, 2016). In response, EU governments negotiated relocation and burden-sharing arrangements intended to distribute a portion of arrivals across member states, although these policies were contested and unevenly implemented across countries.</p>
 <p>Under the relocation framework, allocations were based on a distribution key using objective criteria (population size, GDP, prior asylum applications, and unemployment rates). Eligibility applied to applicants from nationalities with an EU-wide average recognition rate of at least 75%.</p>
 <section id="refugees-landscape" class="level2">
-<h2 class="anchored" data-anchor-id="refugees-landscape">Refugees Landscape</h2>
+<h2 data-anchor-id="refugees-landscape">Refugees Landscape</h2>
 <p><strong>Figure 1</strong> plots the aggregate number of refugees and asylum seekers across the sample over time. The series displays a pronounced discontinuity around 2015, consistent with a major shock to asylum inflows. This structural break motivates distinguishing the post-2015 period in the descriptive analysis and in the empirical strategy.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -229,7 +225,7 @@ window.Quarto = {
 </div>
 </section>
 <section id="differential-country-policies" class="level2">
-<h2 class="anchored" data-anchor-id="differential-country-policies">Differential Country Policies</h2>
+<h2 data-anchor-id="differential-country-policies">Differential Country Policies</h2>
 <p>Cross-country differences in refugee inflows were substantial during the 2014–2016 period. Germany, Hungary, and Sweden emerged as primary destination countries, while the United Kingdom and France received comparatively fewer asylum applications (Pew Research Center, 2016). This heterogeneity provides a useful basis for comparative analysis across host countries, which is explored further in the descriptive section.</p>
 </section>
 </section>
@@ -241,7 +237,7 @@ window.Quarto = {
 <section id="descriptive-findings" class="level1">
 <h1>Descriptive Findings</h1>
 <section id="refugee-inflows-over-time" class="level2">
-<h2 class="anchored" data-anchor-id="refugee-inflows-over-time">Refugee inflows over time</h2>
+<h2 data-anchor-id="refugee-inflows-over-time">Refugee inflows over time</h2>
 <p>As shown in <strong>Figure 1</strong>, the number of refugees increased substantially during two distinct periods: <strong>2014–2016</strong> and <strong>2021–2023</strong>. These episodes represent major deviations from prior trends and suggest the presence of external shocks to refugee inflows.</p>
 <p>-<strong>2014–2016</strong> The increase aligns with intensified forced displacement driven by conflict and humanitarian crises, alongside policy responses that expanded intake capacity in some EU states.</p>
 <p>-<strong>2021–2023</strong> The later rise may reflect renewed geopolitical instability and post-pandemic mobility dynamics (e.g., processing backlogs and delayed movement), though the precise mechanisms require further investigation.</p>
@@ -425,7 +421,7 @@ window.Quarto = {
 </div>
 </section>
 <section id="refugees-landscape-across-the-eu-countries" class="level2">
-<h2 class="anchored" data-anchor-id="refugees-landscape-across-the-eu-countries">Refugees Landscape across the EU Countries</h2>
+<h2 data-anchor-id="refugees-landscape-across-the-eu-countries">Refugees Landscape across the EU Countries</h2>
 <p>We next examine the trends in <strong>refugee inflows across EU countries</strong> during the periods of interest, <strong>2014–2016–2023</strong>. Focusing on these intervals allows us to capture the dynamics of refugee influxes during episodes of heightened displacement and policy response, and to assess cross-country heterogeneity in the scale and timing of inflows within the European Union.</p>
 <p>In <strong>Figure 2</strong> we observe that countries such as Sweden, Malta, Norway, and Austria admitted the highest number of refugees per 1,000 residents during the 2014–2016 period.</p>
 <p>In contrast, more recent data from 2023 indicate a shift in the distribution of refugee inflows, with Cyprus, Germany, Czechia, and Estonia emerging as the leading recipient countries. In addition, there is some evidence of convergence across countries, as refugee inflows appear to cluster within a range of approximately 25–35 refugees per 1,000 residents, suggesting a narrowing of cross-country variation in recent years.</p>
@@ -452,7 +448,7 @@ window.Quarto = {
 <p>To assess the relationship between refugee inflows and countries’ geographic proximity, <strong>Figure 4</strong> illustrates the spatial distribution of refugee inflows across European countries from 2010 to 2023. This spatial analysis helps identify potential geographic patterns, clustering, and regional trends in refugee movements, thereby providing deeper insight into the spatial dimensions of refugee inflows across Europe.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-refugee-map-labeled" class="quarto-float quarto-figure quarto-figure-center anchored" width="3300">
+<div id="fig-refugee-map-labeled" class="quarto-float quarto-figure quarto-figure-center" width="3300">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-refugee-map-labeled-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Refugees_EU_files/figure-html/fig-refugee-map-labeled-1.png" id="fig-refugee-map-labeled" class="img-fluid figure-img" width="3300">
@@ -467,7 +463,7 @@ Figure&nbsp;1
 <p>Interestingly, while geographic proximity might be expected to be associated with higher refugee inflows, the spatial distribution shown in the map suggests otherwise. Neighboring countries do not necessarily exhibit similar levels of refugee intake, and countries that are geographically distant may experience comparable refugee inflows. This pattern challenges the assumption that refugee arrivals are primarily driven by geographic closeness and points to the importance of institutional, policy, and economic factors in shaping refugee settlement patterns.</p>
 </section>
 <section id="grouping-countries-by-refugee-inflow-intensity" class="level2">
-<h2 class="anchored" data-anchor-id="grouping-countries-by-refugee-inflow-intensity">Grouping countries by refugee inflow intensity</h2>
+<h2 data-anchor-id="grouping-countries-by-refugee-inflow-intensity">Grouping countries by refugee inflow intensity</h2>
 <p>Next, countries were classified into three groups based on their average number of refugees per 1,000 residents over the period 2010–2023. The classification thresholds were derived from the distribution of this variable, using the median and third quartile to account for its right-skewed nature. The resulting groupings and their corresponding summary statistics are presented in <strong>Table 2</strong>, which highlights the differences in refugee inflow intensity across low-, medium-, and high-inflow countries.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -631,7 +627,7 @@ Figure&nbsp;1
 <p>This classification method ensures a balanced and data-informed grouping of countries, highlighting those with unusually high or low refugee inflows relative to the sample distribution.</p>
 </section>
 <section id="housing-prices-supply-measurement-and-descriptive-trends" class="level2">
-<h2 class="anchored" data-anchor-id="housing-prices-supply-measurement-and-descriptive-trends">Housing prices &amp; supply: measurement and descriptive trends</h2>
+<h2 data-anchor-id="housing-prices-supply-measurement-and-descriptive-trends">Housing prices &amp; supply: measurement and descriptive trends</h2>
 <p>We now turn to housing market outcomes. Throughout this report, housing prices are proxied using the House Price Index (HPI). This section presents descriptive evidence on how housing prices evolved over time across European countries and how these dynamics differ by refugee inflow intensity.</p>
 <p><strong>Figure 5</strong> illustrates housing supply per 1,000 residents across countries between 2014 and 2023. The figure highlights substantial cross-country heterogeneity in both levels and trends, indicating that housing markets responded differently over time across the European sample. While some countries experienced steady expansions in housing supply, others exhibited more volatile or stagnant patterns, underscoring the importance of accounting for country-specific housing market conditions in the analysis.</p>
 <div class="cell">
@@ -673,7 +669,7 @@ Figure&nbsp;1
 <h1>Empirical Strategy</h1>
 <p>The empirical analysis which our group intends to employ, seeks to explore the causal relationship between the influx of refugees and asylum seekers in EU countries and subsequent changes in housing prices (proxied by the EU Housing Price Index - HPI). In order to explore the said relationship, we have constructed an entity-year panel dataset (country-year observations), enabling the exploitation of policy variation both over time and across EU member states.</p>
 <section id="regression-approach" class="level2">
-<h2 class="anchored" data-anchor-id="regression-approach">Regression Approach</h2>
+<h2 data-anchor-id="regression-approach">Regression Approach</h2>
 <p>The primary specification is a two-way fixed effects model, accounting for country and year fixed effects, structured as follows:</p>
 <p><span class="math display">\[
 \text{HPIGrowth}_{ct} = \alpha_c + \gamma_t + \beta_1 \,\text{RefugeeGrowth}_{ct} + \varepsilon_{ct}
@@ -691,7 +687,7 @@ Figure&nbsp;1
 <section id="findings" class="level1">
 <h1>Findings</h1>
 <section id="regression-results" class="level2">
-<h2 class="anchored" data-anchor-id="regression-results">Regression Results</h2>
+<h2 data-anchor-id="regression-results">Regression Results</h2>
 <p>Here we present the results of the two regression models to explore the relationship between refugee growth and housing price index (HPI) growth.</p>
 <p>We estimate two models: one with only fixed effects (for country and year) and another including both refugee growth and lagged refugee growth.</p>
 <div class="cell" data-layout-align="center">
@@ -840,7 +836,7 @@ Figure&nbsp;1
 <p>Importantly, the increase in model fit is relatively limited, and the dominant share of explanatory power continues to stem from the fixed effects. This indicates that housing price growth is primarily driven by structural country-level factors and macroeconomic time shocks, rather than by sustained changes in refugee inflows.</p>
 </section>
 <section id="multicollinearity" class="level2">
-<h2 class="anchored" data-anchor-id="multicollinearity">Multicollinearity</h2>
+<h2 data-anchor-id="multicollinearity">Multicollinearity</h2>
 <p>Examining the Multicollinearity of our variables with VIF</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -904,16 +900,8 @@ Figure&nbsp;1
 </section>
 
 </main> <!-- /main -->
-<script src="assets/js/typed-role.js"></script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -1310,4 +1298,5 @@ Figure&nbsp;1
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

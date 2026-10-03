@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - assets/css/**
+    - assets/includes/**
+    - assets/files/**
+    - assets/images/visualizations/**
+
+website:
+  title: ""
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: projects.qmd
+        text: Research & Projects
+      - href: visualizations.qmd
+        text: Visualizations
+    right:
+      - icon: github
+        href: https://github.com/asbarqi
+        target: _blank
+      - text: '<svg class="nav-substack" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-label="Substack" role="img"><path d="M216 48H40v32h176V48zm0 56H40v32h176v-32zm0 56H40v48l88-48 88 48v-48z"/></svg>'
+        href: https://substack.com/@ahmedincontext
+        target: _blank
+      - icon: linkedin
+        href: https://www.linkedin.com/in/asbarqi/
+        target: _blank
+      - icon: file-person
+        href: assets/files/Ahmed_Albarqi_CV.pdf
+        target: _blank
+
+format:
+  html:
+    theme: litera
+    toc: false
+    page-layout: full
+    css: assets/css/styles.css
+    include-in-header:
+      - assets/includes/head.html
+    include-after-body:
+      - assets/includes/after-body.html

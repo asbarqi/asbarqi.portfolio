@@ -1,0 +1,42 @@
+---
+title: ""
+page-layout: full
+---
+
+<div class="page-bg" aria-hidden="true">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+</div>
+
+<div class="hero">
+<div class="hero-inner">
+
+# Ahmed Albarqi  
+<span id="typed-role" class="typed-role"></span>
+
+**Ahmed Albarqi** is a policy researcher whose work examines labour markets, social welfare, and human behaviour through causal inference, applied econometrics, and computational methods. His research focuses on social and economic inequalities and the evaluation of public policy interventions, with an emphasis on using quantitative evidence to understand how institutions, economic conditions, and behavioural factors shape individual and societal outcomes. His work spans labour policy, social protection, and technology access, bridging rigorous empirical analysis with practical policy design.
+
+Ahmed holds a **Master of Public Administration from Columbia University’s School of International and Public Affairs**, specializing in **Data Science for Policy** with a minor in *Social Policy*. His graduate training focused on causal inference, econometrics, machine learning, and program evaluation. Prior to Columbia, he worked at **Deloitte** and the **Communications, Space & Technology Commission in Saudi Arabia**, where his work focused on expanding access to technology, strengthening digital infrastructure, and promoting digital inclusion. He also holds a **Bachelor of Science in Electrical Engineering** from **King Fahd University of Petroleum & Minerals**, with a focus on *Signal Processing and Artificial Intelligence*.
+
+<div class="pill">Causal Inference</div>
+<div class="pill">Econometrics</div>
+<div class="pill">Time Series</div>
+<div class="pill">Panel Data</div>
+<div class="pill">Applied ML</div>
+<div class="pill">Program Evaluation</div>
+
+<br>
+
+## Areas of Interest
+
+<div class="interest-grid">
+  <div class="interest-item">Social Policy & Welfare Systems</div>
+  <div class="interest-item">Applied Machine Learning</div>
+  <div class="interest-item">Urban Economics & Policy</div>
+  <div class="interest-item">Behavioral & Decision Science</div>
+</div>
+
+</div>
+</div>
+

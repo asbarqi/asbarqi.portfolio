@@ -1,33 +1,40 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - index.qmd
+    - projects/**/*.qmd
+    - projects/**/*.md
+    - projects/**/*.Rmd
+    - "!**/*_old.*"
+    - "!**/*_old/**"
+    - "!**/README.*"
   resources:
-    - assets/css/**
-    - assets/includes/**
-    - assets/files/**
-    - assets/images/visualizations/**
+    - assets/**
+    - projects/**
 
 website:
-  title: ""
+  title: "Ahmed Albarqi"
+  description: "Policy research, econometrics, causal inference, and data visualization."
   navbar:
+    pinned: true
     left:
-      - href: index.qmd
-        text: Home
-      - href: projects.qmd
-        text: Research & Projects
-      - href: visualizations.qmd
+      - href: index.qmd#research
+        text: Research
+      - href: index.qmd#visualizations
         text: Visualizations
+      - href: index.qmd#contact
+        text: Contact
     right:
       - icon: github
         href: https://github.com/asbarqi
-        target: _blank
-      - text: '<svg class="nav-substack" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-label="Substack" role="img"><path d="M216 48H40v32h176V48zm0 56H40v32h176v-32zm0 56H40v48l88-48 88 48v-48z"/></svg>'
-        href: https://substack.com/@ahmedincontext
+        aria-label: GitHub
         target: _blank
       - icon: linkedin
         href: https://www.linkedin.com/in/asbarqi/
+        aria-label: LinkedIn
         target: _blank
-      - icon: file-person
+      - text: CV
         href: assets/files/Ahmed_Albarqi_CV.pdf
         target: _blank
 
@@ -36,8 +43,6 @@ format:
     theme: litera
     toc: false
     page-layout: full
+    smooth-scroll: true
+    anchor-sections: false
     css: assets/css/styles.css
-    include-in-header:
-      - assets/includes/head.html
-    include-after-body:
-      - assets/includes/after-body.html
