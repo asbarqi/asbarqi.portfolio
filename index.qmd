@@ -49,7 +49,7 @@ Analysis of nationally representative survey data examining socioeconomic vulner
 The full report is forthcoming from the **International Labour Organization (ILO)** and is not yet available for public sharing.
 
 ::: {.project-tags}
-<span class="tag">Survey Analysis</span><span class="tag">Regression</span><span class="tag">PSM</span><span class="tag">Clustering</span><span class="tag">R</span>
+<span class="tag">Survey Analysis</span><span class="tag">Regression</span><span class="tag">PSM</span><span class="tag">Clustering</span><span class="tag">R</span><span class="tag">Python</span>
 :::
 
 [View victim typologies ↓](#viz-forced-labour){.text-link}
